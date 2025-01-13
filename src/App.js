@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Fiok from './Fiok';
+import Hirdetes from './Hirdetes';
+import Kollegak from './Kollegak';
+import Munkatarsak from './Munkatarsak';
+import SignUp from './SignUp';
+import Fooldal from './Fooldal';
+import { Route, Routes } from 'react-router-dom';
+import  './App.css';
+import Navbar from './Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar/>
+    <Routes>
+      <Route path='/fiok' element={<Fiok/>}></Route>
+      <Route path='/hirdetes' element={<Hirdetes/>}></Route>
+      <Route path='/kollegak' element={<Kollegak/>}></Route>
+      <Route path='/munkatarsak' element={<Munkatarsak/>}></Route>
+      <Route path='/bejelentkezes' element={ <SignUp/>}></Route>
+    </Routes>        
+
     </div>
+    
   );
 }
 
