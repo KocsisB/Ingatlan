@@ -1,5 +1,7 @@
 import React from 'react'
 import './App.css'
+import { NavLink } from 'react-router-dom'
+import dlblogo from './dlblogo.svg.jpg'
 
 export default function Navbar() {
   return (
@@ -7,9 +9,9 @@ export default function Navbar() {
       <nav className="bg-dark border-bottom border-body" data-bs-theme="dark">
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
-            <a className="nav-item active" href="./index.html">
-              <img className="logo" src="./logo.jpg" alt="logo" />
-            </a>
+            <NavLink className="nav-item active" to="/">
+              <img className="logo" src={dlblogo} alt="logo" />
+            </NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -24,16 +26,16 @@ export default function Navbar() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li>
-                  <Link to="/">Főoldal</Link>
+                  <NavLink className="nav-link" to="/">Főoldal</NavLink>
                 </li>
                 <li>
-                  <Link to="/hirdetes">Hirdetés feladása</Link>
+                  <NavLink className="nav-link" to="/hirdetes">Hirdetés feladása</NavLink>
                 </li>
                 <li>
-                  <Link to="/kollegak">Munkatársaink</Link>
+                  <NavLink className="nav-link" to="/munkatarsak">Munkatársaink</NavLink>
                 </li>
                 <li>
-                  <Link to="/fiok">Bejelentkezés/Regisztráció</Link>
+                  <NavLink className="nav-link" to="/fiok">Bejelentkezés/Regisztráció</NavLink>
                 </li>
               </ul>
             </div>

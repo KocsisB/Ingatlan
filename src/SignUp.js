@@ -1,8 +1,7 @@
 import React from 'react'
 import isLoginForm, { useState } from 'react'; 
-import './Signup.css';
-import Fooldal from './Fooldal';
-import Navbar from './Navbar';
+import styles from './SignUp.module.css';
+import './SignUp.module.css';
 
  export default function SignUp() {
     
@@ -14,29 +13,29 @@ import Navbar from './Navbar';
     };
   
     return (
-      <div className="container">
+      <div className={styles.container}>
         <h2>{isLoginForm ? 'Bejelentkezés' : 'Regisztráció'}</h2>
   
         {/* Ha a bejelentkezési formot kell mutatni */}
         {!isLoginForm ? (
           <form id="regForm">
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label htmlFor="name">Név</label>
               <input type="text" id="name" name="name" required />
             </div>
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label htmlFor="email">E-mail cím</label>
               <input type="email" id="email" name="email" required />
             </div>
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label htmlFor="password">Jelszó</label>
               <input type="password" id="password" name="password" required />
             </div>
-            <button type="submit">Regisztráció</button>
+            <button type="submit" className={styles.toggleBtn}>Regisztráció</button>
           </form>
         ) : (
           <form id="login">
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label htmlFor="loginEmail">E-mail cím</label>
               <input type="email" id="loginEmail" name="loginEmail" required />
             </div>
@@ -44,17 +43,16 @@ import Navbar from './Navbar';
               <label htmlFor="loginPassword">Jelszó</label>
               <input type="password" id="loginPassword" name="loginPassword" required />
             </div>
-            <button type="submit">Bejelentkezés</button>
+            <button type="submit" className={styles.toggleBtn}>Bejelentkezés</button>
           </form>
         )}
   
-        <div className="toggle-btn">
+        <div className={styles.toggleBtn}>
           {/* A gomb a formok közötti váltást kezdeményezi */}
-          <button id="toggleBtn" onClick={toggleForm}>
+          <button id="toggleBtn" onClick={toggleForm} className={styles.toggleBtn}>
             {isLoginForm ? 'Már van fiókod? Jelentkezz be!' : 'Már van fiókod? Jelentkezz ki!'}
           </button>
         </div>
       </div>
     );
-    <Navbar/>
   }

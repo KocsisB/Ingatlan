@@ -1,10 +1,9 @@
 import React from 'react'
 import Kollegak from './Kollegak';
-import Fooldal from './Fooldal';
-import Navbar from './Navbar';
+import './App.css';
 
 export default function Munkatarsak() {
-    const munkatarsok = [
+    const munkatarsak = [
       {
         nev: 'Csoma Dávid Tibor',
         szerep: 'Ingatlanügynök',
@@ -23,9 +22,9 @@ export default function Munkatarsak() {
     ];
   
     return (
-      <div className="container my-5">
+      <div className="container">
         <div className="row justify-content-center">
-          {munkatarsok.map((munkatars, index) => (
+          {munkatarsak.map((munkatars, index) => (
             <Kollegak
               key={index}
               nev={munkatars.nev}
@@ -36,5 +35,6 @@ export default function Munkatarsak() {
         </div>
       </div>
     );
-    <Navbar/>
   }
+
+  

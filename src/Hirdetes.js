@@ -1,9 +1,6 @@
 import React from 'react'
 import houseTitle, { useState } from 'react';
 import './App.css';
-import Fooldal from './Fooldal';
-
-
 
     export default function Hirdetes() {
         const [houseTitle, setHouseTitle] = useState('');
@@ -23,11 +20,11 @@ import Fooldal from './Fooldal';
         };
       
         return (
-          <div className="container mt-4">
+          <div className="container">
             <h2>Eladó Ház Hozzáadása</h2>
             <form id="house-form" onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label htmlFor="house-title" className="form-label" style={{ fontWeight: 'bold', color: 'chartreuse' }}>
+                <label htmlFor="house-title" className="form-label" style={{ fontWeight: 'bold', color: '#9bd162' }}>
                   Ház címe
                 </label>
                 <input
@@ -40,7 +37,7 @@ import Fooldal from './Fooldal';
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="house-description" className="form-label" style={{ fontWeight: 'bold', color: 'chartreuse' }}>
+                <label htmlFor="house-description" className="form-label" style={{ fontWeight: 'bold', color: '#9bd162' }}>
                   Leírás
                 </label>
                 <textarea
@@ -53,7 +50,7 @@ import Fooldal from './Fooldal';
                 ></textarea>
               </div>
               <div className="mb-3">
-                <label htmlFor="house-images" className="form-label" style={{ fontWeight: 'bold', color: 'chartreuse' }}>
+                <label htmlFor="house-images" className="form-label" style={{ fontWeight: 'bold', color: '#9bd162' }}>
                   Képek
                 </label>
                 <input
@@ -65,14 +62,10 @@ import Fooldal from './Fooldal';
                   onChange={handleImagesChange}
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="toggleBtn">
                 Ház hozzáadása
               </button>
             </form>
           </div>
-
-
-
         );
-        <Fooldal/>
       }

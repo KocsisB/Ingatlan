@@ -1,6 +1,4 @@
-.App {
-    text-align: center;
-  }
+
   
   .App-logo {
     height: 40vmin;
@@ -10,6 +8,17 @@
   @media (prefers-reduced-motion: no-preference) {
     .App-logo {
       animation: App-logo-spin infinite 20s linear;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .wrap {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card {
+      width: 100%;
     }
   }
   
@@ -36,56 +45,55 @@
       transform: rotate(360deg);
     }
   }
-  
-  .logo {
-    width: 50px;
-    height: 45px;
-  }
-  
+
   body {
-    background-image: url(img/background2.jpg);
-    background-size: cover;
-  }
-  
-  .card {
-    margin-bottom: 20px; 
-  }
-  
-  .card img {
-    object-fit: cover;
-    width: 100%;
-    height: 250px;
-  }
-  
-  * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-image: url(./img/background2.webp);
+    background-size: cover;
+  }
+
+  .logo {
+    width: 50px;
+    height: 45px;
   }
   
   .wrap {
     display: flex;
     flex-wrap: wrap;
     gap: 10px; /* Kártyák közötti távolság */
-    justify-content: flex-start;
+    justify-content: center;
     width: 90%;
     margin: 2rem auto;
   }
   
-  .card {
+  .myCard {
+    margin-bottom: 20px; 
     width: 250px; /* A kártyák szélessége */
     height: 25em; /* A kártyák magassága */
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: 30px;
+    border-radius: 30px !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background: white;
     transition: transform 0.3s ease-in-out;
   }
+
+  .card img {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+  }
   
   .card:hover {
     transform: scale(1.05); /* Hover effektus */
+    outline: 2px solid #9bd162;
+  }
+
+  .card:focus {
+    outline: 2px solid #9bd162;
   }
   
   .overlay {
@@ -97,7 +105,6 @@
     padding: 3rem;
     background: #e4ece4;
     z-index: 1;
-    margin-bottom: 3rem;
   }
   
   .image-content {
@@ -105,7 +112,7 @@
     top: 0;
     right: 0;
     width: 100%;
-    height: 250%;
+    height: 100%;
     background-size: cover;
     transition: width 0.3s ease-in-out;
   }
@@ -116,7 +123,7 @@
     background: #fff;
     box-shadow: inset 1px 1px 15px rgba(0, 0, 0, 0.4);
     overflow-y: scroll;
-    color: #0e390e;
+    color: #9bd162;
   }
   
   /* Animation definitions */
@@ -124,10 +131,12 @@
     animation-duration: 0.7s;
     animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
     animation-fill-mode: backwards;
+    will-change: transform;
   }
   
   .pop {
     animation-name: pop;
+    will-change: transform;
   }
   
   @keyframes pop {
@@ -143,6 +152,7 @@
   
   .slide-left {
     animation-name: slide-left;
+    will-change: transform;
   }
   
   @keyframes slide-left {
@@ -158,6 +168,7 @@
   
   .slide-up {
     animation-name: slide-up;
+    will-change: transform;
   }
   
   @keyframes slide-up {
@@ -185,5 +196,24 @@
     flex-wrap: wrap;
     gap: 20px; /* Kártyák közötti távolság */
   }
+
+  .toggleBtn {
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.toggleBtn a {
+    text-decoration: none;
+    color: #9bd162;
+}
+
+.toggleBtn a:hover {
+    text-decoration: underline;
+}
+
+.container {
+  padding: 20px;
+}
   
   
