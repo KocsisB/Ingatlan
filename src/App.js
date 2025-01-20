@@ -1,24 +1,29 @@
 import { Route, Routes } from 'react-router-dom';
 import  './App.css';
-import Fiok from './Fiok';
 import Hirdetes from './Hirdetes';
 import Kollegak from './Kollegak';
 import Munkatarsak from './Munkatarsak';
-import SignUp from './SignUp';
 import Navbar from './Navbar';
 import Fooldal from './Fooldal';
+import Login from './Login';
+import Footer from './Footer';
+import Eladohaz from './Eladohaz';
+import Berelhetohaz from './Berelhetohaz';
 
 function App() {
   return (
     <div className='App'>
+
       <Navbar/>
+      <Footer/>
       <Routes>
         <Route path='/' element={<Fooldal/>}/>
-        <Route path='/fiok' element={<Fiok/>}/>
         <Route path='/hirdetes' element={<Hirdetes/>}/>
         <Route path='/kollegak' element={<Kollegak/>}/>
         <Route path='/munkatarsak' element={<Munkatarsak/>}/>
-        <Route path='/bejelentkezes' element={<SignUp/>}/>
+        <Route path='/regisztracio' element={<Login/>}/>
+        <Route path='/eladohazak' element={<Eladohaz/>}/>
+        <Route path='/berelhetohazak' element={<Berelhetohaz/>}/>
       </Routes>        
 
     </div>

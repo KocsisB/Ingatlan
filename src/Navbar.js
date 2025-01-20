@@ -35,12 +35,35 @@ export default function Navbar() {
                   <NavLink className="nav-link" to="/munkatarsak">Munkatársaink</NavLink>
                 </li>
                 <li>
-                  <NavLink className="nav-link" to="/fiok">Bejelentkezés/Regisztráció</NavLink>
+                  <NavLink className="nav-link" to="/regisztracio">Bejelentkezés/regisztráció</NavLink>
+                </li>
+                <li>
+                  <NavLink className="nav-link" to="/eladohazak">Eladó házak</NavLink>
+                </li>
+                <li>
+                  <NavLink className="nav-link" to="/berelhetohazak">Bérelhető házak</NavLink>
                 </li>
               </ul>
+            <div className="d-flex align-items-center ms-auto">
+                <form className="d-flex me-3" role="search">
+                  <input
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Keresés"
+                    aria-label="Keresés"
+                  />
+                  <button className="btn btn-outline-success" type="submit">
+                    Keresés
+                  </button>
+                </form>
+                <div className="user-icon ms-3">
+                  <i className="fa-solid fa-circle-user fa-lg text-white"></i>
+                </div>
+              </div>
             </div>
           </div>
         </nav>
       </nav>
-</div>
-)};
+    </div>
+  );
+}
