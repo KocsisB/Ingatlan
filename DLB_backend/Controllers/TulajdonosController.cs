@@ -10,7 +10,8 @@ namespace DLB_backend.Controllers
     public class TulajdonosokController : ControllerBase
     {
         private readonly DlbLakaskulcsContext _context;
-
+        // asd
+        //debug
         public TulajdonosokController(DlbLakaskulcsContext context)
         {
             _context = context;
