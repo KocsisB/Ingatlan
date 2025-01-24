@@ -16,6 +16,10 @@ public partial class DlbLakaskulcsContext : DbContext
     {
     }
     [JsonIgnore]
+    public virtual DbSet<FelhasznaloBejelentkeze> FelhasznaloBejelentkezes { get; set; }
+    [JsonIgnore]
+    public virtual DbSet<Felhasznalok> Felhasznaloks { get; set; }
+    [JsonIgnore]
     public virtual DbSet<Ingatlanok> Ingatlanoks { get; set; }
     [JsonIgnore]
     public virtual DbSet<Jogihatter> Jogihatters { get; set; }
@@ -30,6 +34,42 @@ public partial class DlbLakaskulcsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<FelhasznaloBejelentkeze>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("felhasznalo_bejelentkezes");
+
+            entity.Property(e => e.BejelentkezoSzolgaltato).HasMaxLength(255);
+            entity.Property(e => e.FelhasznaloId).HasMaxLength(255);
+            entity.Property(e => e.SzolgaltatoKulcs).HasMaxLength(255);
+            entity.Property(e => e.SzolgaltatoMegjelenitettNev).HasDefaultValueSql("'NULL'");
+        });
+
+        modelBuilder.Entity<Felhasznalok>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("felhasznalok");
+
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .HasColumnName("email");
+            entity.Property(e => e.Id)
+                .HasColumnType("int(11)")
+                .HasColumnName("id");
+            entity.Property(e => e.Jelszo)
+                .HasMaxLength(255)
+                .HasColumnName("jelszo");
+            entity.Property(e => e.Nev)
+                .HasMaxLength(100)
+                .HasColumnName("nev");
+            entity.Property(e => e.RegDatum)
+                .HasDefaultValueSql("'current_timestamp()'")
+                .HasColumnType("timestamp")
+                .HasColumnName("reg_datum");
+        });
+
         modelBuilder.Entity<Ingatlanok>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");

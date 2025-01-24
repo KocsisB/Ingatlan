@@ -132,3 +132,4 @@ D:\Suli\Vizsga\DLB_backend\DLB_backend\obj\Debug\net8.0\refint\DLB_backend.dll
 D:\Suli\Vizsga\DLB_backend\DLB_backend\obj\Debug\net8.0\DLB_backend.pdb
 D:\Suli\Vizsga\DLB_backend\DLB_backend\obj\Debug\net8.0\DLB_backend.genruntimeconfig.cache
 D:\Suli\Vizsga\DLB_backend\DLB_backend\obj\Debug\net8.0\ref\DLB_backend.dll
+D:\Suli\Vizsga\DLB_backend\DLB_backend\obj\Debug\net8.0\DLB_backend.sourcelink.json
