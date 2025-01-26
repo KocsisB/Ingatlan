@@ -49,6 +49,7 @@ const PropertySearch = () => {
         <button type="submit" className="search-button">Keresés indítása</button>
       </form>
     </div>
+
   );
 };
 

@@ -1,39 +1,38 @@
 .footer {
-    background-color: #288930; /* Zöld háttérszín */
-    color: #ffffff; /* Fehér szöveg */
-    padding: 20px 0;
-    text-align: center;
-    position: fixed; /* Fixen helyezkedik el */
-    bottom: 0; /* Alulra igazítva */
-    width: 100%; /* Szélesség teljes */
-  } 
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .text {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 400;
-  }
-  
-  .links {
-    margin-top: 10px;
-  }
-  
-  .link {
-    color: #ffffff; /* Fehér linkek */
-    margin: 0 10px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s;
-  }
-  
-  .link:hover {
-    color: #e2e2e2; /* Világos szürke hover effekt */
-  }
-  
+  background-color: #288930; /* Zöld háttérszín */
+  color: #ffffff; /* Fehér szöveg */
+  padding: 20px 0;
+  text-align: center;
+  width: 100%; /* Szélesség teljes */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px; /* Maximum szélesség a tartalomnak */
+  margin: 0 auto; /* Középre igazítás */
+}
+
+.text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.links {
+  margin-top: 10px;
+}
+
+.link {
+  color: #ffffff; /* Fehér linkek */
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.link:hover {
+  color: #e2e2e2;
+};
