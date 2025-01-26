@@ -13,9 +13,7 @@ import Berelhetohaz from './Berelhetohaz';
 function App() {
   return (
     <div className='App'>
-
       <Navbar/>
-      <Footer/>
       <Routes>
         <Route path='/' element={<Fooldal/>}/>
         <Route path='/hirdetes' element={<Hirdetes/>}/>
@@ -24,7 +22,8 @@ function App() {
         <Route path='/regisztracio' element={<Login/>}/>
         <Route path='/eladohazak' element={<Eladohaz/>}/>
         <Route path='/berelhetohazak' element={<Berelhetohaz/>}/>
-      </Routes>        
+      </Routes>   
+      <Footer/>     
 
     </div>
   );

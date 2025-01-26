@@ -1,24 +1,24 @@
 .footer {
   background-color: #288930; /* Zöld háttérszín */
   color: #ffffff; /* Fehér szöveg */
-  padding: 20px 0;
-  text-align: center;
-  width: 100%; /* Szélesség teljes */
+  padding: 80px; /* Kényelmes tér */
+  text-align:center;
+  width: 100%; /* Teljes szélesség */
+  display: flex; /* Flexbox használat a középre igazításhoz */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Kitölti a maradék helyet */
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 1200px; /* Maximum szélesség a tartalomnak */
-  margin: 0 auto; /* Középre igazítás */
+  max-width: 1200px;
+  margin: auto;
 }
 
 .text {
   margin: 0;
   font-size: 14px;
-  font-weight: 400;
 }
 
 .links {
@@ -26,13 +26,11 @@
 }
 
 .link {
-  color: #ffffff; /* Fehér linkek */
+  color: #ffffff;
   margin: 0 10px;
   text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
 }
 
 .link:hover {
   color: #e2e2e2;
-};
+}

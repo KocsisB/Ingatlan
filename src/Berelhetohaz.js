@@ -9,8 +9,6 @@ const PropertyCard = () => {
     const fetchProperties = async () => {
       try {
         const response = await fetch('https://localhost:7166/api/Ingatlanok');
-        console.log('HTTP státuszkód:', response.status);
-
         if (!response.ok) {
           setError(`API hiba: ${response.status}`);
           return;
@@ -38,13 +36,13 @@ const PropertyCard = () => {
           <div className="card-content">
             <h2 className="card-title">{property.cim}</h2>
             <p className="card-description">Város: {property.varos}</p>
-            <p className="card.description">{property.allapot}</p>
+            <p className="card-description">{property.allapot}</p>
             <p className="card-description">Ár: {property.ar} Ft</p>
             <div className="card-footer">
-              <span> Alapterület: {property.alapterulet} m²</span>
-              <span>️ Szobák: {property.szobak_szama}</span>
+              <span>Alapterület: {property.alapterulet} m²</span>
+              <span>Szobák: {property.szobak_szama}</span>
             </div>
-            <button className= "card-button">Add to Cart</button>
+            <button className="card-button">Ház bérlése</button>
           </div>
         </div>
       ))}
