@@ -31,9 +31,7 @@ export default function Navbar() {
                 <li>
                   <NavLink className="nav-link" to="/hirdetes">Hirdetés feladása</NavLink>
                 </li>
-                <li>
-                  <NavLink className="nav-link" to="/munkatarsak">Munkatársaink</NavLink>
-                </li>
+                
                 <li>
                   <NavLink className="nav-link" to="/regisztracio">Bejelentkezés/regisztráció</NavLink>
                 </li>
@@ -42,6 +40,9 @@ export default function Navbar() {
                 </li>
                 <li>
                   <NavLink className="nav-link" to="/berelhetohazak">Bérelhető házak</NavLink>
+                </li>
+                <li>
+                  <NavLink className="nav-link" to="/ugynokok">Ügynökök</NavLink>
                 </li>
               </ul>
             <div className="d-flex align-items-center ms-auto">

@@ -1,0 +1,62 @@
+/* Munkatarsak.css */
+.employee-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Igazítás balra */
+    padding: 20px;
+  }
+  
+  .employee-card {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Rugalmas szélesség */
+    max-width: 400px;
+    margin: 20px;
+  }
+  
+  .employee-image {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .employee-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .employee-info {
+    flex: 2;
+    padding: 20px;
+  }
+  
+  .employee-info h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .employee-info h3 {
+    margin: 5px 0 15px;
+    color: #555;
+  }
+  
+  .employee-info p {
+    margin: 10px 0;
+    line-height: 1.5;
+  }
+  
+  .employee-contacts p {
+    margin: 5px 0;
+  }
+  
+  .employee-contacts a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .employee-contacts a:hover {
+    text-decoration: underline;
+  }
+  
