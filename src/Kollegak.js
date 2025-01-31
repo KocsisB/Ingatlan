@@ -36,22 +36,12 @@ const Munkatarsak = () => {
     }
   ];
 
-  console.log(munkatarsak);
+  console.log("Munkatársak tömb:", munkatarsak); // Nézd meg, hogy tényleg van-e adat
 
   return (
     <div className="employee-cards-container">
       {munkatarsak.map((munkatars, index) => (
-        <Munkatarsaink
-          key={index} 
-          name={munkatars.name} 
-          position={munkatars.position} 
-          description={munkatars.description} 
-          email={munkatars.email} 
-          phone={munkatars.phone} 
-          linkedin={munkatars.linkedin} 
-          hobbies={munkatars.hobbies} 
-          image={munkatars.image} 
-        />
+        <Munkatarsaink key={index} {...munkatars} />
       ))}
     </div>
   );

@@ -1,0 +1,49 @@
+.container-hirdetes {
+    background-color: #ffffff;
+    border: 3px solid #288930;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .form-title {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    background-color: #288930;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .submit-button:hover {
+    background-color: #237b2c;
+  }
+  

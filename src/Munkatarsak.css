@@ -1,62 +1,69 @@
-/* Munkatarsak.css */
-.employee-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Igazítás balra */
-    padding: 20px;
-  }
-  
-  .employee-card {
-    display: flex;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Rugalmas szélesség */
-    max-width: 400px;
-    margin: 20px;
-  }
-  
-  .employee-image {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .employee-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .employee-info {
-    flex: 2;
-    padding: 20px;
-  }
-  
-  .employee-info h2 {
-    margin: 0;
-    font-size: 1.5em;
-  }
-  
-  .employee-info h3 {
-    margin: 5px 0 15px;
-    color: #555;
-  }
-  
-  .employee-info p {
-    margin: 10px 0;
-    line-height: 1.5;
-  }
-  
-  .employee-contacts p {
-    margin: 5px 0;
-  }
-  
-  .employee-contacts a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .employee-contacts a:hover {
-    text-decoration: underline;
-  }
-  
+.agent-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14rem;
+  padding: 40px;
+  background-color: white;
+}
+
+.agent-card {
+  width: 280px;
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 2px solid green;
+  background-color: #f9f9f9;
+}
+
+.agent-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.agent-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: green;
+}
+
+.agent-title {
+  color: gray;
+  margin-top: 5px;
+}
+
+.agent-experience {
+  color: black;
+  margin-top: 5px;
+}
+
+.agent-agency {
+  color: green;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.agent-location {
+  color: black;
+  margin-top: 5px;
+}
+
+.agent-contact {
+  margin-top: 10px;
+}
+
+.agent-contact a {
+  display: block;
+  color: green;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.agent-contact a:hover {
+  text-decoration: underline;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+

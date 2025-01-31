@@ -1,45 +1,47 @@
-/* Általános konténer stílusok */
+/* Alap konténer beállítások */
 .fooldal-container {
   display: flex;
   flex-wrap: wrap; /* Törik új sorba, ha nincs elég hely */
   justify-content: space-between; /* Egyenletes eloszlás */
-  gap: 20px; /* Hézag a kártyák között */
-  padding: 20px;
+  gap: 30px; /* Nagyobb hézag a kártyák között */
+  padding: 40px; /* Nagyobb belső tér */
   background-color: #f7f7f7;
 }
 
 /* Kártya stílusok */
 .card-container {
-  flex: 1 1 calc(33.333% - 20px); /* Alapértelmezés szerint három oszlop */
-  max-width: calc(33.333% - 20px);
+  flex: 1 1 calc(33.333% - 30px); /* Alapértelmezés szerint három oszlop */
+  max-width: calc(33.333% - 30px);
   background-color: #343a40; /* Sötét háttérszín */
   color: #f7f7f7; /* Fehér szöveg */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  padding: 25px; /* Nagyobb belső tér */
+  margin-bottom: 30px; /* Térköz az alatta lévő elemektől */
 }
 
 .card-body {
   border-radius: 8px;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .card-title {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.7rem;
+  margin-bottom: 15px;
   color: #ffffff;
 }
 
 .card-text {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #f7f7f7;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* Stílusok a responsive tervezéshez */
 @media (max-width: 768px) {
   .fooldal-container {
     flex-direction: column; /* Kis képernyőkön egymás alatt jelenjenek meg */
+    padding: 20px;
   }
 
   .card-container {
@@ -48,21 +50,21 @@
   }
 }
 
-
+/* Ingatlanos hirdetés */
 .real-estate-ad {
   background-color: #f3f4f6; /* Világosszürke háttér */
-  padding: 1.5rem;
-  border-radius: 24px; /* Lekerekített szélek */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 24px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   max-width: 50rem;
-  margin: 0 auto;
+  margin: 40px auto; /* Nagyobb tér az előtte és utána lévő elemek között */
 }
 
 .real-estate-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .real-estate-icon-wrapper {
@@ -71,14 +73,14 @@
 
 .real-estate-icon {
   background-color: #10b981; /* Zöld háttér */
-  padding: 12px;
-  border-radius: 16px; /* Lekerekítés */
+  padding: 14px;
+  border-radius: 16px;
   display: inline-block;
 }
 
 .real-estate-icon img {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   border-radius: 12px; /* Ikon lekerekítése */
 }
@@ -89,15 +91,15 @@
   right: 0;
   background-color: #10b981;
   color: white;
-  padding: 4px;
+  padding: 6px;
   border-radius: 50%;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: bold;
 }
 
 .real-estate-list {
   color: #374151;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   list-style: none;
   padding: 0;
 }
@@ -105,13 +107,15 @@
 .real-estate-list li {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  font-size: 1.1rem;
 }
 
 .real-estate-footer {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: #1f2937;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .real-estate-footer a {
@@ -123,3 +127,163 @@
 .real-estate-footer a:hover {
   text-decoration: underline;
 }
+
+/* 📌 5 oszlopos elrendezés nagyobb térközökkel */
+.real-estate-loans-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 kártya egy sorban */
+  gap: 24px; /* Nagyobb térköz a kártyák között */
+  margin-top: 50px;
+  padding: 30px;
+}
+
+.real-estate-loan-card {
+  width: calc(20% - 24px); /* 5 kártya egy sorba */
+  min-width: 220px; /* Minimum méret */
+  padding: 25px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.real-estate-loan-card:hover {
+  transform: translateY(-7px);
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.card-text-m {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Gombok */
+.btn-primary {
+  background-color: #228B22;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #228B22;
+}
+
+/* Reszponzív módosítások */
+@media (max-width: 1200px) {
+  .real-estate-loans-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 kártya egy sorban */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .real-estate-loans-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 kártya egy sorban */
+    gap: 18px;
+  }
+}
+
+@media (max-width: 500px) {
+  .real-estate-loans-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 kártya egy sorban */
+    gap: 16px;
+  }
+}
+
+
+/* Modál háttér */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Sötétebb háttér a kiemeléshez */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Kártyaszerű modál */
+.modal-content {
+  background: linear-gradient(135deg, #ffffff, #f8f8f8); /* Finom átmenetes háttér */
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 16px; /* Lekerekített sarkok */
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3); /* Dobozárnyék */
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Kiemelt fejléc */
+.modal-header {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #228B22;
+  padding-bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Szöveg */
+.modal-content p {
+  font-size: 17px;
+  color: #555;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Bezáró gomb */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #ff4d4d; /* Piros szín hover esetén */
+}
+
+/* Animációk */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+
