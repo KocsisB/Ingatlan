@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './Hirdetes.css'; 
+import './Hirdetes.css';
+import axios from 'axios';
 
 export default function Hirdetes() {
   const [houseTitle, setHouseTitle] = useState('');
@@ -30,21 +31,58 @@ export default function Hirdetes() {
   const handleCountyChange = (e) => setCounty(e.target.value);
   const handlePriceChange = (e) => setPrice(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Ház címe:', houseTitle);
-    console.log('Leírás:', houseDescription);
-    console.log('Képek:', houseImages);
-    console.log('Cím:', address);
-    console.log('Alapterület:', area);
-    console.log('Szobák száma:', rooms);
-    console.log('Telek mérete:', landSize);
-    console.log('Építés éve:', constructionYear);
-    console.log('Állapot:', condition);
-    console.log('Típus:', type);
-    console.log('Város:', city);
-    console.log('Megye:', county);
-    console.log('Ár:', price);
+
+    // Form Data for image upload and other form data
+    const formData = new FormData();
+    formData.append('title', houseTitle);
+    formData.append('description', houseDescription);
+    formData.append('address', address);
+    formData.append('area', area);
+    formData.append('rooms', rooms);
+    formData.append('landSize', landSize);
+    formData.append('constructionYear', constructionYear);
+    formData.append('condition', condition);
+    formData.append('type', type);
+    formData.append('city', city);
+    formData.append('county', county);
+    formData.append('price', price);
+    
+    // Append images
+    for (let i = 0; i < houseImages.length; i++) {
+      formData.append('images', houseImages[i]);
+    }
+
+    try {
+      // POST request to the API endpoint
+      const response = await axios.post('https://localhost:7166/api/Ingatlanok', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // To handle file uploads
+        },
+      });
+
+      if (response.status === 200) {
+        alert('A ház sikeresen hozzáadva!');
+        // Clear form after successful submission
+        setHouseTitle('');
+        setHouseDescription('');
+        setHouseImages([]);
+        setAddress('');
+        setArea('');
+        setRooms('');
+        setLandSize('');
+        setConstructionYear('');
+        setCondition('');
+        setType('');
+        setCity('');
+        setCounty('');
+        setPrice('');
+      }
+    } catch (error) {
+      console.error('Hiba történt a ház hozzáadása közben:', error);
+      alert('Hiba történt! Próbáld meg újra.');
+    }
   };
 
   return (

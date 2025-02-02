@@ -1,49 +1,147 @@
+/* Main Container */
 .container-hirdetes {
-    background-color: #ffffff;
-    border: 3px solid #288930;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+  background-color: #ffffff;
+  border: 3px solid #4caf50; /* Lighter Green for contrast */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: 40px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  text-align: center;
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* Flexbox Layout for Form Groups */
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group .form-control {
+  flex: 1;
+  min-width: calc(33.33% - 10px); /* 3 fields per row */
+}
+
+/* Labels for Input Fields */
+.form-label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Form Controls */
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.form-control:focus {
+  border-color: #4caf50; /* Highlight with green */
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3); /* Light green glow */
+}
+
+/* File Input */
+input[type="file"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  cursor: pointer;
+}
+
+input[type="file"]:hover {
+  background-color: #e8f5e9;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 14px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #388e3c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container-hirdetes {
+    padding: 20px;
+    max-width: 90%;
     margin: 20px auto;
   }
-  
+
   .form-title {
-    text-align: center;
-    color: #000000;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
+    font-size: 24px;
     margin-bottom: 15px;
   }
-  
-  .form-label {
-    font-weight: bold;
-    color: #000000;
-  }
-  
+
   .form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 14px;
   }
-  
+
   .submit-button {
-    background-color: #288930;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
     font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
   }
-  
-  .submit-button:hover {
-    background-color: #237b2c;
+
+  .form-group .form-control {
+    min-width: 100%; /* Full width on smaller screens */
   }
-  
+}
+
+/* Additional Styling for Form Inputs */
+textarea.form-control {
+  resize: vertical;
+}
+
+input[type="number"].form-control {
+  -moz-appearance: textfield; /* Hide spin buttons in Firefox */
+}
+
+input[type="number"].form-control::-webkit-outer-spin-button,
+input[type="number"].form-control::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]:focus {
+  border-color: #4caf50;
+}
+
+/* Labels for Inputs and Textareas */
+.form-control:focus + .form-label,
+textarea:focus + .form-label {
+  color: #4caf50;
+}

@@ -8,7 +8,6 @@
   align-items: center;
 }
 
-
 .search-form {
   display: flex;
   justify-content: space-between;
@@ -111,6 +110,27 @@
   justify-content: space-between;
 }
 
+.card-footer span {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.card-footer .rooms, .card-footer .size {
+  display: inline-block;
+  padding: 5px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.card-footer .rooms {
+  background-color: #e6f7e6;
+}
+
+.card-footer .size {
+  background-color: #f7f7f7;
+}
+
 .card-button {
   background-color: #228B22;
   color: white;
@@ -119,6 +139,7 @@
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  margin-top: 15px;
 }
 
 .card-button:hover {
@@ -150,4 +171,19 @@
   .card {
     width: 100%;
   }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-footer span {
+    margin-bottom: 5px;
+  }
+}
+
+.no-results {
+  color: #d9534f;
+  font-size: 1.2em;
+  margin-top: 20px;
 }
