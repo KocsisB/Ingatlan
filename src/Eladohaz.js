@@ -10,32 +10,46 @@ const PropertySearch = () => {
 
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
+  const [owners, setOwners] = useState([]);
+  const [selectedProperty, setSelectedProperty] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch('https://localhost:7166/api/Ingatlanok');
+        const response = await fetch("https://localhost:7166/api/Ingatlanok");
         if (!response.ok) {
           setError(`API hiba: ${response.status}`);
           return;
         }
-
         const data = await response.json();
         setProperties(data);
         setFilteredProperties(data);
       } catch (error) {
-        setError('Hálózati vagy fetch hiba: ' + error.message);
+        setError("Hálózati vagy fetch hiba: " + error.message);
       }
     };
-    
+
+    const fetchOwners = async () => {
+      try {
+        const response = await fetch("https://localhost:7166/api/Tulajdonos");
+        if (!response.ok) {
+          setError(`Tulajdonos API hiba: ${response.status}`);
+          return;
+        }
+        const data = await response.json();
+        setOwners(data);
+      } catch (error) {
+        setError("Hálózati vagy fetch hiba a tulajdonosok lekérésekor: " + error.message);
+      }
+    };
 
     fetchProperties();
+    fetchOwners();
   }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    
     const filtered = properties.filter((property) => {
       return (
         (!location || property.varos.toLowerCase().includes(location.toLowerCase())) &&
@@ -45,15 +59,18 @@ const PropertySearch = () => {
         (!minSize || property.alapterulet >= parseInt(minSize))
       );
     });
-    
 
     setFilteredProperties(filtered);
   };
-  
 
-  if (error) {
-    return <div className="error">Hiba történt: {error}</div>;
-  }
+  const openModal = (property) => {
+    const randomOwner = owners[Math.floor(Math.random() * owners.length)];
+    setSelectedProperty({ ...property, owner: randomOwner });
+  };
+
+  const closeModal = () => {
+    setSelectedProperty();
+  };
 
   return (
     <div className="property-search-container">
@@ -109,7 +126,9 @@ const PropertySearch = () => {
           />
         </div>
 
-        <button type="submit" className="search-button">Keresés</button>
+        <button type="submit" className="search-button">
+          Keresés
+        </button>
       </form>
 
       <div className="container">
@@ -128,7 +147,9 @@ const PropertySearch = () => {
                   <span>Alapterület: {property.alapterulet} m²</span>
                   <span>Szobák: {property.szobakSzama}</span>
                 </div>
-                <button className="card-button">Több</button>
+                <button className="card-button" onClick={() => openModal(property)}>
+                  Több
+                </button>
               </div>
             </div>
           ))
@@ -136,6 +157,33 @@ const PropertySearch = () => {
           <p className="no-results">Nincs találat a megadott keresési feltételekre.</p>
         )}
       </div>
+
+      {/* Modal */}
+      {selectedProperty && (
+        <div className="modal show">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>
+              &times;
+            </span>
+            <h2>{selectedProperty.cim}</h2>
+            <p>Város: {selectedProperty.varos}</p>
+            <p>Állapot: {selectedProperty.allapot}</p>
+            <p>Ár: {selectedProperty.ar.toLocaleString()} Ft</p>
+            <p>Alapterület: {selectedProperty.alapterulet} m²</p>
+            <p>Szobák: {selectedProperty.szobakSzama}</p>
+            <h3>Tulajdonos</h3>
+            {selectedProperty.owner ? (
+              <>
+                <p>Neve: {selectedProperty.owner.nev}</p>
+                <p>Email: {selectedProperty.owner.email}</p>
+                <p>Telefonszám: {selectedProperty.owner.telefon}</p>
+              </>
+            ) : (
+              <p>Nincs elérhető tulajdonos adat.</p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
