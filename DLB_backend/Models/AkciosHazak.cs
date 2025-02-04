@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace DLB_backend.Models;
 
-public partial class Ingatlanok
+public partial class AkciosHazak
 {
     public int Id { get; set; }
 
     public string Cim { get; set; } = null!;
 
-    public decimal Alapterulet { get; set; }
+    public int Alapterulet { get; set; }
 
     public int SzobakSzama { get; set; }
 
-    public decimal? TelekMerete { get; set; }
+    public int? TelekMerete { get; set; }
 
     public int? EpitesVege { get; set; }
 
@@ -23,11 +23,9 @@ public partial class Ingatlanok
 
     public string? Tipus { get; set; }
 
-    public string Varos { get; set; } = null!;
+    public string? Varos { get; set; }
 
-    public string Megye { get; set; } = null!;
+    public string? Megye { get; set; }
 
-    public int Ar { get; set; }
-
-    public virtual ICollection<Jogihatter> Jogihatters { get; set; } = new List<Jogihatter>();
+    public long Ar { get; set; }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace DLB_backend.Models;
@@ -15,17 +14,21 @@ public partial class DlbLakaskulcsContext : DbContext
         : base(options)
     {
     }
-    [JsonIgnore]
+
+    public virtual DbSet<AkciosHazak> AkciosHazaks { get; set; }
+
+    public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; }
+
     public virtual DbSet<FelhasznaloBejelentkeze> FelhasznaloBejelentkezes { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Felhasznalok> Felhasznaloks { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Ingatlanok> Ingatlanoks { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Jogihatter> Jogihatters { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Telepulesek> Telepuleseks { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Tulajdonosok> Tulajdonosoks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,6 +37,67 @@ public partial class DlbLakaskulcsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AkciosHazak>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("akcios_hazak");
+
+            entity.Property(e => e.Id)
+                .HasColumnType("int(11)")
+                .HasColumnName("id");
+            entity.Property(e => e.Alapterulet)
+                .HasColumnType("int(11)")
+                .HasColumnName("alapterulet");
+            entity.Property(e => e.Allapot)
+                .HasMaxLength(50)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("allapot");
+            entity.Property(e => e.Ar)
+                .HasColumnType("bigint(20)")
+                .HasColumnName("ar");
+            entity.Property(e => e.Cim)
+                .HasMaxLength(255)
+                .HasColumnName("cim");
+            entity.Property(e => e.EpitesVege)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("year(4)")
+                .HasColumnName("epites_vege");
+            entity.Property(e => e.KepUrl)
+                .HasMaxLength(255)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("kep_url");
+            entity.Property(e => e.Megye)
+                .HasMaxLength(100)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("megye");
+            entity.Property(e => e.SzobakSzama)
+                .HasColumnType("int(11)")
+                .HasColumnName("szobak_szama");
+            entity.Property(e => e.TelekMerete)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("int(11)")
+                .HasColumnName("telek_merete");
+            entity.Property(e => e.Tipus)
+                .HasMaxLength(50)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("tipus");
+            entity.Property(e => e.Varos)
+                .HasMaxLength(100)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("varos");
+        });
+
+        modelBuilder.Entity<Efmigrationshistory>(entity =>
+        {
+            entity.HasKey(e => e.MigrationId).HasName("PRIMARY");
+
+            entity.ToTable("__efmigrationshistory");
+
+            entity.Property(e => e.MigrationId).HasMaxLength(150);
+            entity.Property(e => e.ProductVersion).HasMaxLength(32);
+        });
+
         modelBuilder.Entity<FelhasznaloBejelentkeze>(entity =>
         {
             entity
@@ -48,16 +112,18 @@ public partial class DlbLakaskulcsContext : DbContext
 
         modelBuilder.Entity<Felhasznalok>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("felhasznalok");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.Property(e => e.Email)
-                .HasMaxLength(100)
-                .HasColumnName("email");
+            entity.ToTable("felhasznalok");
+
+            entity.HasIndex(e => e.Email, "email").IsUnique();
+
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .HasColumnName("email");
             entity.Property(e => e.Jelszo)
                 .HasMaxLength(255)
                 .HasColumnName("jelszo");
@@ -86,27 +152,30 @@ public partial class DlbLakaskulcsContext : DbContext
                 .HasMaxLength(255)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnName("allapot");
+            entity.Property(e => e.Ar)
+                .HasColumnType("int(50)")
+                .HasColumnName("ar");
             entity.Property(e => e.Cim)
                 .HasMaxLength(255)
                 .HasColumnName("cim");
             entity.Property(e => e.EpitesVege)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnType("int(11)")
-                .HasColumnName("epites_vege");
+                .HasColumnName("epitesVege");
             entity.Property(e => e.KepUrl)
                 .HasMaxLength(255)
                 .HasDefaultValueSql("'NULL'")
-                .HasColumnName("kep_url");
+                .HasColumnName("kepUrl");
             entity.Property(e => e.Megye)
                 .HasMaxLength(100)
                 .HasColumnName("megye");
             entity.Property(e => e.SzobakSzama)
                 .HasColumnType("int(11)")
-                .HasColumnName("szobak_szama");
+                .HasColumnName("szobakSzama");
             entity.Property(e => e.TelekMerete)
                 .HasPrecision(10)
                 .HasDefaultValueSql("'NULL'")
-                .HasColumnName("telek_merete");
+                .HasColumnName("telekMerete");
             entity.Property(e => e.Tipus)
                 .HasMaxLength(255)
                 .HasDefaultValueSql("'NULL'")
@@ -158,6 +227,9 @@ public partial class DlbLakaskulcsContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(255)")
                 .HasColumnName("id");
+            entity.Property(e => e.Megye)
+                .HasMaxLength(100)
+                .HasColumnName("megye");
             entity.Property(e => e.Varosok)
                 .HasMaxLength(255)
                 .HasDefaultValueSql("'NULL'")
@@ -190,11 +262,6 @@ public partial class DlbLakaskulcsContext : DbContext
                 .HasMaxLength(15)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnName("telefon");
-
-            entity.HasOne(d => d.Ingatlan).WithMany(p => p.Tulajdonosoks)
-                .HasForeignKey(d => d.IngatlanId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("tulajdonosok_ibfk_1");
         });
 
         OnModelCreatingPartial(modelBuilder);
