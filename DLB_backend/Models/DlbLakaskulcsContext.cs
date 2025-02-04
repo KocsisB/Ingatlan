@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace DLB_backend.Models;
@@ -14,21 +15,21 @@ public partial class DlbLakaskulcsContext : DbContext
         : base(options)
     {
     }
-
+    [JsonIgnore]
     public virtual DbSet<AkciosHazak> AkciosHazaks { get; set; }
-
+    [JsonIgnore]
     public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; }
-
+    [JsonIgnore]
     public virtual DbSet<FelhasznaloBejelentkeze> FelhasznaloBejelentkezes { get; set; }
-
+    [JsonIgnore]
     public virtual DbSet<Felhasznalok> Felhasznaloks { get; set; }
-
+    [JsonIgnore]
     public virtual DbSet<Ingatlanok> Ingatlanoks { get; set; }
-
+    [JsonIgnore]
     public virtual DbSet<Jogihatter> Jogihatters { get; set; }
-
+    [JsonIgnore]
     public virtual DbSet<Telepulesek> Telepuleseks { get; set; }
-
+    [JsonIgnore]
     public virtual DbSet<Tulajdonosok> Tulajdonosoks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

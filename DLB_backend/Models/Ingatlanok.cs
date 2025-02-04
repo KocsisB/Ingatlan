@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DLB_backend.Models;
 
@@ -28,6 +29,6 @@ public partial class Ingatlanok
     public string Megye { get; set; } = null!;
 
     public int Ar { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Jogihatter> Jogihatters { get; set; } = new List<Jogihatter>();
 }
