@@ -19,12 +19,21 @@ namespace DLB_backend.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            var varosok = await _context.Ingatlanoks.ToListAsync();
-            if (varosok != null)
+            try
             {
+                var varosok = await _context.Ingatlanoks.ToListAsync();
+
+                if (varosok == null || varosok.Count == 0)
+                {
+                    return NotFound("Nem találhatóak ingatlanok az adatbázisban.");
+                }
+
                 return Ok(varosok);
             }
-            return BadRequest();
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Hiba történt: {ex.Message}");
+            }
         }
 
     }
