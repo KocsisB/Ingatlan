@@ -5,10 +5,42 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Akciók": {
+      "get": {
+        "tags": [
+          "Akcios"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Ingatlanok": {
       "get": {
         "tags": [
           "Ingatlan"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Ingatlan"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {

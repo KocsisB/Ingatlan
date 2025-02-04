@@ -1,5 +1,15 @@
 [
   {
+    "ContainingType": "DLB_backend.Controllers.AkciosController",
+    "Method": "Get",
+    "RelativePath": "api/Akci\u00F3k",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DLB_backend.Controllers.IngatlanController",
     "Method": "Get",
     "RelativePath": "api/Ingatlanok",
@@ -7,6 +17,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DLB_backend.Controllers.IngatlanController",
+    "Method": "DeleteById",
+    "RelativePath": "api/Ingatlanok",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

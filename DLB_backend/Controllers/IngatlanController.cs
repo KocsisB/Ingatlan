@@ -27,5 +27,25 @@ namespace DLB_backend.Controllers
             return BadRequest();
         }
 
+       /* [HttpPost]
+        public async Task<ActionResult> Post([FromBody]Ingatlanok ingatlanok)
+        {
+            using var hazak = await new 
+            Ingatlanok = ingatlanok.Id;
+            return Ok(hazak);
+        }*/
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteById(int id)
+        {
+            var haztorles = await _context.Ingatlanoks.FirstOrDefaultAsync(haztorles => haztorles.Id == id);
+            if (haztorles != null)
+            {
+                _context.Ingatlanoks.Remove(haztorles);
+                await _context.SaveChangesAsync();
+                return Ok(new {Message = "Sikeres tölrés"});
+            }
+            return NotFound(new {Message = "Nincs ilyen ház"});
+        }
     }
 }
