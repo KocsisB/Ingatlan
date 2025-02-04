@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace DLB_backend.Models;
 
@@ -15,6 +14,4 @@ public partial class Tulajdonosok
     public string? Email { get; set; }
 
     public string? Telefon { get; set; }
-    [JsonIgnore]
-    public virtual Ingatlanok? Ingatlan { get; set; }
 }
