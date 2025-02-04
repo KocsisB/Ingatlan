@@ -10,6 +10,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
+    "Method": "PostReg",
+    "RelativePath": "api/Felhasznalok",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "felhasznalok",
+        "Type": "DLB_backend.Models.Felhasznalok",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "DLB_backend.Controllers.IngatlanController",
     "Method": "Get",
     "RelativePath": "api/Ingatlanok",

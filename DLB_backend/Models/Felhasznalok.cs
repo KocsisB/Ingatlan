@@ -12,6 +12,4 @@ public partial class Felhasznalok
     public string Email { get; set; } = null!;
 
     public string Jelszo { get; set; } = null!;
-
-    public DateTime RegDatum { get; set; }
 }
