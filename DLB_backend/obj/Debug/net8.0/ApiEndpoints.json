@@ -21,6 +21,32 @@
   },
   {
     "ContainingType": "DLB_backend.Controllers.IngatlanController",
+    "Method": "Post",
+    "RelativePath": "api/Ingatlanok",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ingatlanok",
+        "Type": "DLB_backend.Models.Ingatlanok",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DLB_backend.Controllers.IngatlanController",
     "Method": "DeleteById",
     "RelativePath": "api/Ingatlanok",
     "HttpMethod": "DELETE",

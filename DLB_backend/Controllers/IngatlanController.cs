@@ -27,13 +27,34 @@ namespace DLB_backend.Controllers
             return BadRequest();
         }
 
-       /* [HttpPost]
-        public async Task<ActionResult> Post([FromBody]Ingatlanok ingatlanok)
+        [HttpPost]
+        public async Task<ActionResult<string>> Post([FromBody]Ingatlanok ingatlanok)
         {
-            using var hazak = await new 
-            Ingatlanok = ingatlanok.Id;
-            return Ok(hazak);
-        }*/
+            var builder = new Ingatlanok
+            {
+                Cim = ingatlanok.Cim,
+                Alapterulet = ingatlanok.Alapterulet,
+                SzobakSzama = ingatlanok.SzobakSzama,
+                TelekMerete = ingatlanok.TelekMerete,
+                EpitesVege = ingatlanok.EpitesVege,
+                Allapot = ingatlanok.Allapot,
+                KepUrl = ingatlanok.KepUrl,
+                Tipus = ingatlanok.Tipus,
+                Varos = ingatlanok.Varos,
+                Megye = ingatlanok.Megye,
+                Ar = ingatlanok.Ar,
+            };
+
+
+            if (builder != null)
+            {
+                await _context.Ingatlanoks.AddAsync(ingatlanok);
+                await _context.SaveChangesAsync();
+                return Ok(new {Message = "A házat sikeresen feltöltötte!"});
+            }
+            return NotFound(new {Message = "Az adtok nem felelnek meg!"});
+
+        }
 
         [HttpDelete]
         public async Task<ActionResult> DeleteById(int id)
@@ -45,7 +66,7 @@ namespace DLB_backend.Controllers
                 await _context.SaveChangesAsync();
                 return Ok(new {Message = "Sikeres tölrés"});
             }
-            return NotFound(new {Message = "Nincs ilyen ház"});
+            return NotFound(new {Message = "Nem található ilyen ház!"});
         }
     }
 }
