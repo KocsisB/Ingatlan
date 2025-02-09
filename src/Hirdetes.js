@@ -84,11 +84,11 @@ export default function Hirdetes() {
       alert('Hiba történt! Próbáld meg újra.');
     }
   };
-
+ 
   return (
     <div className="container-hirdetes">
       <h2 className="form-title">Eladó Ház Hozzáadása</h2>
-      <form id="house-form" onSubmit={handleSubmit}>
+      <form id="house-form" onSubmit={handleSubmit} className='form-container'>
         <div className="form-group">
           <label htmlFor="house-title" className="form-label">Ház címe</label>
           <input

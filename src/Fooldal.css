@@ -224,7 +224,7 @@
 }
 
 /* Kártyaszerű modál */
-.modal-content {
+.modal-content-fooldal {
   background: linear-gradient(135deg, #ffffff, #f8f8f8); /* Finom átmenetes háttér */
   padding: 25px;
   width: 90%;
@@ -260,7 +260,7 @@
 }
 
 /* Bezáró gomb */
-.modal-close {
+.modal-close-fooldal {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -273,7 +273,7 @@
   transition: color 0.2s;
 }
 
-.modal-close:hover {
+.modal-close-fooldal:hover {
   color: #ff4d4d; /* Piros szín hover esetén */
 }
 
@@ -287,5 +287,60 @@
   from { transform: translateY(-20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+.market-news-container {
+  padding: 1.5rem;
+  background-color: #f7fafc;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.market-news-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.news-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.news-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.news-description {
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.news-date {
+  font-size: 0.75rem;
+  color: #e2e8f0;
+  margin-top: 0.5rem;
+}
+
+.news-link {
+  color: #4299e1;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.news-link:hover {
+  color: #3182ce;
+}
+
 
 

@@ -133,7 +133,7 @@ const [location, setLocation] = useState("");
             </div>
           ))
         ) : (
-          <p className="no-results">Nincs találat a megadott keresési feltételekre.</p>
+          <p className="no-results-sell">Nincs találat a megadott keresési feltételekre.</p>
         )}
       </div>
     </div>

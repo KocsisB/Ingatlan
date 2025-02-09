@@ -5,34 +5,32 @@
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  max-width: 700px;
+  max-width: 900px;
   margin: 40px auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  flex-direction: column;
 }
 
+/* Form Title */
 .form-title {
   text-align: center;
   color: #333;
   font-size: 28px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   font-weight: bold;
   width: 100%;
-  margin-bottom: 40px;
 }
 
-/* Flexbox Layout for Form Groups */
+/* Grid Layout for Form Fields */
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns layout */
+  gap: 15px;
+}
+
+/* Ensures each field takes the full grid cell */
 .form-group {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.form-group .form-control {
-  flex: 1;
-  min-width: calc(33.33% - 10px); /* 3 fields per row */
+  flex-direction: column;
 }
 
 /* Labels for Input Fields */
@@ -97,6 +95,10 @@ input[type="file"]:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .form-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+  }
+
   .container-hirdetes {
     padding: 20px;
     max-width: 90%;
@@ -115,19 +117,22 @@ input[type="file"]:hover {
   .submit-button {
     font-size: 16px;
   }
+}
 
-  .form-group .form-control {
-    min-width: 100%; /* Full width on smaller screens */
+@media (max-width: 480px) {
+  .form-container {
+    grid-template-columns: repeat(1, 1fr); /* One column for small screens */
   }
 }
 
-/* Additional Styling for Form Inputs */
+/* Additional Styling for Textareas */
 textarea.form-control {
   resize: vertical;
 }
 
+/* Remove number input spin buttons */
 input[type="number"].form-control {
-  -moz-appearance: textfield; /* Hide spin buttons in Firefox */
+  -moz-appearance: textfield;
 }
 
 input[type="number"].form-control::-webkit-outer-spin-button,

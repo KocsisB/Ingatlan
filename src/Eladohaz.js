@@ -154,8 +154,9 @@ const PropertySearch = () => {
             </div>
           ))
         ) : (
-          <p className="no-results">Nincs találat a megadott keresési feltételekre.</p>
+          <p className="no-results-sell">Nincs találat a megadott keresési feltételekre.</p>
         )}
+        
       </div>
 
       {/* Modal */}
