@@ -17,11 +17,13 @@ const PropertySearch = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch("https://localhost:7166/api/Ingatlanok");
+        const response = await fetch("https://localhost:7174/api/Ingatlanok") ;
+        
         if (!response.ok) {
           setError(`API hiba: ${response.status}`);
           return;
         }
+        
         const data = await response.json();
         setProperties(data);
         setFilteredProperties(data);
@@ -32,7 +34,7 @@ const PropertySearch = () => {
 
     const fetchOwners = async () => {
       try {
-        const response = await fetch("https://localhost:7166/api/Tulajdonos");
+        const response = await fetch("http://localhost:5149/api/Tulajdonos");
         if (!response.ok) {
           setError(`Tulajdonos API hiba: ${response.status}`);
           return;

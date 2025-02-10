@@ -15,7 +15,7 @@ const [location, setLocation] = useState("");
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch('https://localhost:7166/api/Ingatlanok');
+        const response = await fetch('http://localhost:5149/api/Ingatlanok');
         if (!response.ok) {
           setError(`API hiba: ${response.status}`);
           return;
