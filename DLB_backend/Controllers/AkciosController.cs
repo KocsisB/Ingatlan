@@ -49,7 +49,19 @@ namespace DLB_backend.Controllers
                 return Ok(new { Message = "A házat sikeresen feltöltötte!" });
             }
             return NotFound(new { Message = "Az adtok nem felelnek meg!" });
+        }
 
+        [HttpDelete]
+        public async Task<ActionResult> DeleteById(int id)
+        {
+            var haztorles = await _context.AkciosHazaks.FirstOrDefaultAsync(haztorles => haztorles.Id == id);
+            if (haztorles != null)
+            {
+                _context.AkciosHazaks.Remove(haztorles);
+                await _context.SaveChangesAsync();
+                return Ok(new { Message = "Sikeres tölrés" });
+            }
+            return NotFound(new { Message = "Nem található ilyen ház!" });
         }
     }
 

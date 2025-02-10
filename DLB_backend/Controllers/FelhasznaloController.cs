@@ -35,5 +35,16 @@ namespace DLB_backend.Controllers
 
             return BadRequest(new {Message = "Nem megfelelőek az adatok"});
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            var felhasznalok = await _context.Felhasznaloks.ToListAsync();
+            if (felhasznalok != null)
+            {
+                return Ok(felhasznalok);
+            }
+            return NotFound(new { Message = "Nincsenek felhasználók." });
+        }
     }
 }
