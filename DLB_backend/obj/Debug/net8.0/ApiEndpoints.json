@@ -10,6 +10,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DLB_backend.Controllers.AkciosController",
+    "Method": "Post",
+    "RelativePath": "api/Akci\u00F3k",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "akcios",
+        "Type": "DLB_backend.Models.AkciosHazak",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DLB_backend.Controllers.AkciosController",
+    "Method": "DeleteById",
+    "RelativePath": "api/Akci\u00F3k",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
     "Method": "PostReg",
     "RelativePath": "api/Felhasznalok",
@@ -34,6 +76,16 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
+    "Method": "Get",
+    "RelativePath": "api/Felhasznalok",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "DLB_backend.Controllers.IngatlanController",

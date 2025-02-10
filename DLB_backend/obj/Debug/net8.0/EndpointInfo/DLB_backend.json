@@ -15,6 +15,72 @@
             "description": "OK"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Akcios"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AkciosHazak"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AkciosHazak"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AkciosHazak"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Akcios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/Felhasznalok": {
@@ -61,6 +127,16 @@
                 }
               }
             }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Felhasznalo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -181,6 +257,62 @@
   },
   "components": {
     "schemas": {
+      "AkciosHazak": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cim": {
+            "type": "string",
+            "nullable": true
+          },
+          "alapterulet": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "szobakSzama": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "telekMerete": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "epitesVege": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "allapot": {
+            "type": "string",
+            "nullable": true
+          },
+          "kepUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipus": {
+            "type": "string",
+            "nullable": true
+          },
+          "varos": {
+            "type": "string",
+            "nullable": true
+          },
+          "megye": {
+            "type": "string",
+            "nullable": true
+          },
+          "ar": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
       "Felhasznalok": {
         "type": "object",
         "properties": {
