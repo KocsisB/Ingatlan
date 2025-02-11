@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { data } from "react-router-dom";
 import "./Eladohaz.css";
 
 const PropertySearch = () => {
@@ -17,7 +18,7 @@ const PropertySearch = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch("https://localhost:7174/api/Ingatlanok") ;
+        const response = await fetch("http://10.169.84.99:5149/api/Ingatlanok") ;
         
         if (!response.ok) {
           setError(`API hiba: ${response.status}`);
@@ -25,16 +26,18 @@ const PropertySearch = () => {
         }
         
         const data = await response.json();
+        console.log("asasa")
         setProperties(data);
         setFilteredProperties(data);
       } catch (error) {
         setError("Hálózati vagy fetch hiba: " + error.message);
       }
     };
+  
 
     const fetchOwners = async () => {
       try {
-        const response = await fetch("http://localhost:5149/api/Tulajdonos");
+        const response = await fetch("http://10.169.84.99:5149/api/Tulajdonos");
         if (!response.ok) {
           setError(`Tulajdonos API hiba: ${response.status}`);
           return;
@@ -67,6 +70,8 @@ const PropertySearch = () => {
 
   const openModal = (property) => {
     const randomOwner = owners[Math.floor(Math.random() * owners.length)];
+    console.log("Selected Property:", property); // Ellenőrizd, hogy a property értéke megfelelő-e
+    console.log("Random Owner:", randomOwner); // Ellenőrizd, hogy a tulajdonos értéke megfelelő-e
     setSelectedProperty({ ...property, owner: randomOwner });
   };
 
@@ -163,7 +168,8 @@ const PropertySearch = () => {
 
       {/* Modal */}
       {selectedProperty && (
-        <div className="modal show">
+        
+        <div className="modal-show">
           <div className="modal-content">
             <span className="close" onClick={closeModal}>
               &times;

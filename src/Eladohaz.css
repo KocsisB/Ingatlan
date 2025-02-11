@@ -201,33 +201,64 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.modal.show {
   opacity: 1;
   visibility: visible;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Sötétebb háttér a kiemeléshez */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-header {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #228B22;
+  padding-bottom: 10px;
+  width: 100%;
+  text-align: center;
 }
 
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
-  max-width: 90%;
+  background: linear-gradient(135deg, #ffffff, #f8f8f8); /* Finom átmenetes háttér */
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 16px; /* Lekerekített sarkok */
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3); /* Dobozárnyék */
   text-align: center;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.3s ease-in-out;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideIn 0.3s ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
+.modal-content p {
+  font-size: 17px;
+  color: #555;
+  font-weight: 500;
+  line-height: 1.6;
+}
 .close {
   position: absolute;
   top: 10px;

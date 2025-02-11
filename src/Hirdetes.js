@@ -55,8 +55,7 @@ export default function Hirdetes() {
     }
 
     try {
-      // POST request to the API endpoint
-      const response = await axios.post('https://localhost:7166/api/Ingatlanok', formData, {
+      const response = await axios.post('http://10.169.84.99:5149/api/Ingatlanok', formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // To handle file uploads
         },
