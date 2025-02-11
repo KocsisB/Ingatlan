@@ -16,6 +16,17 @@ namespace DLB_backend.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            var felhasznalok = await _context.Felhasznaloks.ToListAsync();
+            if (felhasznalok != null)
+            {
+                return Ok(felhasznalok);
+            }
+            return NotFound(new { Message = "Nincsenek felhasználók." });
+        }
+
         [HttpPost]
         public async Task<ActionResult<string>> PostReg([FromBody]Felhasznalok felhasznalok)
         {
@@ -36,15 +47,30 @@ namespace DLB_backend.Controllers
             return BadRequest(new {Message = "Nem megfelelőek az adatok"});
         }
 
-        [HttpGet]
-        public async Task<ActionResult> Get()
+        [HttpDelete]
+        public async Task<ActionResult> DeleteById(int id)
         {
-            var felhasznalok = await _context.Felhasznaloks.ToListAsync();
-            if (felhasznalok != null)
+            var feltorles = await _context.Felhasznaloks.FirstOrDefaultAsync(feltorles => feltorles.Id == id);
+            if (feltorles != null)
             {
-                return Ok(felhasznalok);
+                _context.Felhasznaloks.Remove(feltorles);
+                await _context.SaveChangesAsync();
+                return Ok(new { Message = "Sikeres tölrés" });
             }
-            return NotFound(new { Message = "Nincsenek felhasználók." });
+            return NotFound(new { Message = "Nem található ilyen ház!" });
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, Felhasznalok felhasznalok)
+        {
+            if (id != felhasznalok.Id)
+            {
+                return BadRequest();
+            }
+            _context.Entry(felhasznalok).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return Ok(new { Message = "Sikeres változtatás" });
+        }
+
     }
 }

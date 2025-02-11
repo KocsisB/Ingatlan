@@ -53,6 +53,16 @@
   },
   {
     "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
+    "Method": "Get",
+    "RelativePath": "api/Felhasznalok",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
     "Method": "PostReg",
     "RelativePath": "api/Felhasznalok",
     "HttpMethod": "POST",
@@ -79,12 +89,18 @@
   },
   {
     "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
-    "Method": "Get",
+    "Method": "DeleteById",
     "RelativePath": "api/Felhasznalok",
-    "HttpMethod": "GET",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

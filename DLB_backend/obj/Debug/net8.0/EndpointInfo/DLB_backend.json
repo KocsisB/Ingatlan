@@ -84,6 +84,16 @@
       }
     },
     "/api/Felhasznalok": {
+      "get": {
+        "tags": [
+          "Felhasznalo"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "tags": [
           "Felhasznalo"
@@ -130,9 +140,19 @@
           }
         }
       },
-      "get": {
+      "delete": {
         "tags": [
           "Felhasznalo"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0G9NisVOzPg=",
+  "dgSpecHash": "jXUajXBZCtU=",
   "success": true,
-  "projectFilePath": "D:\\Suli\\Vizsga\\Új mappa\\Ingatlan\\DLB_backend\\DLB_backend.csproj",
+  "projectFilePath": "D:\\Suli\\Vizsga\\Ingatlan___Backend\\Ingatlan\\DLB_backend\\DLB_backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Btnd\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\Btnd\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",

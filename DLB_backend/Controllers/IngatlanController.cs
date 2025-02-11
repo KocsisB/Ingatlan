@@ -68,5 +68,19 @@ namespace DLB_backend.Controllers
             }
             return NotFound(new {Message = "Nem található ilyen ház!"});
         }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateHouse(int id, Ingatlanok ingatlanok)
+        {
+            if (id != ingatlanok.Id)
+            {
+                return BadRequest();
+            }
+            _context.Entry(ingatlanok).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return Ok(new { Message = "Sikeres változtatás" });
+        }
+
     }
 }
