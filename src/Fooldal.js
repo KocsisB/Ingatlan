@@ -24,19 +24,19 @@
         title: "🏡 Ingatlanárak 10%-os emelkedése 2024-ben",
         description: "A lakáspiac tovább erősödik, különösen a nagyvárosokban.",
         date: "2024-02-05",
-        url: "#"
+        url: "https://bankmonitor.hu/mediatar/cikk/rekordev-az-ingatlan-es-hitelpiacon-2024-kiemelkedo-eredmenyei/"
       },
       {
         title: "🆕 Új állami támogatás lakásvásárlóknak",
         description: "Kedvezményes hitelek és támogatások bővülnek fiatalok számára.",
         date: "2024-02-01",
-        url: "#"
+        url: "https://www.penzcentrum.hu/otthon/20241230/elertek-a-lelektani-hatart-az-alberletarak-ennel-tovabb-2025-ben-sem-tudnak-emelkedni-1161279"
       },
       {
         title: "📉 Albérletárak csökkenése várható",
         description: "A kereslet visszaesése miatt az árak is lefelé mozdulhatnak.",
         date: "2024-01-20",
-        url: "#"
+        url: "https://bankmonitor.hu/otthonteremtesi-es-otthonfelujitasi-tamogatasok/"
       }
     ];
     return (
@@ -85,7 +85,7 @@
           </ul>
           <p className="real-estate-footer">
             <span className="font-bold">Ingatlanközvetítőként hirdetnél?</span> Valódi partnerkapcsolattal és korrekt árazással várunk.
-            <a href="#"> Regisztrálj ide kattintva!</a>
+            <a href="/regisztracio"> Regisztrálj ide kattintva!</a>
           </p>
         </div>
 

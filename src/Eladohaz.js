@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { data } from "react-router-dom";
 import "./Eladohaz.css";
 
@@ -18,7 +19,7 @@ const PropertySearch = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch("http://10.169.84.99:5149/api/Ingatlanok") ;
+        const response = await fetch("http://192.168.182.11:5149/api/Ingatlanok");
         
         if (!response.ok) {
           setError(`API hiba: ${response.status}`);
@@ -26,18 +27,17 @@ const PropertySearch = () => {
         }
         
         const data = await response.json();
-        console.log("asasa")
+        console.log("Properties fetched");
         setProperties(data);
         setFilteredProperties(data);
       } catch (error) {
         setError("Hálózati vagy fetch hiba: " + error.message);
       }
     };
-  
 
     const fetchOwners = async () => {
       try {
-        const response = await fetch("http://10.169.84.99:5149/api/Tulajdonos");
+        const response = await fetch("http://192.168.182.11:5149/api/Tulajdonos");
         if (!response.ok) {
           setError(`Tulajdonos API hiba: ${response.status}`);
           return;
@@ -76,7 +76,26 @@ const PropertySearch = () => {
   };
 
   const closeModal = () => {
-    setSelectedProperty();
+    setSelectedProperty(null);
+  };
+
+  const handleDelete = (id) => {
+    if (window.confirm("Biztosan törölni szeretnéd ezt az ingatlant?")) {
+      axios
+        .delete(`http://192.168.182.11:5149/api/Ingatlanok/?id=${id}`)
+        .then((res) => {
+          console.log(res);
+          alert("Sikeres törlés!");
+          // A törlés után frissítjük az ingatlanok listáját
+          const filtered = filteredProperties.filter((property) => property.id !== id);
+          setFilteredProperties(filtered);
+          setProperties(filtered);  // Ha az alap listát is szeretnéd frissíteni
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Sikertelen törlés!");
+        });
+    }
   };
 
   return (
@@ -157,18 +176,20 @@ const PropertySearch = () => {
                 <button className="card-button" onClick={() => openModal(property)}>
                   Több
                 </button>
+
+                <button className="card-button" onClick={() => handleDelete(property.id)}>
+                  Törlés
+                </button>
               </div>
             </div>
           ))
         ) : (
           <p className="no-results-sell">Nincs találat a megadott keresési feltételekre.</p>
         )}
-        
       </div>
 
       {/* Modal */}
       {selectedProperty && (
-        
         <div className="modal-show">
           <div className="modal-content">
             <span className="close" onClick={closeModal}>

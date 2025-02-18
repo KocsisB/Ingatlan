@@ -1,250 +1,235 @@
 import React, { useState } from 'react';
 import './Hirdetes.css';
-import axios from 'axios';
 
 export default function Hirdetes() {
-  const [houseTitle, setHouseTitle] = useState('');
-  const [houseDescription, setHouseDescription] = useState('');
-  const [houseImages, setHouseImages] = useState([]);
-  const [address, setAddress] = useState('');
-  const [area, setArea] = useState('');
-  const [rooms, setRooms] = useState('');
-  const [landSize, setLandSize] = useState('');
-  const [constructionYear, setConstructionYear] = useState('');
-  const [condition, setCondition] = useState('');
-  const [type, setType] = useState('');
-  const [city, setCity] = useState('');
-  const [county, setCounty] = useState('');
-  const [price, setPrice] = useState('');
+  const [hazCim, setHazCim] = useState('');
+  const [hazLeiras, setHazLeiras] = useState('');
+  const [kepUrl, setKepUrl] = useState('');
+  const [alapterulet, setAlapterulet] = useState('');
+  const [szobakSzama, setSzobakSzama] = useState('');
+  const [telekMerete, settelekMerete] = useState('');
+  const [epitesVege, setEpitesVege] = useState('');
+  const [allapot, setAllapot] = useState('');
+  const [tipus, setTipus] = useState('');
+  const [varos, setVaros] = useState('');
+  const [megye, setMegye] = useState('');
+  const [ar, setAr] = useState('');
 
-  const handleTitleChange = (e) => setHouseTitle(e.target.value);
-  const handleDescriptionChange = (e) => setHouseDescription(e.target.value);
-  const handleImagesChange = (e) => setHouseImages(e.target.files);
-  const handleAddressChange = (e) => setAddress(e.target.value);
-  const handleAreaChange = (e) => setArea(e.target.value);
-  const handleRoomsChange = (e) => setRooms(e.target.value);
-  const handleLandSizeChange = (e) => setLandSize(e.target.value);
-  const handleConstructionYearChange = (e) => setConstructionYear(e.target.value);
-  const handleConditionChange = (e) => setCondition(e.target.value);
-  const handleTypeChange = (e) => setType(e.target.value);
-  const handleCityChange = (e) => setCity(e.target.value);
-  const handleCountyChange = (e) => setCounty(e.target.value);
-  const handlePriceChange = (e) => setPrice(e.target.value);
+  const handleCimChange = (e) => setHazCim(e.target.value);
+  const handleLeirasChange = (e) => setHazLeiras(e.target.value);
+  const handleKepekChange = (e) => setKepUrl(e.target.value);
+  const handleAlapteruletChange = (e) => setAlapterulet(e.target.value);
+  const handleSzobakSzamaChange = (e) => setSzobakSzama(e.target.value);
+  const handletelekMereteChange = (e) => settelekMerete(e.target.value);
+  const handleEpitesVegeChange = (e) => setEpitesVege(e.target.value);
+  const handleAllapotChange = (e) => setAllapot(e.target.value);
+  const handleTipusChange = (e) => setTipus(e.target.value);
+  const handleVarosChange = (e) => setVaros(e.target.value);
+  const handleMegyeChange = (e) => setMegye(e.target.value);
+  const handleArChange = (e) => setAr(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Form Data for image upload and other form data
-    const formData = new FormData();
-    formData.append('title', houseTitle);
-    formData.append('description', houseDescription);
-    formData.append('address', address);
-    formData.append('area', area);
-    formData.append('rooms', rooms);
-    formData.append('landSize', landSize);
-    formData.append('constructionYear', constructionYear);
-    formData.append('condition', condition);
-    formData.append('type', type);
-    formData.append('city', city);
-    formData.append('county', county);
-    formData.append('price', price);
-    
-    // Append images
-    for (let i = 0; i < houseImages.length; i++) {
-      formData.append('images', houseImages[i]);
+    const formData = {
+      cim: hazCim,
+      alapterulet: Number(alapterulet),
+      szobakSzama: Number(szobakSzama),
+      telekMerete: Number(telekMerete),
+      epitesVege: Number(epitesVege),
+      allapot: allapot,
+      tipus: tipus,
+      varos: varos,
+      megye: megye,
+      ar: Number(ar),
+      kepUrl: kepUrl
     }
+   
 
     try {
-      const response = await axios.post('http://10.169.84.99:5149/api/Ingatlanok', formData, {
+      console.log(formData);
+      const response = await fetch('http://192.168.182.11:5149/api/Ingatlanok', {
+        method: 'POST',
+        body: JSON.stringify(formData),
         headers: {
-          'Content-Type': 'multipart/form-data', // To handle file uploads
-        },
+          "Content-Type" : "application/json"
+        }
       });
 
-      if (response.status === 200) {
+      if (response.ok) {
         alert('A ház sikeresen hozzáadva!');
         // Clear form after successful submission
-        setHouseTitle('');
-        setHouseDescription('');
-        setHouseImages([]);
-        setAddress('');
-        setArea('');
-        setRooms('');
-        setLandSize('');
-        setConstructionYear('');
-        setCondition('');
-        setType('');
-        setCity('');
-        setCounty('');
-        setPrice('');
+        setHazCim('');
+        setHazLeiras('');
+        setKepUrl('');
+        setAlapterulet('');
+        setSzobakSzama('');
+        settelekMerete('');
+        setEpitesVege('');
+        setAllapot('');
+        setTipus('');
+        setVaros('');
+        setMegye('');
+        setAr('');
+      } else {
+        console.error('Hiba történt a kérés során:', response.status);
+        alert('Hiba történt! Próbáld meg újra.');
       }
     } catch (error) {
-      console.error('Hiba történt a ház hozzáadása közben:', error);
+      console.error('Hiba történt a kérés során:', error);
       alert('Hiba történt! Próbáld meg újra.');
     }
   };
- 
+
   return (
     <div className="container-hirdetes">
       <h2 className="form-title">Eladó Ház Hozzáadása</h2>
-      <form id="house-form" onSubmit={handleSubmit} className='form-container'>
+      <form id="house-form" onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
-          <label htmlFor="house-title" className="form-label">Ház címe</label>
+          <label htmlFor="haz-cim" className="form-label">Ház címe</label>
           <input
             type="text"
             className="form-control"
-            id="house-title"
-            value={houseTitle}
-            onChange={handleTitleChange}
+            id="haz-cim"
+            value={hazCim}
+            onChange={handleCimChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="address" className="form-label">Cím</label>
-          <input
-            type="text"
-            className="form-control"
-            id="address"
-            value={address}
-            onChange={handleAddressChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="house-description" className="form-label">Leírás</label>
+          <label htmlFor="haz-leiras" className="form-label">Leírás</label>
           <textarea
             className="form-control"
-            id="house-description"
+            id="haz-leiras"
             rows="3"
-            value={houseDescription}
-            onChange={handleDescriptionChange}
+            value={hazLeiras}
+            onChange={handleLeirasChange}
             required
           ></textarea>
         </div>
 
         <div className="form-group">
-          <label htmlFor="area" className="form-label">Alapterület (m²)</label>
+          <label htmlFor="alapterulet" className="form-label">Alapterület (m²)</label>
           <input
             type="number"
             className="form-control"
-            id="area"
-            value={area}
-            onChange={handleAreaChange}
+            id="alapterulet"
+            value={alapterulet}
+            onChange={handleAlapteruletChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="rooms" className="form-label">Szobák száma</label>
+          <label htmlFor="szobak-szama" className="form-label">Szobák száma</label>
           <input
             type="number"
             className="form-control"
-            id="rooms"
-            value={rooms}
-            onChange={handleRoomsChange}
+            id="szobak-szama"
+            value={szobakSzama}
+            onChange={handleSzobakSzamaChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="landSize" className="form-label">Telek mérete (m²)</label>
+          <label htmlFor="telek-meret" className="form-label">Telek mérete (m²)</label>
           <input
             type="number"
             className="form-control"
-            id="landSize"
-            value={landSize}
-            onChange={handleLandSizeChange}
+            id="telek-meret"
+            value={telekMerete}
+            onChange={handletelekMereteChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="constructionYear" className="form-label">Építés éve</label>
+          <label htmlFor="epites-eve" className="form-label">Építés éve</label>
           <input
             type="number"
             className="form-control"
-            id="constructionYear"
-            value={constructionYear}
-            onChange={handleConstructionYearChange}
+            id="epites-eve"
+            value={epitesVege}
+            onChange={handleEpitesVegeChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="condition" className="form-label">Állapot</label>
+          <label htmlFor="allapot" className="form-label">Állapot</label>
           <input
             type="text"
             className="form-control"
-            id="condition"
-            value={condition}
-            onChange={handleConditionChange}
+            id="allapot"
+            value={allapot}
+            onChange={handleAllapotChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="type" className="form-label">Típus</label>
+          <label htmlFor="tipus" className="form-label">Típus</label>
           <input
             type="text"
             className="form-control"
-            id="type"
-            value={type}
-            onChange={handleTypeChange}
+            id="tipus"
+            value={tipus}
+            onChange={handleTipusChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="city" className="form-label">Város</label>
+          <label htmlFor="varos" className="form-label">Város</label>
           <input
             type="text"
             className="form-control"
-            id="city"
-            value={city}
-            onChange={handleCityChange}
+            id="varos"
+            value={varos}
+            onChange={handleVarosChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="county" className="form-label">Megye</label>
+          <label htmlFor="megye" className="form-label">Megye</label>
           <input
             type="text"
             className="form-control"
-            id="county"
-            value={county}
-            onChange={handleCountyChange}
+            id="megye"
+            value={megye}
+            onChange={handleMegyeChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="price" className="form-label">Ár</label>
+          <label htmlFor="ar" className="form-label">Ár</label>
           <input
             type="number"
             className="form-control"
-            id="price"
-            value={price}
-            onChange={handlePriceChange}
+            id="ar"
+            value={ar}
+            onChange={handleArChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="house-images" className="form-label">Képek</label>
+          <label htmlFor="haz-kepek" className="form-label">Képek</label>
           <input
-            type="file"
+            type="string"
             className="form-control"
-            id="house-images"
-            accept="image/*"
-            multiple
-            onChange={handleImagesChange}
+            id="haz-kepek"
+            value={kepUrl}
+            onChange={handleKepekChange}
+            required
           />
         </div>
 
-        <button type="submit" className="submit-button">Ház hozzáadása</button>
+        <button type="submit" className="submit-button" value="save">Ház hozzáadása</button>
       </form>
     </div>
   );
