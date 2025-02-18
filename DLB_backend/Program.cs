@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-builder.WebHost.UseUrls("http://0.0.0.0:5149");
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -26,6 +26,8 @@ builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.Re
 
 var app = builder.Build();
 app.UseCors(MyAllowSpecificOrigins);
+
+app.Urls.Add("http://0.0.0.0:5149");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
