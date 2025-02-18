@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace DLB_backend.Models;
@@ -15,24 +14,25 @@ public partial class DlbLakaskulcsContext : DbContext
         : base(options)
     {
     }
-    [JsonIgnore]
+
     public virtual DbSet<AkciosHazak> AkciosHazaks { get; set; }
-    [JsonIgnore]
-    public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; }
-    [JsonIgnore]
+
+    public virtual DbSet<EladoHazak> EladoHazaks { get; set; }
+
     public virtual DbSet<FelhasznaloBejelentkeze> FelhasznaloBejelentkezes { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Felhasznalok> Felhasznaloks { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Ingatlanok> Ingatlanoks { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Jogihatter> Jogihatters { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Telepulesek> Telepuleseks { get; set; }
-    [JsonIgnore]
+
     public virtual DbSet<Tulajdonosok> Tulajdonosoks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySQL("server=localhost;database=dlb_lakaskulcs;user=root;password=;sslmode=none;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -88,14 +88,49 @@ public partial class DlbLakaskulcsContext : DbContext
                 .HasColumnName("varos");
         });
 
-        modelBuilder.Entity<Efmigrationshistory>(entity =>
+        modelBuilder.Entity<EladoHazak>(entity =>
         {
-            entity.HasKey(e => e.MigrationId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
-            entity.ToTable("__efmigrationshistory");
+            entity.ToTable("elado_hazak");
 
-            entity.Property(e => e.MigrationId).HasMaxLength(150);
-            entity.Property(e => e.ProductVersion).HasMaxLength(32);
+            entity.Property(e => e.Id)
+                .HasColumnType("int(11)")
+                .HasColumnName("id");
+            entity.Property(e => e.Alapterulet)
+                .HasPrecision(10)
+                .HasColumnName("alapterulet");
+            entity.Property(e => e.Allapot)
+                .HasMaxLength(255)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("allapot");
+            entity.Property(e => e.Ar)
+                .HasColumnType("int(11)")
+                .HasColumnName("ar");
+            entity.Property(e => e.Cim)
+                .HasMaxLength(255)
+                .HasColumnName("cim");
+            entity.Property(e => e.EpitesVege)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("int(4)")
+                .HasColumnName("epites_vege");
+            entity.Property(e => e.KepUrl)
+                .HasMaxLength(255)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("kep_url");
+            entity.Property(e => e.Megye)
+                .HasMaxLength(100)
+                .HasColumnName("megye");
+            entity.Property(e => e.SzobakSzama)
+                .HasColumnType("int(11)")
+                .HasColumnName("szobak_szama");
+            entity.Property(e => e.TelekMerete)
+                .HasPrecision(10)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("telek_merete");
+            entity.Property(e => e.Varos)
+                .HasMaxLength(50)
+                .HasColumnName("varos");
         });
 
         modelBuilder.Entity<FelhasznaloBejelentkeze>(entity =>
@@ -149,7 +184,7 @@ public partial class DlbLakaskulcsContext : DbContext
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnName("allapot");
             entity.Property(e => e.Ar)
-                .HasColumnType("int(50)")
+                .HasColumnType("int(11)")
                 .HasColumnName("ar");
             entity.Property(e => e.Cim)
                 .HasMaxLength(255)

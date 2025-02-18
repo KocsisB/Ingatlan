@@ -52,6 +52,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DLB_backend.Controllers.AkciosController",
+    "Method": "UpdateHouse",
+    "RelativePath": "api/Akci\u00F3k/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "akcios",
+        "Type": "DLB_backend.Models.AkciosHazak",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
     "Method": "Get",
     "RelativePath": "api/Felhasznalok",
@@ -104,6 +125,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/Felhasznalok/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "felhasznalok",
+        "Type": "DLB_backend.Models.Felhasznalok",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DLB_backend.Controllers.IngatlanController",
     "Method": "Get",
     "RelativePath": "api/Ingatlanok",
@@ -151,6 +193,27 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DLB_backend.Controllers.IngatlanController",
+    "Method": "UpdateHouse",
+    "RelativePath": "api/Ingatlanok/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ingatlanok",
+        "Type": "DLB_backend.Models.Ingatlanok",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

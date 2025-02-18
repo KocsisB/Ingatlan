@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DLB_backend.Models;
 
-public partial class Ingatlanok
+public partial class EladoHazak
 {
     public int Id { get; set; }
 
@@ -21,13 +21,9 @@ public partial class Ingatlanok
 
     public string? KepUrl { get; set; }
 
-    public string? Tipus { get; set; }
-
     public string Varos { get; set; } = null!;
 
     public string Megye { get; set; } = null!;
 
     public int Ar { get; set; }
-
-    public virtual ICollection<Jogihatter> Jogihatters { get; set; } = new List<Jogihatter>();
 }

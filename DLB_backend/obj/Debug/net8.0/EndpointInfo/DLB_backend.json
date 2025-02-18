@@ -83,6 +83,48 @@
         }
       }
     },
+    "/api/Akciók/{id}": {
+      "put": {
+        "tags": [
+          "Akcios"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AkciosHazak"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AkciosHazak"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AkciosHazak"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Felhasznalok": {
       "get": {
         "tags": [
@@ -161,6 +203,48 @@
         }
       }
     },
+    "/api/Felhasznalok/{id}": {
+      "put": {
+        "tags": [
+          "Felhasznalo"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Felhasznalok"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Felhasznalok"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Felhasznalok"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Ingatlanok": {
       "get": {
         "tags": [
@@ -232,6 +316,48 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Ingatlanok/{id}": {
+      "put": {
+        "tags": [
+          "Ingatlan"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingatlanok"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingatlanok"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Ingatlanok"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
