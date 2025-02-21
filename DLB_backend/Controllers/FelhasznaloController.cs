@@ -27,6 +27,18 @@ namespace DLB_backend.Controllers
             return NotFound(new { Message = "Nincsenek felhasználók." });
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            using var db = new DlbLakaskulcsContext();
+            var felhasz = db.Felhasznaloks.Find(id);
+            if (felhasz == null)
+            {
+                return NotFound();
+            }
+            return Ok(felhasz);
+        }
+
         [HttpPost]
         public async Task<ActionResult<string>> PostReg([FromBody]Felhasznalok felhasznalok)
         {

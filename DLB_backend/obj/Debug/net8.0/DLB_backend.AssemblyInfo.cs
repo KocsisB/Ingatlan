@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DLB_backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55a581b99cbfd042114f96ee7fc954c1962a1bc8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4d3896a9de47b736dc55199c9e832d1f033e6f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("DLB_backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DLB_backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

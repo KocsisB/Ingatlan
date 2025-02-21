@@ -25,8 +25,6 @@ public partial class DlbLakaskulcsContext : DbContext
 
     public virtual DbSet<Ingatlanok> Ingatlanoks { get; set; }
 
-    public virtual DbSet<Jogihatter> Jogihatters { get; set; }
-
     public virtual DbSet<Telepulesek> Telepuleseks { get; set; }
 
     public virtual DbSet<Tulajdonosok> Tulajdonosoks { get; set; }
@@ -214,39 +212,6 @@ public partial class DlbLakaskulcsContext : DbContext
             entity.Property(e => e.Varos)
                 .HasMaxLength(20)
                 .HasColumnName("varos");
-        });
-
-        modelBuilder.Entity<Jogihatter>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PRIMARY");
-
-            entity.ToTable("jogihatters");
-
-            entity.HasIndex(e => e.IngatlanId, "ingatlan_id");
-
-            entity.Property(e => e.Id)
-                .HasColumnType("int(11)")
-                .HasColumnName("id");
-            entity.Property(e => e.DokumentumDatum)
-                .HasDefaultValueSql("'NULL'")
-                .HasColumnType("date")
-                .HasColumnName("dokumentum_datum");
-            entity.Property(e => e.DokumentumTipus)
-                .HasMaxLength(255)
-                .HasColumnName("dokumentum_tipus");
-            entity.Property(e => e.DokumentumUrl)
-                .HasMaxLength(255)
-                .HasDefaultValueSql("'NULL'")
-                .HasColumnName("dokumentum_url");
-            entity.Property(e => e.IngatlanId)
-                .HasDefaultValueSql("'NULL'")
-                .HasColumnType("int(11)")
-                .HasColumnName("ingatlan_id");
-
-            entity.HasOne(d => d.Ingatlan).WithMany(p => p.Jogihatters)
-                .HasForeignKey(d => d.IngatlanId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("jogihatters_ibfk_1");
         });
 
         modelBuilder.Entity<Telepulesek>(entity =>

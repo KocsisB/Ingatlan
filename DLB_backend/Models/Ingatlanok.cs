@@ -28,6 +28,4 @@ public partial class Ingatlanok
     public string Megye { get; set; } = null!;
 
     public int Ar { get; set; }
-
-    public virtual ICollection<Jogihatter> Jogihatters { get; set; } = new List<Jogihatter>();
 }

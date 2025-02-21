@@ -27,6 +27,20 @@ namespace DLB_backend.Controllers
             return BadRequest();
         }
 
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            using var db = new DlbLakaskulcsContext();
+            var ingatlanId = db.Ingatlanoks.Find(id);
+            if (ingatlanId == null)
+            {
+                return NotFound();
+            }
+            return Ok(ingatlanId);
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<string>> Post([FromBody]Ingatlanok ingatlanok)
         {

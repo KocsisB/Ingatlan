@@ -126,6 +126,22 @@
   },
   {
     "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
+    "Method": "Get",
+    "RelativePath": "api/Felhasznalok/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DLB_backend.Controllers.FelhasznaloController",
     "Method": "UpdateUser",
     "RelativePath": "api/Felhasznalok/{id}",
     "HttpMethod": "PUT",
@@ -193,6 +209,22 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DLB_backend.Controllers.IngatlanController",
+    "Method": "Get",
+    "RelativePath": "api/Ingatlanok/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -23,6 +23,20 @@ namespace DLB_backend.Controllers
             return Ok(akciok);
         }
 
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            using var db = new DlbLakaskulcsContext();
+            var akciosId = db.AkciosHazaks.Find(id);
+            if (akciosId == null)
+            {
+                return NotFound();
+            }
+            return Ok(akciosId);
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<string>> Post([FromBody] AkciosHazak akcios)
         {
