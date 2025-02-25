@@ -35,7 +35,7 @@
 }
 
 .container button {
-    background-color: #288930;
+    background-color: #228B22;
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
@@ -46,6 +46,12 @@
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #1c6b1f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .container button.hidden {
@@ -149,9 +155,9 @@
 }
 
 .toggle {
-    background-color: #288930;
+    background-color: #228B22;
     height: 100%;
-    background: linear-gradient(to right, #288930, #1cc43e);
+    background: linear-gradient(to right, #228B22, #1cc43e);
     color: #fff;
     position: relative;
     left: -100%;

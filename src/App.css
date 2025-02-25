@@ -54,7 +54,8 @@
 
   .logo {
     width: 50px;
-    height: 45px;
+    height: auto;
+    max-height: 45px;
   }
   
   .wrap {
@@ -84,14 +85,14 @@
     width: 100%;
     height: 250px;
   }
-  
+
   .card:hover {
     transform: scale(1.05); /* Hover effektus */
-    outline: 2px solid #9bd162;
+    outline: 2px solid #228B22;
   }
 
   .card:focus {
-    outline: 2px solid #9bd162;
+    outline: 2px solid #228B22;
   }
   
   .overlay {
@@ -208,10 +209,39 @@
 
 .toggleBtn a:hover {
     text-decoration: underline;
+    color: #6b9044;
 }
 
 .container {
   padding: 20px;
 }
-  
-  
+
+.search-input {
+  max-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .search-input {
+    width: 100%;
+  }
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+}

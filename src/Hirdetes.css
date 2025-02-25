@@ -1,7 +1,7 @@
 /* Main Container */
 .container-hirdetes {
   background-color: #ffffff;
-  border: 3px solid #4caf50; /* Lighter Green for contrast */
+  border: 3px solid #228B22; /* Lighter Green for contrast */
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@
 /* Grid Layout for Form Fields */
 .form-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 /* Form Controls */
-.form-control {
+.formControl {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -52,8 +52,8 @@
   background-color: #fafafa;
 }
 
-.form-control:focus {
-  border-color: #4caf50; /* Highlight with green */
+.formControl:focus {
+  border-color: #9bd162; /* Highlight with green */
   background-color: #fff;
   outline: none;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.3); /* Light green glow */
@@ -74,7 +74,7 @@ input[type="file"]:hover {
 
 /* Submit Button */
 .submit-button {
-  background-color: #4caf50;
+  background-color: #228B22;
   color: #fff;
   border: none;
   padding: 14px 30px;
@@ -89,7 +89,7 @@ input[type="file"]:hover {
 }
 
 .submit-button:hover {
-  background-color: #388e3c;
+  background-color: #1c6b1f;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -142,11 +142,11 @@ input[type="number"].form-control::-webkit-inner-spin-button {
 }
 
 input[type="number"]:focus {
-  border-color: #4caf50;
+  border-color: #9bd162;
 }
 
 /* Labels for Inputs and Textareas */
 .form-control:focus + .form-label,
 textarea:focus + .form-label {
-  color: #4caf50;
+  color: #9bd162;
 }

@@ -63,7 +63,7 @@ button {
 }
 
 button:hover {
-    background-color: #729e43;
+    background-color: #557236;
 }
 
 .toggleBtn {
@@ -79,6 +79,7 @@ button:hover {
 
 .toggleBtn a:hover {
     text-decoration: underline;
+    color: #557236;
 }
 
 .hidden {

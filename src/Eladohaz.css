@@ -9,11 +9,10 @@
 }
 
 .search-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  width: 90%;
   max-width: 1100px;
   background-color: white;
   padding: 20px;
@@ -25,8 +24,9 @@
   display: flex;
   flex-direction: column;
   margin-right: 20px;
-  width: 30%;
+  width: 100%;
   margin-bottom: 15px;
+  flex-grow: calc(100% / 3);
 }
 
 .form-group label {
@@ -44,25 +44,32 @@
 }
 
 .search-button {
-  padding: 12px 24px;
+  padding: 10px 20px;
   background-color: #228B22;
   color: white;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 25px;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 150px;
+  max-height: 50px;
+  text-align: center;
+  justify-self: center;
 }
 
 .search-button:hover {
-  background-color: #51e051;
+  background-color: #1c6b1f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Card Layout */
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
   width: 80%;
   margin-top: 30px;
@@ -71,14 +78,14 @@
 .card {
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   width: 300px;
   transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -100,6 +107,7 @@
 .card-description {
   font-size: 0.9em;
   color: #555;
+  line-height: 1.5;
 }
 
 .card-footer {
@@ -140,18 +148,16 @@
   cursor: pointer;
   width: 100%;
   margin-top: 15px;
+  transition: all 0.3s ease;
 }
 
 .card-button:hover {
-  background-color: #7dd07d;
+  background-color: #1c6b1f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .search-form {
-    flex-direction: column;
-    align-items: stretch;
-  }
 
   .form-group {
     width: 100%;
@@ -159,17 +165,14 @@
     margin-bottom: 15px;
   }
 
-  .search-button {
-    width: 100%;
-    margin-top: 15px;
-  }
-
   .container {
     justify-content: center;
+    gap: 10px;
   }
 
   .card {
     width: 100%;
+    max-width: 300px;
   }
 
   .card-footer {
@@ -188,6 +191,22 @@
   margin-top: 20px;
 }
 
+@media (max-width: 900px) {
+  .search-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .search-form {
+    grid-template-columns: repeat(1, 1fr); 
+    width: 100%;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+}
 
 /* Modal alapbeállításai */
 .modal {
@@ -206,9 +225,8 @@
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-.modal.show {
+.modal-show {
   opacity: 1;
-  visibility: visible;
   position: fixed;
   top: 0;
   left: 0;
@@ -219,7 +237,11 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.modal-content.closing {
+  animation: fadeOut 0.3s ease-in-out forwards;
 }
 
 .modal-header {
@@ -234,7 +256,7 @@
 }
 
 .modal-content {
-  background: linear-gradient(135deg, #ffffff, #f8f8f8); /* Finom átmenetes háttér */
+  background: linear-gradient(135deg, #ffffff, #e2e1e1); /* Finom átmenetes háttér */
   padding: 25px;
   width: 90%;
   max-width: 500px;
@@ -242,15 +264,31 @@
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3); /* Dobozárnyék */
   text-align: center;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   animation: slideIn 0.3s ease-in-out;
+}
+
+.modal-content.closing {
+  animation: slideOut 0.3s ease-in-out forwards;
 }
 
 @keyframes slideIn {
   from { transform: translateY(-20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-20px); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 .modal-content p {
@@ -267,6 +305,7 @@
   font-weight: bold;
   cursor: pointer;
   color: #333;
+  transition: color 0.2s;
 }
 
 .close:hover {

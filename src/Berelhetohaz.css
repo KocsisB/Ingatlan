@@ -1,7 +1,9 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
+  width: 80%;
   max-width: 1200px;
   margin: auto;
   gap: 20px;
@@ -10,14 +12,14 @@
 .card {
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   width: 300px;
   transition: transform 0.2s ease-in-out;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -39,6 +41,7 @@
 .card-description {
   font-size: 0.9em;
   color: #555;
+  line-height: 1.5;
 }
 
 .card-footer {
@@ -57,8 +60,10 @@
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  transition: all 0.3s ease;
 }
 
 .card-button:hover {
-  background-color: #7dd07d;
+  background-color: #1c6b1f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

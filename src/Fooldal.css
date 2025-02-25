@@ -2,7 +2,7 @@
 .fooldal-container {
   display: flex;
   flex-wrap: wrap; /* Törik új sorba, ha nincs elég hely */
-  justify-content: space-between; /* Egyenletes eloszlás */
+  justify-content: center; /* Egyenletes eloszlás */
   gap: 30px; /* Nagyobb hézag a kártyák között */
   padding: 40px; /* Nagyobb belső tér */
   background-color: #f7f7f7;
@@ -15,9 +15,16 @@
   background-color: #343a40; /* Sötét háttérszín */
   color: #f7f7f7; /* Fehér szöveg */
   border-radius: 8px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   padding: 25px; /* Nagyobb belső tér */
   margin-bottom: 30px; /* Térköz az alatta lévő elemektől */
+}
+
+.card-container .card-title {
+  color: #9bd162;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 .card-body {
@@ -26,15 +33,18 @@
 }
 
 .card-title {
-  font-size: 1.7rem;
-  margin-bottom: 15px;
-  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 15px !important;
 }
 
 .card-text {
   font-size: 1.1rem;
   color: #f7f7f7;
   line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 20px;
 }
 
 /* Stílusok a responsive tervezéshez */
@@ -42,8 +52,10 @@
   .fooldal-container {
     flex-direction: column; /* Kis képernyőkön egymás alatt jelenjenek meg */
     padding: 20px;
+    gap: 20px;
+    justify-content: center;
   }
-
+  
   .card-container {
     flex: 1 1 100%; /* Kitöltse a teljes szélességet */
     max-width: 100%;
@@ -72,7 +84,7 @@
 }
 
 .real-estate-icon {
-  background-color: #10b981; /* Zöld háttér */
+  background-color: #9bd162; /* Zöld háttér */
   padding: 14px;
   border-radius: 16px;
   display: inline-block;
@@ -89,7 +101,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #10b981;
+  background-color: #9bd162;
   color: white;
   padding: 6px;
   border-radius: 50%;
@@ -125,6 +137,7 @@
 }
 
 .real-estate-footer a:hover {
+  color: #1c6b1f;
   text-decoration: underline;
 }
 
@@ -135,29 +148,33 @@
   gap: 24px; /* Nagyobb térköz a kártyák között */
   margin-top: 50px;
   padding: 30px;
+  justify-content: center;
+  grid-auto-rows: 1fr;
 }
 
 .real-estate-loan-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   background: linear-gradient(135deg, #ffffff, #f3f4f6);
   border-radius: 16px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   padding: 25px;
   width: 100%;
   max-width: 320px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
 .real-estate-loan-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.card-title {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 15px;
+.show-more-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
 }
 
 
@@ -168,9 +185,13 @@
   line-height: 1.6;
 }
 
+.card-text, .card-text-m {
+  line-height: 1.5;
+}
+
 /* Gombok */
 .btn-primary {
-  background: linear-gradient(90deg, #10b981, #228B22);
+  background: linear-gradient(90deg, #9bd162, #228B22);
   color: white;
   padding: 12px 24px;
   border: none;
@@ -182,7 +203,8 @@
 }
 
 .btn-primary:hover {
-  background: linear-gradient(90deg, #0d8050, #1c6b1f);
+  background: linear-gradient(90deg, #557236, #1c6b1f);
+  color: #fff;
   transform: scale(1.05);
 }
 /* Reszponzív módosítások */
@@ -190,6 +212,11 @@
   .real-estate-loans-container {
     grid-template-columns: repeat(3, 1fr); /* 3 kártya egy sorban */
     gap: 20px;
+    justify-content: center;
+  }
+
+  .real-estate-loan-card {
+    width: 100%;
   }
 }
 
@@ -220,8 +247,15 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
 }
+
+.modal-overlay.closing {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+
 
 /* Kártyaszerű modál */
 .modal-content-fooldal {
@@ -237,6 +271,10 @@
   flex-direction: column;
   align-items: center;
   animation: slideIn 0.3s ease-in-out;
+}
+
+.modal-content-fooldal.closing {
+  animation: slideOut 0.3s ease-in-out forwards;
 }
 
 /* Kiemelt fejléc */
@@ -279,8 +317,8 @@
 
 /* Animációk */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0;}
+  to { opacity: 1;}
 }
 
 @keyframes slideIn {
@@ -288,11 +326,32 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-20px); opacity: 0; }
+}
+
 .market-news-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  margin: 40px auto;
   padding: 1.5rem;
   background-color: #f7fafc;
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.market-news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .market-news-title {
@@ -305,6 +364,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  width: 100%;
 }
 
 .news-card {
@@ -313,6 +373,12 @@
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .news-title {
@@ -332,15 +398,79 @@
 }
 
 .news-link {
-  color: #4299e1;
+  color: #228B22;
   transition: all 0.3s ease;
   display: inline-block;
   margin-top: 0.5rem;
+  text-decoration: none;
 }
 
 .news-link:hover {
-  color: #3182ce;
+  color: #1c6b1f;
+  text-decoration: underline;
 }
 
+@media (max-width: 600px) {
+  .market-news-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
+  .show-more-btn {
+    margin-top: 10px;
+  }
 
+  .market-news-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .news-card {
+    padding: 0.75rem;
+  }
+
+  .fooldal-container {
+    padding: 15px;
+  }
+
+  .real-estate-ad {
+    max-width: 100%;
+  }
+
+  .section-container {
+    max-width: 100%;
+  }
+}
+
+.section-container {
+  background: linear-gradient(135deg, #ffffff, #f7f7f7);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 20px auto;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.section-container:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #228B22; 
+  margin-bottom: 15px;
+}
+
+.section-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { data } from "react-router-dom";
 import "./Eladohaz.css";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const PropertySearch = () => {
   const [location, setLocation] = useState("");
@@ -9,25 +9,31 @@ const PropertySearch = () => {
   const [rooms, setRooms] = useState("");
   const [condition, setCondition] = useState("");
   const [minSize, setMinSize] = useState("");
-
+  
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [owners, setOwners] = useState([]);
   const [selectedProperty, setSelectedProperty] = useState(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
+  const [ownerError, setOwnerError] = useState(false);
+  const [modalClosing, setModalClosing] = useState(false);
 
   useEffect(() => {
     const fetchProperties = async () => {
+      setError(false);
+
       try {
-        const response = await fetch("http://192.168.182.11:5149/api/Ingatlanok");
-        
+        //http://192.168.182.11:5149/api/Ingatlanok
+        const response = await fetch("https://localhost:7166/api/Ingatlanok");
+
         if (!response.ok) {
-          setError(`API hiba: ${response.status}`);
+          setError("Hiba az adatok lekérésekor");
           return;
         }
-        
+
         const data = await response.json();
         console.log("Properties fetched");
+
         setProperties(data);
         setFilteredProperties(data);
       } catch (error) {
@@ -36,32 +42,36 @@ const PropertySearch = () => {
     };
 
     const fetchOwners = async () => {
+      setOwnerError(false);
+
       try {
-        const response = await fetch("http://192.168.182.11:5149/api/Tulajdonos");
+        const response = await fetch("https://localhost:7166/api/Tulajdonos");
+
         if (!response.ok) {
-          setError(`Tulajdonos API hiba: ${response.status}`);
+          setOwnerError("Hiba az adatok lekérésekor");
           return;
         }
+
         const data = await response.json();
         setOwners(data);
       } catch (error) {
-        setError("Hálózati vagy fetch hiba a tulajdonosok lekérésekor: " + error.message);
+        setOwnerError("Hálózati vagy fetch hiba a tulajdonosok lekérésekor: " + error.message);
       }
     };
 
     fetchProperties();
     fetchOwners();
-  }, []);
+  }, [location, price, rooms, condition, minSize]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     const filtered = properties.filter((property) => {
       return (
         (!location || property.varos.toLowerCase().includes(location.toLowerCase())) &&
-        (!price || property.ar <= parseInt(price)) &&
-        (!rooms || property.szobak_szama >= parseInt(rooms)) &&
+        (!price || property.ar <= Math.max(0, parseInt(price))) &&
+        (!rooms || property.szobakSzama >= Math.max(0, parseInt(rooms))) &&
         (!condition || property.allapot.toLowerCase().includes(condition.toLowerCase())) &&
-        (!minSize || property.alapterulet >= parseInt(minSize))
+        (!minSize || property.alapterulet >= Math.max(0, parseInt(minSize)))
       );
     });
 
@@ -69,27 +79,50 @@ const PropertySearch = () => {
   };
 
   const openModal = (property) => {
-    const randomOwner = owners[Math.floor(Math.random() * owners.length)];
+    const randomOwner = owners.length > 0 ? owners[Math.floor(Math.random() * owners.length)] : null;
     console.log("Selected Property:", property); // Ellenőrizd, hogy a property értéke megfelelő-e
     console.log("Random Owner:", randomOwner); // Ellenőrizd, hogy a tulajdonos értéke megfelelő-e
     setSelectedProperty({ ...property, owner: randomOwner });
   };
 
   const closeModal = () => {
-    setSelectedProperty(null);
+    const modalOverlay = document.querySelector(".modal-show");
+    const modalContent = document.querySelector(".modal-content");
+
+    modalOverlay.classList.add("closing");
+    modalContent.classList.add("closing");
+    setModalClosing(true);
+
+    setTimeout(() => {
+      setModalClosing(false);
+      setSelectedProperty(null);
+      modalOverlay.classList.remove("closing");
+      modalContent.classList.remove("closing");
+    }, 300);
   };
 
+  const closeModalOnOverlay = (e) => {
+    if (e.target.classList.contains("modal-show")) {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    if (selectedProperty) {
+      setModalClosing(false);
+    }
+  }, [selectedProperty]);
+
   const handleDelete = (id) => {
-    if (window.confirm("Biztosan törölni szeretnéd ezt az ingatlant?")) {
+    if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`http://192.168.182.11:5149/api/Ingatlanok/?id=${id}`)
+        .delete(`https://localhost:7166/api/Ingatlanok?id= ${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");
           // A törlés után frissítjük az ingatlanok listáját
-          const filtered = filteredProperties.filter((property) => property.id !== id);
-          setFilteredProperties(filtered);
-          setProperties(filtered);  // Ha az alap listát is szeretnéd frissíteni
+          setFilteredProperties((prev) => prev.filter((property) => property.id !== id));
+          setProperties((prev) => prev.filter((property) => property.id !== id));
         })
         .catch((error) => {
           console.error(error);
@@ -97,6 +130,8 @@ const PropertySearch = () => {
         });
     }
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="property-search-container">
@@ -115,6 +150,7 @@ const PropertySearch = () => {
           <label htmlFor="price">Max Ár (Ft)</label>
           <input
             type="number"
+            min={0}
             id="price"
             placeholder="Max ár"
             value={price}
@@ -125,6 +161,7 @@ const PropertySearch = () => {
           <label htmlFor="rooms">Min. szobaszám</label>
           <input
             type="number"
+            min={0}
             id="rooms"
             placeholder="Min. szobák száma"
             value={rooms}
@@ -145,6 +182,7 @@ const PropertySearch = () => {
           <label htmlFor="minSize">Min. alapterület (m²)</label>
           <input
             type="number"
+            min={0}
             id="minSize"
             placeholder="m²-ben"
             value={minSize}
@@ -158,39 +196,69 @@ const PropertySearch = () => {
       </form>
 
       <div className="container">
-        {filteredProperties.length > 0 ? (
+        { error ? (<p className="no-results-sell">{error}</p>
+        ) : (
+        filteredProperties.length > 0 ? (
           filteredProperties.map((property) => (
             <div className="card" key={property.id}>
-              <img src={property.kepUrl} alt="Ingatlan" className="card-image" />
+              <img
+                src={property.kepUrl}
+                alt="Ingatlan"
+                className="card-image"
+              />
               <div className="card-content">
                 <h2 className="card-title">{property.cim}</h2>
                 <p className="card-description">Város: {property.varos}</p>
                 <p className="card-description">Állapot: {property.allapot}</p>
-                <p className="card-description">Telek mérete: {property.telekMerete}</p>
-                <p className="card-description">Építés vége: {property.epitesVege}</p>
-                <p className="card-description">Ár: {property.ar.toLocaleString()} Ft</p>
+                <p className="card-description">
+                  Telek mérete: {property.telekMerete}
+                </p>
+                <p className="card-description">
+                  Építés vége: {property.epitesVege}
+                </p>
+                <p className="card-description">
+                  Ár: {property.ar.toLocaleString()} Ft
+                </p>
                 <div className="card-footer">
                   <span>Alapterület: {property.alapterulet} m²</span>
                   <span>Szobák: {property.szobakSzama}</span>
                 </div>
-                <button className="card-button" onClick={() => openModal(property)}>
+                <button
+                  className="card-button"
+                  onClick={() => openModal(property)}
+                >
                   Több
                 </button>
 
-                <button className="card-button" onClick={() => handleDelete(property.id)}>
+                <button
+                  className="card-button"
+                  onClick={() => handleDelete(property.id)}
+                >
                   Törlés
                 </button>
+
+                <button 
+                  className="card-button"
+                  onClick={() => navigate("/hazmodositas")}
+                >
+                  
+                  Ház módosítása
+                </button>
+
+               
               </div>
             </div>
           ))
         ) : (
-          <p className="no-results-sell">Nincs találat a megadott keresési feltételekre.</p>
-        )}
+          <p className="no-results-sell">
+            Nincs találat a megadott keresési feltételekre.
+          </p>
+        ))}
       </div>
 
       {/* Modal */}
       {selectedProperty && (
-        <div className="modal-show">
+        <div className={`modal-show ${modalClosing ? "closing" : ""}`} onClick={closeModalOnOverlay}>
           <div className="modal-content">
             <span className="close" onClick={closeModal}>
               &times;
@@ -209,11 +277,12 @@ const PropertySearch = () => {
                 <p>Telefonszám: {selectedProperty.owner.telefon}</p>
               </>
             ) : (
-              <p>Nincs elérhető tulajdonos adat.</p>
+              <p>{ownerError}</p>
             )}
           </div>
         </div>
       )}
+      
     </div>
   );
 };

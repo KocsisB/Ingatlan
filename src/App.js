@@ -9,6 +9,7 @@ import Footer from './Footer';
 import Eladohaz from './Eladohaz';
 import Berelhetohaz from './Berelhetohaz';
 import Munkatarsaink from './Munkatarsaink';
+import HazModositas from './HazModositas';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/eladohazak' element={<Eladohaz/>}/>
         <Route path='/berelhetohazak' element={<Berelhetohaz/>}/>
         <Route path='/ugynokok' element={<Munkatarsaink/>}/>
+        <Route path='/hazmodositas' element={<HazModositas/>}/>
       </Routes>   
       <Footer/>     
 
