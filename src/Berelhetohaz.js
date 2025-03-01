@@ -24,7 +24,7 @@ const PropertyCard = () => {
 
       try {
         //http://192.168.182.11:5149/api/Ingatlanok
-        const response = await fetch("https://localhost:7166/api/Ingatlanok");
+        const response = await fetch("http://192.168.10.113:5149/api/Ingatlanok");
 
         if (!response.ok) {
           setError("Hiba az adatok lekérésekor");
@@ -45,7 +45,7 @@ const PropertyCard = () => {
       setOwnerError(false);
 
       try {
-        const response = await fetch("https://localhost:7166/api/Tulajdonos");
+        const response = await fetch("http://192.168.10.113:5149/api/Tulajdonos");
 
         if (!response.ok) {
           setOwnerError("Hiba az adatok lekérésekor");
@@ -116,7 +116,7 @@ const PropertyCard = () => {
   const handleDelete = (id) => {
     if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`https://localhost:7166/api/Ingatlanok?id= ${id}`)
+        .delete(`http:/192.168.10.113:5149/api/Ingatlanok?id= ${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");

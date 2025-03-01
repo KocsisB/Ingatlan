@@ -67,7 +67,8 @@ return(
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Jelszó" />
           <a href="#">Elfelejtetted a jelszavadat?</a>
-          <button>Bejelentkezés</button>
+          <a href="/regisztracio">Regisztrálok</a>
+          <button type="submit" className={styles.toggleBtn}>Bejelentkezés</button>
         </form>
       </div>
 

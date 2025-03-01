@@ -1,38 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { data, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Hazmodositas.css';
 
 export default function Hazmodositas() {
+  const [property, setProperty] = useState({
+    cim: '',
+    varos: '',
+    allapot: '',
+    telekMerete: '',
+    epitesVege: '',
+    ar: '',
+    alapterulet: '',
+    szobakSzama: '',
+    kepUrl: ''
+  });
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const updatedData = {
-      id: Number(id),
-      cim: event.target.cim.value,
-      varos: event.target.varos.value,
-      allapot: event.target.allapot.value,
-      telekMerete: Number(event.target.telekMerete.value),
-      epitesVege: Number(event.target.epitesVege.value),
-      ar: Number(event.target.ar.value),
-      alapterulet: Number(event.target.alapterulet.value),
-      szobakSzama: Number(event.target.szobakSzama.value),
-      kepUrl: event.target.kepUrl.value,
+  useEffect(() => {
+    // Fetch property data when component mounts
+    const fetchProperty = async () => {
+      try {
+        const response = await axios.get(`http://192.168.10.113:5149/api/Ingatlanok/${id}`);
+        setProperty(response.data);
+      } catch (error) {
+        console.error("Error fetching property data:", error);
+      }
     };
 
+    fetchProperty();
+  }, [id]);
+
+  const handleUpdate = async () => {
     try {
-      await axios.put(`https://localhost:7166/api/Ingatlanok/${id}`, updatedData, {
-        headers: { 'Content-Type': 'application/json' },
-      });
-      alert('Sikeres módosítás!');
+      const updatedProperty = {
+        ...property,
+      };
+
+      const response = await axios.put(`http://192.168.10.113:5149/api/Ingatlanok/${id}`, updatedProperty);
+      console.log(response);
+      alert("Sikeres frissítés!");
       navigate('/eladohazak');
     } catch (error) {
-      console.error('Hiba történt a PUT kérés során:', error);
-      alert('Sikertelen módosítás!');
+      console.error("Error updating property:", error);
+      alert("Sikertelen frissítés!");
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleUpdate();
+  };
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setProperty((prevProperty) => ({
+      ...prevProperty,
+      [id]: value,
+    }));
   };
 
   return (
@@ -40,12 +66,13 @@ export default function Hazmodositas() {
       <h1 className="form-title">Ház módosítása</h1>
       <form onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
-          <label htmlFor="nev" className="form-label">Cím</label>
+          <label htmlFor="cim" className="form-label">Cím</label>
           <input
             type="text"
             className="formControl"
-            id="nev"
-            defaultValue={data?.cim}
+            id="cim"
+            value={property.cim}
+            onChange={handleChange}
             required
           />
         </div>
@@ -55,7 +82,8 @@ export default function Hazmodositas() {
             type="text"
             className="formControl"
             id="varos"
-            defaultValue={data?.varos}
+            value={property.varos}
+            onChange={handleChange}
             required
           />
         </div>
@@ -65,7 +93,8 @@ export default function Hazmodositas() {
             type="text"
             className="formControl"
             id="allapot"
-            defaultValue={data?.allapot}
+            value={property.allapot}
+            onChange={handleChange}
             required
           />
         </div>
@@ -75,7 +104,8 @@ export default function Hazmodositas() {
             type="number"
             className="formControl"
             id="telekMerete"
-            defaultValue={data?.telekMerete}
+            value={property.telekMerete}
+            onChange={handleChange}
             required
           />
         </div>
@@ -85,7 +115,8 @@ export default function Hazmodositas() {
             type="number"
             className="formControl"
             id="epitesVege"
-            defaultValue={data?.epitesVege}
+            value={property.epitesVege}
+            onChange={handleChange}
             required
           />
         </div>
@@ -95,7 +126,8 @@ export default function Hazmodositas() {
             type="number"
             className="formControl"
             id="ar"
-            defaultValue={data?.ar}
+            value={property.ar}
+            onChange={handleChange}
             required
           />
         </div>
@@ -105,7 +137,8 @@ export default function Hazmodositas() {
             type="number"
             className="formControl"
             id="alapterulet"
-            defaultValue={data?.alapterulet}
+            value={property.alapterulet}
+            onChange={handleChange}
             required
           />
         </div>
@@ -115,7 +148,8 @@ export default function Hazmodositas() {
             type="number"
             className="formControl"
             id="szobakSzama"
-            defaultValue={data?.szobakSzama}
+            value={property.szobakSzama}
+            onChange={handleChange}
             required
           />
         </div>
@@ -125,7 +159,8 @@ export default function Hazmodositas() {
             type="text"
             className="formControl"
             id="kepUrl"
-            defaultValue={data?.kepUrl}
+            value={property.kepUrl}
+            onChange={handleChange}
             required
           />
         </div>

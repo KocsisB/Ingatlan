@@ -44,7 +44,7 @@ export default function Hirdetes() {
 
     try {
       console.log(formData);
-      const response = await fetch("https://localhost:7166/api/Ingatlanok", {
+      const response = await fetch("http://192.168.10.113:5149/api/Ingatlanok", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {

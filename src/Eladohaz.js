@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Eladohaz.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PropertySearch = () => {
   const [location, setLocation] = useState("");
@@ -23,8 +23,7 @@ const PropertySearch = () => {
       setError(false);
 
       try {
-        //http://192.168.182.11:5149/api/Ingatlanok
-        const response = await fetch("https://localhost:7166/api/Ingatlanok");
+        const response = await fetch("http://192.168.10.113:5149/api/Ingatlanok");
 
         if (!response.ok) {
           setError("Hiba az adatok lekérésekor");
@@ -45,7 +44,7 @@ const PropertySearch = () => {
       setOwnerError(false);
 
       try {
-        const response = await fetch("https://localhost:7166/api/Tulajdonos");
+        const response = await fetch("http://192.168.10.113:5149/api/Tulajdonos");
 
         if (!response.ok) {
           setOwnerError("Hiba az adatok lekérésekor");
@@ -116,7 +115,7 @@ const PropertySearch = () => {
   const handleDelete = (id) => {
     if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`https://localhost:7166/api/Ingatlanok?id= ${id}`)
+        .delete(`http://192.168.10.113:5149/api/Ingatlanok?id=${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");
@@ -239,13 +238,10 @@ const PropertySearch = () => {
 
                 <button 
                   className="card-button"
-                  onClick={() => navigate("/hazmodositas")}
+                  onClick={() => navigate(`/hazmodositas/${property.id}`)}
                 >
-                  
                   Ház módosítása
                 </button>
-
-               
               </div>
             </div>
           ))

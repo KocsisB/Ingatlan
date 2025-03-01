@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import dlblogo from './dlblogo.svg.png';
 
@@ -17,6 +17,11 @@ export default function Navbar() {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
+
+  const handleDropdownClick = (e) => {
+    e.stopPropagation();
+    setDropdownOpen(!dropdownOpen);
+  };
 
   return (
     <div>
@@ -48,15 +53,12 @@ export default function Navbar() {
                 <button className="btn btn-outline-success" type="submit">Keresés</button>
               </form>
               <div className="user-menu ms-3 position-relative">
-                <div className="user-icon" onClick={(e) => {
-                  e.stopPropagation();
-                  setDropdownOpen(!dropdownOpen);
-                }}>
+                <div className="user-icon" onClick={handleDropdownClick}>
                   <i className="fa-solid fa-circle-user fa-lg text-white"></i>
                 </div>
                 {dropdownOpen && (
                   <div className="dropdown-menu show position-absolute end-0 mt-2 p-2 bg-dark border border-secondary">
-                    <NavLink className="dropdown-item text-white" to="/regisztracio">Bejelentkezés / Regisztráció</NavLink>
+                    <NavLink className="dropdown-item text-white" to="/bejelentkezes">Bejelentkezés / Regisztráció</NavLink>
                     <NavLink className="dropdown-item text-white" to="/ugynokok">Ügynökök</NavLink>
                     <NavLink className="dropdown-item text-white" to="/hirdetes">Hírdetés feladása</NavLink>
                   </div>

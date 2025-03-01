@@ -31,10 +31,11 @@ import './SignUp.module.css';
               <label htmlFor="password">Jelszó</label>
               <input type="password" id="password" name="password" required />
             </div>
+            <a href='bejelentkezes'>Bejelentkezek</a>
             <button type="submit" className={styles.toggleBtn}>Regisztráció</button>
           </form>
         ) : (
-          <form id="login">
+          <form id="login">  
             <div className={styles.formGroup}>
               <label htmlFor="loginEmail">E-mail cím</label>
               <input type="email" id="loginEmail" name="loginEmail" required />
@@ -43,7 +44,6 @@ import './SignUp.module.css';
               <label htmlFor="loginPassword">Jelszó</label>
               <input type="password" id="loginPassword" name="loginPassword" required />
             </div>
-            <button type="submit" className={styles.toggleBtn}>Bejelentkezés</button>
           </form>
         )}
   

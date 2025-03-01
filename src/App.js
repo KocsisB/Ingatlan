@@ -10,6 +10,7 @@ import Eladohaz from './Eladohaz';
 import Berelhetohaz from './Berelhetohaz';
 import Munkatarsaink from './Munkatarsaink';
 import HazModositas from './HazModositas';
+import SignUp from './SignUp';
 
 function App() {
   return (
@@ -19,11 +20,12 @@ function App() {
         <Route path='/' element={<Fooldal/>}/>
         <Route path='/hirdetes' element={<Hirdetes/>}/>
         <Route path='/kollegak' element={<Kollegak/>}/>
-        <Route path='/regisztracio' element={<Login/>}/>
+        <Route path='/bejelentkezes' element={<Login/>}/>
+        <Route path='/regisztracio' element={<SignUp/>}/>
         <Route path='/eladohazak' element={<Eladohaz/>}/>
         <Route path='/berelhetohazak' element={<Berelhetohaz/>}/>
         <Route path='/ugynokok' element={<Munkatarsaink/>}/>
-        <Route path='/hazmodositas' element={<HazModositas/>}/>
+        <Route path='/hazmodositas/:id' element={<HazModositas/>}/>
       </Routes>   
       <Footer/>     
 
