@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace DLB_backend.Models;
 
-public partial class Felhasznalok
+public partial class Felhasznalok : IdentityUser
 {
     public int Id { get; set; }
 
