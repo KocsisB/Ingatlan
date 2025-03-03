@@ -1,8 +1,10 @@
 using AuthApi.Datas;
+using AuthApi.Services;
 using DLB_backend.Models;
 using DLB_backend.Services;
 using DLB_backend.Services.IAuthService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -12,6 +14,10 @@ builder.Services.AddDbContext<DlbLakaskulcsContext>();
 
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddScoped<IAuth, Auth>();
+builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
+
+builder.Services.AddIdentity<Felhasznalok, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
 
 
 // Add services to the container.

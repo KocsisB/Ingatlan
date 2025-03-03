@@ -16,7 +16,7 @@ namespace AuthApi.Datas
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string conn = "Server=localhost;Port=3306;Database=Auth;user=root;password=";
+                string conn = "Server=localhost;Port=5149;Database=Auth;user=root;password=";
                 optionsBuilder.UseMySQL(conn);
             }
         }
