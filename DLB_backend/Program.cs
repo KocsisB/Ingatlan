@@ -1,5 +1,7 @@
 using AuthApi.Datas;
 using DLB_backend.Models;
+using DLB_backend.Services;
+using DLB_backend.Services.IAuthService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -7,7 +9,11 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DlbLakaskulcsContext>();
+
 builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddScoped<IAuth, Auth>();
+
+
 // Add services to the container.
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
