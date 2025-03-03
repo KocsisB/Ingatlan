@@ -11,6 +11,7 @@ import Berelhetohaz from './Berelhetohaz';
 import Munkatarsaink from './Munkatarsaink';
 import HazModositas from './HazModositas';
 import SignUp from './SignUp';
+import Akcioshazak from './Akcioshazak';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/kollegak' element={<Kollegak/>}/>
         <Route path='/bejelentkezes' element={<Login/>}/>
         <Route path='/regisztracio' element={<SignUp/>}/>
+        <Route path='/akcioshazak' element={<Akcioshazak/>}/>
         <Route path='/eladohazak' element={<Eladohaz/>}/>
         <Route path='/berelhetohazak' element={<Berelhetohaz/>}/>
         <Route path='/ugynokok' element={<Munkatarsaink/>}/>

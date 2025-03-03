@@ -61,6 +61,7 @@ export default function Navbar() {
                     <NavLink className="dropdown-item text-white" to="/bejelentkezes">Bejelentkezés / Regisztráció</NavLink>
                     <NavLink className="dropdown-item text-white" to="/ugynokok">Ügynökök</NavLink>
                     <NavLink className="dropdown-item text-white" to="/hirdetes">Hírdetés feladása</NavLink>
+                    <NavLink className="dropdown-item text-white" to="/akcioshazak">Akciós házak</NavLink>
                   </div>
                 )}
               </div>

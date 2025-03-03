@@ -156,7 +156,8 @@ export default function Fooldal() {
               className="btn-primary"
               onClick={() =>
                 openModal(
-                  "Az ingatlanhitel kalkulátor segít kiszámolni a várható törlesztőrészleteket és a hitelfelvétel költségeit."
+                  "Az ingatlanhitel kalkulátor segít kiszámolni a várható törlesztőrészleteket és a hitelfelvétel költségeit. "
+                  
                 )
               }
             >
