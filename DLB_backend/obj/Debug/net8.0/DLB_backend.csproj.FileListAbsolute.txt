@@ -673,3 +673,16 @@ D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\obj\Debug\net8.0\refint\DLB
 D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\obj\Debug\net8.0\DLB_backend.pdb
 D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\obj\Debug\net8.0\DLB_backend.genruntimeconfig.cache
 D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\obj\Debug\net8.0\ref\DLB_backend.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Suli\Vizsga\Ingatlan_Backend\Ingatlan\DLB_backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
