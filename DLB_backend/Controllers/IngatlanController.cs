@@ -1,4 +1,5 @@
 ﻿using DLB_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,7 @@ namespace DLB_backend.Controllers
             return Ok(ingatlanId);
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<string>> Post([FromBody]Ingatlanok ingatlanok)
         {
@@ -70,6 +71,7 @@ namespace DLB_backend.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<ActionResult> DeleteById(int id)
         {
@@ -83,7 +85,7 @@ namespace DLB_backend.Controllers
             return NotFound(new {Message = "Nem található ilyen ház!"});
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateHouse(int id, Ingatlanok ingatlanok)
         {
