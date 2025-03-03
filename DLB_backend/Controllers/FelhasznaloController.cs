@@ -1,4 +1,5 @@
 ﻿using DLB_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,7 @@ namespace DLB_backend.Controllers
             return Ok(felhasz);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<string>> PostReg([FromBody]Felhasznalok felhasznalok)
         {
@@ -59,6 +61,7 @@ namespace DLB_backend.Controllers
             return BadRequest(new {Message = "Nem megfelelőek az adatok"});
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<ActionResult> DeleteById(int id)
         {
@@ -72,6 +75,7 @@ namespace DLB_backend.Controllers
             return NotFound(new { Message = "Nem található ilyen ház!" });
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, Felhasznalok felhasznalok)
         {
