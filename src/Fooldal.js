@@ -139,7 +139,7 @@ export default function Fooldal() {
         <p className="real-estate-footer">
           <span className="font-bold">Ingatlanközvetítőként hirdetne?</span>{" "}
           Valódi partnerkapcsolattal és korrekt árazással várjuk.
-          <a href="/regisztracio"> Regisztráljon ide kattintva!</a>
+          <a href="/bejelentkezes"> Regisztráljon ide kattintva!</a>
         </p>
       </div>
 

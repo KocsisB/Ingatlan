@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Eladohaz.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PropertySearch = () => {
   const [location, setLocation] = useState("");
@@ -23,7 +23,7 @@ const PropertySearch = () => {
       setError(false);
 
       try {
-        const response = await fetch("http://192.168.10.113:5149/api/Ingatlanok");
+        const response = await fetch("http://10.169.85.161:5081/ingatlan");
 
         if (!response.ok) {
           setError("Hiba az adatok lekérésekor");
@@ -35,6 +35,7 @@ const PropertySearch = () => {
 
         setProperties(data);
         setFilteredProperties(data);
+        console.log(data)
       } catch (error) {
         setError("Hálózati vagy fetch hiba: " + error.message);
       }
@@ -84,6 +85,9 @@ const PropertySearch = () => {
     setSelectedProperty({ ...property, owner: randomOwner });
   };
 
+  const path = useLocation();
+  console.log(path.pathname);
+
   const closeModal = () => {
     const modalOverlay = document.querySelector(".modal-show");
     const modalContent = document.querySelector(".modal-content");
@@ -115,7 +119,7 @@ const PropertySearch = () => {
   const handleDelete = (id) => {
     if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`http://192.168.10.113:5149/api/Ingatlanok?id=${id}`)
+        .delete(`http://10.169.85.161:5081/ingatlan?id=${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");

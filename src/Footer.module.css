@@ -31,6 +31,17 @@
   flex-wrap: wrap;
 }
 
+.column {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+
+.column h4 {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
 .link {
   color: #ffffff;
   font-size: 14px;
@@ -68,5 +79,4 @@
   font-size: 16px;
   display: flex;
   content: "\A";
-
 }

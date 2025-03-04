@@ -24,7 +24,7 @@ const PropertyCard = () => {
 
       try {
         //http://192.168.182.11:5149/api/Ingatlanok
-        const response = await fetch("http://192.168.10.113:5149/api/Ingatlanok");
+        const response = await fetch("http://10.169.85.161:5081/ingatlan");
 
         if (!response.ok) {
           setError("Hiba az adatok lekérésekor");
@@ -116,7 +116,7 @@ const PropertyCard = () => {
   const handleDelete = (id) => {
     if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`http:/192.168.10.113:5149/api/Ingatlanok?id= ${id}`)
+        .delete(`http://10.169.85.161:5081/ingatlan?id= ${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");

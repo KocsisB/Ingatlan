@@ -7,25 +7,22 @@ export default function Footer() {
       <div className={styles.container}>
         <p className={styles.text}>&copy; {new Date().getFullYear()} MyApp. All rights reserved.</p>
         <div className={styles.links}>
-
-        <p className={styles.elerhetosegek}>
-            Elérhetősségeink: <br></br>
-            csomad@kkszki.hu <br></br>
-            klimal@kkszki.hu <br></br>
-            kocsib@kkszki.hu <br></br>
-
-            Mobil:<br></br>
-             06207243567
-            </p>
-
-            
-            
-
-          <a href="#privacy" className={styles.link}>Privacy Policy</a>
-          <a href="#terms" className={styles.link}>Terms of Service</a>
-          <a href="#contact" className={styles.link}>Contact Us</a>
-          
-          
+          <div className={styles.column}>
+            <h4>Magánszemélyeknek</h4>
+            <a href="/hirdetes" className={styles.link}>Hirdetés feladása</a>
+          </div>
+          <div className={styles.column}>
+            <h4>Hitel kalkulátor</h4>
+            <a href="https://bankmonitor.hu/lakashitel-kalkulator/" className={styles.link}>Lakáshitel-kalkulátor</a>
+          </div>
+          <div className={styles.column}>
+            <h4>Kapcsolat</h4>
+            <p>+36 20 765 432</p>
+            <p>csomad@kkszki.hu</p>
+            <p>klimal@kkszki.hu</p>
+            <p>kocsisb@kkszki.hu</p>
+            <p>munkanapokon 10:00-17:00-ig</p>
+          </div>
         </div>
       </div>
     </footer>

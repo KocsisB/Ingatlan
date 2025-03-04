@@ -22,7 +22,7 @@ export default function Hazmodositas() {
     // Fetch property data when component mounts
     const fetchProperty = async () => {
       try {
-        const response = await axios.get(`http://192.168.10.113:5149/api/Ingatlanok/${id}`);
+        const response = await axios.get(`http://10.169.85.161:5081/ingatlan/${id}`);
         setProperty(response.data);
       } catch (error) {
         console.error("Error fetching property data:", error);
@@ -38,7 +38,7 @@ export default function Hazmodositas() {
         ...property,
       };
 
-      const response = await axios.put(`http://192.168.10.113:5149/api/Ingatlanok/${id}`, updatedProperty);
+      const response = await axios.put(`http://10.169.85.161:5081/ingatlan/${id}`, updatedProperty);
       console.log(response);
       alert("Sikeres frissítés!");
       navigate('/eladohazak');
@@ -63,7 +63,7 @@ export default function Hazmodositas() {
 
   return (
     <div className="container-hirdetes">
-      <h1 className="form-title">Ház módosítása</h1>
+      <h1 className="form-title">Hírdetés módosítása</h1>
       <form onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
           <label htmlFor="cim" className="form-label">Cím</label>
@@ -164,7 +164,7 @@ export default function Hazmodositas() {
             required
           />
         </div>
-        <button type="submit" className="submit-button">Ház frissítése</button>
+        <button type="submit" className="submit-button">Hírdetés módosítása</button>
       </form>
     </div>
   );
