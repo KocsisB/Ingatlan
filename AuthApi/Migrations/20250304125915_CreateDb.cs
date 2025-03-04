@@ -7,12 +7,36 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace AuthApi.Migrations
 {
     /// <inheritdoc />
-    public partial class CreatedDb : Migration
+    public partial class CreateDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "akciosHazaks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Cim = table.Column<string>(type: "longtext", nullable: false),
+                    Alapterulet = table.Column<int>(type: "int", nullable: false),
+                    SzobakSzama = table.Column<int>(type: "int", nullable: false),
+                    TelekMerete = table.Column<int>(type: "int", nullable: true),
+                    EpitesVege = table.Column<int>(type: "int", nullable: true),
+                    Allapot = table.Column<string>(type: "longtext", nullable: true),
+                    KepUrl = table.Column<string>(type: "longtext", nullable: true),
+                    Tipus = table.Column<string>(type: "longtext", nullable: true),
+                    Varos = table.Column<string>(type: "longtext", nullable: true),
+                    Megye = table.Column<string>(type: "longtext", nullable: true),
+                    Ar = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_akciosHazaks", x => x.Id);
+                })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -169,6 +193,39 @@ namespace AuthApi.Migrations
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "ingatlanoks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Cim = table.Column<string>(type: "longtext", nullable: false),
+                    Alapterulet = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SzobakSzama = table.Column<int>(type: "int", nullable: false),
+                    TelekMerete = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    EpitesVege = table.Column<int>(type: "int", nullable: true),
+                    Allapot = table.Column<string>(type: "longtext", nullable: true),
+                    KepUrl = table.Column<string>(type: "longtext", nullable: true),
+                    Tipus = table.Column<string>(type: "longtext", nullable: true),
+                    Varos = table.Column<string>(type: "longtext", nullable: false),
+                    Megye = table.Column<string>(type: "longtext", nullable: false),
+                    Ar = table.Column<int>(type: "int", nullable: false),
+                    Berelheto = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Eladható = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ingatlanoks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ingatlanoks_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -205,11 +262,19 @@ namespace AuthApi.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ingatlanoks_UserId",
+                table: "ingatlanoks",
+                column: "UserId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "akciosHazaks");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -224,6 +289,9 @@ namespace AuthApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "ingatlanoks");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

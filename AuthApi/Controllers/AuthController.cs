@@ -1,6 +1,7 @@
 ﻿using AuthApi.Models.Dtos;
 using AuthApi.Services.IAuthService;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI.Common;
 
 namespace AuthApi.Controllers
 {
@@ -51,6 +52,35 @@ namespace AuthApi.Controllers
                 return Ok(res);
             }
             return BadRequest(res);
+        }
+
+        [HttpGet]
+
+        public async Task<ActionResult> GetAllUserController()
+        {
+            var res = await auth.GetAllUSer();
+
+            if (res != null)
+            {
+                return Ok(new { result = res, message = "Sikeres lekérdezés" });
+            }
+
+            return BadRequest(new {result = res, message = "Sikertelen  lekérdezés"});
+        }
+
+
+        [HttpGet("{id}")]
+
+        public async Task<ActionResult> GetById(string id)
+        {
+            var res = await auth.GetById(id);
+
+            if (res != null)
+            {
+                return Ok(new { result = res, message = "Sikeres lekérdezés" });
+            }
+
+            return BadRequest(new { result = res, message = "Sikertelen  lekérdezés" });
         }
     }
 }

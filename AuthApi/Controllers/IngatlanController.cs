@@ -1,4 +1,5 @@
 ﻿using AuthApi.Models;
+using AuthApi.Models.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -43,10 +44,11 @@ namespace AuthApi.Controllers
 
         //[Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<ActionResult<string>> Post([FromBody] Ingatlanok ingatlanok)
+        public async Task<ActionResult<string>> Post([FromBody] CreateIngatlanDto ingatlanok)
         {
             var adatok = new Ingatlanok
             {
+                Id = 0,
                 Cim = ingatlanok.Cim,
                 Alapterulet = ingatlanok.Alapterulet,
                 SzobakSzama = ingatlanok.SzobakSzama,
@@ -58,6 +60,9 @@ namespace AuthApi.Controllers
                 Varos = ingatlanok.Varos,
                 Megye = ingatlanok.Megye,
                 Ar = ingatlanok.Ar,
+                Berelheto =ingatlanok.Berelheto,
+                Eladható = ingatlanok.Eladható,
+                UserId = ingatlanok.UserId
             };
 
 

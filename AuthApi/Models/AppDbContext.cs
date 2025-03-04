@@ -16,8 +16,7 @@ namespace AuthApi.Models
         public DbSet<ApplicationUser> applicationUsers { get; set; } = null!;
         public DbSet<AkciosHazak> akciosHazaks { get; set; } = null!;
         public DbSet<Ingatlanok> ingatlanoks { get; set; } = null!;
-        public DbSet<Tulajdonosok> tulajdonosoks { get; set; } = null!;
-        public DbSet<BerelhetoHazak> berelhetoHazaks { get; set; } = null!;
+      
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

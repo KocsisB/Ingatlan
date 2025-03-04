@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250304101554_CreatedDb")]
-    partial class CreatedDb
+    [Migration("20250304125915_CreateDb")]
+    partial class CreateDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,51 @@ namespace AuthApi.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("AuthApi.Models.AkciosHazak", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Alapterulet")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Allapot")
+                        .HasColumnType("longtext");
+
+                    b.Property<long>("Ar")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Cim")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("EpitesVege")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KepUrl")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Megye")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("SzobakSzama")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TelekMerete")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tipus")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Varos")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("akciosHazaks");
+                });
 
             modelBuilder.Entity("AuthApi.Models.ApplicationUser", b =>
                 {
@@ -90,6 +135,65 @@ namespace AuthApi.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("AuthApi.Models.Ingatlanok", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Alapterulet")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Allapot")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Ar")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Berelheto")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Cim")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("Eladható")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("EpitesVege")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KepUrl")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Megye")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("SzobakSzama")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("TelekMerete")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Tipus")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("Varos")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ingatlanoks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -220,6 +324,17 @@ namespace AuthApi.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("AuthApi.Models.Ingatlanok", b =>
+                {
+                    b.HasOne("AuthApi.Models.ApplicationUser", "User")
+                        .WithMany("Ingatlanok")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -269,6 +384,11 @@ namespace AuthApi.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AuthApi.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Ingatlanok");
                 });
 #pragma warning restore 612, 618
         }

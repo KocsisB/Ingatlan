@@ -239,6 +239,40 @@
         }
       }
     },
+    "/auth": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/auth/{id}": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/ingatlan": {
       "get": {
         "tags": [
@@ -258,17 +292,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Ingatlanok"
+                "$ref": "#/components/schemas/CreateIngatlanDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Ingatlanok"
+                "$ref": "#/components/schemas/CreateIngatlanDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Ingatlanok"
+                "$ref": "#/components/schemas/CreateIngatlanDto"
               }
             }
           }
@@ -379,147 +413,6 @@
           }
         }
       }
-    },
-    "/api/Tulajdonos": {
-      "get": {
-        "tags": [
-          "Tulajdonos"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Tulajdonos"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tulajdonosok"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tulajdonosok"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tulajdonosok"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Tulajdonos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Tulajdonos/{id}": {
-      "get": {
-        "tags": [
-          "Tulajdonos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Tulajdonos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tulajdonosok"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tulajdonosok"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tulajdonosok"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -588,6 +481,68 @@
             "nullable": true
           },
           "roleName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateIngatlanDto": {
+        "type": "object",
+        "properties": {
+          "cim": {
+            "type": "string",
+            "nullable": true
+          },
+          "alapterulet": {
+            "type": "number",
+            "format": "double"
+          },
+          "szobakSzama": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "telekMerete": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "epitesVege": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "allapot": {
+            "type": "string",
+            "nullable": true
+          },
+          "kepUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipus": {
+            "type": "string",
+            "nullable": true
+          },
+          "varos": {
+            "type": "string",
+            "nullable": true
+          },
+          "megye": {
+            "type": "string",
+            "nullable": true
+          },
+          "ar": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "berelheto": {
+            "type": "boolean"
+          },
+          "eladható": {
+            "type": "boolean"
+          },
+          "userId": {
             "type": "string",
             "nullable": true
           }
@@ -672,6 +627,16 @@
           "ar": {
             "type": "integer",
             "format": "int32"
+          },
+          "berelheto": {
+            "type": "boolean"
+          },
+          "eladható": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -684,33 +649,6 @@
             "nullable": true
           },
           "password": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Tulajdonosok": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "ingatlanId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "nev": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "telefon": {
             "type": "string",
             "nullable": true
           }

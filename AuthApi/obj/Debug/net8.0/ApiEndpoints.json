@@ -89,9 +89,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuthApi.Controllers.TulajdonosController",
-    "Method": "Get",
-    "RelativePath": "api/Tulajdonos",
+    "ContainingType": "AuthApi.Controllers.AuthController",
+    "Method": "GetAllUserController",
+    "RelativePath": "auth",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -99,79 +99,16 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuthApi.Controllers.TulajdonosController",
-    "Method": "Post",
-    "RelativePath": "api/Tulajdonos",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "tulajdonosok",
-        "Type": "AuthApi.Models.Tulajdonosok",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "AuthApi.Controllers.TulajdonosController",
-    "Method": "DeleteById",
-    "RelativePath": "api/Tulajdonos",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AuthApi.Controllers.TulajdonosController",
-    "Method": "GetId",
-    "RelativePath": "api/Tulajdonos/{id}",
+    "ContainingType": "AuthApi.Controllers.AuthController",
+    "Method": "GetById",
+    "RelativePath": "auth/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AuthApi.Controllers.TulajdonosController",
-    "Method": "UpdateHouse",
-    "RelativePath": "api/Tulajdonos/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "tulajdonosok",
-        "Type": "AuthApi.Models.Tulajdonosok",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -245,7 +182,7 @@
     "Parameters": [
       {
         "Name": "ingatlanok",
-        "Type": "AuthApi.Models.Ingatlanok",
+        "Type": "AuthApi.Models.Dtos.CreateIngatlanDto",
         "IsRequired": true
       }
     ],

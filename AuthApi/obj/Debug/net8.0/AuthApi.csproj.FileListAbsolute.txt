@@ -424,3 +424,4 @@ D:\Suli\Vizsga\IngatlanBackend\AuthApi\obj\Debug\net8.0\staticwebassets.upToDate
 D:\Suli\Vizsga\IngatlanBackend\AuthApi\obj\Debug\net8.0\AuthApi.csproj.Up2Date
 D:\Suli\Vizsga\IngatlanBackend\AuthApi\obj\Debug\net8.0\AuthApi.genruntimeconfig.cache
 D:\Suli\Vizsga\IngatlanBackend\AuthApi\obj\Debug\net8.0\ref\AuthApi.dll
+D:\Suli\Vizsga\IngatlanBackend\AuthApi\obj\Debug\net8.0\AuthApi.sourcelink.json

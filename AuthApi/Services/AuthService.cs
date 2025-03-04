@@ -1,8 +1,10 @@
 ﻿using AuthApi.Models;
 using AuthApi.Models.Dtos;
 using AuthApi.Services.IAuthService;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MySqlX.XDevAPI.Common;
 
 namespace AuthApi.Services
 {
@@ -40,6 +42,18 @@ namespace AuthApi.Services
             }
 
             return new { result = "", message = "Sikertelen hozzárendelés." };
+        }
+
+        public async Task<object> GetAllUSer()
+        {
+           var users = await _dbContext.applicationUsers.Include(x=> x.Ingatlanok).ToListAsync();
+            return users;
+        }
+
+        public async Task<object> GetById(string id)
+        {
+            var user = await _dbContext.applicationUsers.FindAsync(id);
+            return user;
         }
 
         public async Task<object> Login(LoginIUserDto loginUserDto)
