@@ -74,6 +74,13 @@
     outline: none;
 }
 
+.psw {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 8px;
+}
+
 .form-container {
     position: absolute;
     top: 0;

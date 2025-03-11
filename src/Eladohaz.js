@@ -23,7 +23,7 @@ const PropertySearch = () => {
       setError(false);
 
       try {
-        const response = await fetch("http://10.169.85.161:5081/ingatlan");
+        const response = await fetch("http://localhost:5081/ingatlan");
 
         if (!response.ok) {
           setError("Hiba az adatok lekérésekor");
