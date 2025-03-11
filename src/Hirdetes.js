@@ -4,6 +4,7 @@ import "./Hirdetes.css";
 export default function Hirdetes() {
   const [hirdetes, setHirdetes] = useState({
     cim: '',
+    leiras: '',
     kepUrl: '',
     alapterulet: '',
     szobakSzama: '',
@@ -43,7 +44,7 @@ export default function Hirdetes() {
 
     try {
       console.log(formData);
-      const response = await fetch("http://10.169.85.161:5081/ingatlan", {
+      const response = await fetch("http://192.168.10.113:5149/api/Ingatlanok", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -55,6 +56,7 @@ export default function Hirdetes() {
         alert("A ház sikeresen hozzáadva!");
         setHirdetes({
           cim: '',
+          leiras: '',
           kepUrl: '',
           alapterulet: '',
           szobakSzama: '',
@@ -77,11 +79,11 @@ export default function Hirdetes() {
 
   return (
     <div className="container-hirdetes">
-      <h2 className="form-title">Hírdetés feladása</h2>
+      <h2 className="form-title">Eladó Ház Hozzáadása</h2>
       <form id="house-form" onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
           <label htmlFor="haz-cim" className="form-label">
-            Utca, Házszám
+            Ház címe
           </label>
           <input
             type="text"
@@ -95,8 +97,23 @@ export default function Hirdetes() {
         </div>
 
         <div className="form-group">
+          <label htmlFor="haz-leiras" className="form-label">
+            Leírás
+          </label>
+          <textarea
+            className="formControl"
+            id="haz-leiras"
+            rows="3"
+            name="leiras"
+            value={hirdetes.leiras}
+            onChange={handleInputChange}
+            required
+          ></textarea>
+        </div>
+
+        <div className="form-group">
           <label htmlFor="alapterulet" className="form-label">
-            Ház alapterülete (m²)
+            Alapterület (m²)
           </label>
           <input
             type="number"
@@ -201,7 +218,7 @@ export default function Hirdetes() {
 
         <div className="form-group">
           <label htmlFor="megye" className="form-label">
-            Vármegye
+            Megye
           </label>
           <input
             type="text"
@@ -245,7 +262,7 @@ export default function Hirdetes() {
         </div>
 
         <button type="submit" className="submit-button" value="save">
-          Hírdetés hozzáadása
+          Ház hozzáadása
         </button>
       </form>
     </div>

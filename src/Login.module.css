@@ -75,10 +75,10 @@
 }
 
 .psw {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-        gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
 }
 
 .form-container {
@@ -87,6 +87,7 @@
     height: 100%;
     width: 50%;
     transition: all 0.6s ease-in-out;
+    overflow-y: auto; /* Add this line to enable scrolling */
 }
 
 .sign-in {

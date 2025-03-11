@@ -12,6 +12,7 @@ import Munkatarsaink from './Munkatarsaink';
 import HazModositas from './HazModositas';
 import SignUp from './SignUp';
 import Akcioshazak from './Akcioshazak';
+import AkciosModositas from './AkciosModositas';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/berelhetohazak' element={<Berelhetohaz/>}/>
         <Route path='/ugynokok' element={<Munkatarsaink/>}/>
         <Route path='/hazmodositas/:id' element={<HazModositas/>}/>
+        <Route path='/akciosmodositas/:id' element={<AkciosModositas/>}/>
       </Routes>   
       <Footer/>     
 
