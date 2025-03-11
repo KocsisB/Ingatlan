@@ -1,6 +1,8 @@
 using AuthApi.Models;
 using AuthApi.Services;
 using AuthApi.Services.IAuthService;
+using AuthApi.Services.IEmail;
+using EmailApiKedd.Services;
 using Microsoft.AspNetCore.Identity;
 
 namespace AuthApi
@@ -15,6 +17,7 @@ namespace AuthApi
             builder.Services.AddDbContext<AppDbContext>();
             builder.Services.AddScoped<IAuth, AuthService>();
             builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
+            builder.Services.AddScoped<IEmailInterface, Email>();
 
             builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("AuthSettings:JwtOptions"));
 
