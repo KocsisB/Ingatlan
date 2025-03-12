@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import './Berelhetohaz.css';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./Eladohaz.css";
+import { useNavigate } from "react-router-dom";
 
-const PropertyCard = () => {
+const PropertySearch = () => {
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [rooms, setRooms] = useState("");
@@ -18,13 +18,14 @@ const PropertyCard = () => {
   const [ownerError, setOwnerError] = useState(false);
   const [modalClosing, setModalClosing] = useState(false);
 
+  const [user, setUser] = useState(null); // Felhasználói adatok
+
   useEffect(() => {
     const fetchProperties = async () => {
       setError(false);
 
       try {
-        //http://192.168.182.11:5149/api/Ingatlanok
-        const response = await fetch("http://192.168.10.113:5149/api/Ingatlanok");
+        const response = await fetch("http://192.168.10.113:5081/ingatlan");
 
         if (!response.ok) {
           setError("Hiba az adatok lekérésekor");
@@ -59,8 +60,23 @@ const PropertyCard = () => {
       }
     };
 
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("http://192.168.10.113:5081/auth"); // Cseréld le az URL-t a valós API végpontra
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
+        } else {
+          console.error('Error fetching user data:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
     fetchProperties();
     fetchOwners();
+    fetchUserData();
   }, [location, price, rooms, condition, minSize]);
 
   const handleSearch = (e) => {
@@ -116,7 +132,7 @@ const PropertyCard = () => {
   const handleDelete = (id) => {
     if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`http:/192.168.10.113:5149/api/Ingatlanok?id= ${id}`)
+        .delete(`http://192.168.10.113:5081/ingatlanok?id=${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");
@@ -230,21 +246,23 @@ const PropertyCard = () => {
                   Több
                 </button>
 
-                <button
-                  className="card-button"
-                  onClick={() => handleDelete(property.id)}
-                >
-                  Törlés
-                </button>
+                {(user && user.isAdmin) || (user && user.id === property.tulajdonosId) ? (
+                  <>
+                    <button
+                      className="card-button"
+                      onClick={() => handleDelete(property.id)}
+                    >
+                      Törlés
+                    </button>
 
-                <button 
-                  className="card-button"
-                  onClick={() => navigate(`/hazmodositas/${property.id}`)}
-                >
-                  Ház módosítása
-                </button>
-
-               
+                    <button 
+                      className="card-button"
+                      onClick={() => navigate(`/hazmodositas/${property.id}`)}
+                    >
+                      Ház módosítása
+                    </button>
+                  </>
+                ) : null}
               </div>
             </div>
           ))
@@ -286,4 +304,4 @@ const PropertyCard = () => {
   );
 };
 
-export default PropertyCard;
+export default PropertySearch;

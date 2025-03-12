@@ -22,7 +22,7 @@ export default function Hazmodositas() {
     // Fetch property data when component mounts
     const fetchProperty = async () => {
       try {
-        const response = await axios.get(`http://192.168.10.113:5149/api/Ingatlanok/${id}`);
+        const response = await axios.get(`http://192.168.10.113:5081/ingatlan/${id}`);
         setProperty(response.data);
       } catch (error) {
         console.error("Error fetching property data:", error);
@@ -38,7 +38,7 @@ export default function Hazmodositas() {
         ...property,
       };
 
-      const response = await axios.put(`http://192.168.10.113:5149/api/Ingatlanok/${id}`, updatedProperty);
+      const response = await axios.put(`http://192.168.10.113:5081/ingatlan/${id}`, updatedProperty);
       console.log(response);
       alert("Sikeres frissítés!");
       navigate('/eladohazak');

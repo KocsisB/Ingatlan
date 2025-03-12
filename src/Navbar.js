@@ -20,21 +20,28 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    // API hívás a felhasználói adatok lekéréséhez
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch('https://a192.168.10.113:5081/auth'); // Cseréld le az URL-t a valós API végpontra
-        if (response.ok) {
-          const userData = await response.json();
-          setUser(userData);
-        } else {
-          console.error('Error fetching user data:', response.statusText);
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser)); // Felhasználói adatok betöltése a localStorage-ból
+    } else {
+      const fetchUserData = async () => {
+        try {
+          const response = await fetch('http://192.168.10.113:5081/auth'); 
+          if (response.ok) {
+            const userData = await response.json();
+            setUser(userData);
+            localStorage.setItem('user', JSON.stringify(userData)); // Felhasználói adatok mentése a localStorage-ba
+            console.log('Sikeres bejelentkezés:', userData);
+            window.location.reload(); // Oldal frissítése bejelentkezés után
+          } else {
+            console.error('Error fetching user data:', response.statusText);
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
         }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-    fetchUserData();
+      };
+      fetchUserData();
+    }
   }, []);
 
   const handleDropdownClick = (e) => {
@@ -42,18 +49,12 @@ export default function Navbar() {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('https://api.example.com/logout', { method: 'POST' }); // Cseréld le az URL-t a valós API végpontra
-      if (response.ok) {
-        setUser(null); // Felhasználói adatok törlése a state-ből
-        setDropdownOpen(false); // Dropdown bezárása
-      } else {
-        console.error('Error logging out:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
+  const handleLogout = () => {
+    setUser(null); // Felhasználói adatok törlése a state-ből
+    localStorage.removeItem('user'); // Felhasználói adatok törlése a localStorage-ból
+    setDropdownOpen(false); // Dropdown bezárása
+    console.log('Sikeres kijelentkezés');
+    window.location.reload(); // Oldal frissítése kijelentkezés után
   };
 
   return (
@@ -111,6 +112,9 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
+              {user && (
+                <button className="btn btn-outline-light ms-3" onClick={handleLogout}>Kijelentkezés</button>
+              )}
             </div>
           </div>
         </div>

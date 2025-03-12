@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import "./Hirdetes.css";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Hirdetes.css';
 
 export default function Hirdetes() {
+  const [user, setUser] = useState(null);  // Felhasználói adatok állapota
   const [hirdetes, setHirdetes] = useState({
     cim: '',
     leiras: '',
@@ -16,6 +18,29 @@ export default function Hirdetes() {
     megye: '',
     ar: ''
   });
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // API hívás a felhasználói adatok lekéréséhez
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('http://192.168.10.113:5081/auth'); 
+        if (response.ok) {
+          const userData = await response.json();
+          setUser(userData);
+        } else {
+          console.error('Error fetching user data:', response.statusText);
+          navigate('/bejelentkezes'); // Átirányítás a bejelentkezési oldalra, ha nem sikeres az API hívás
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        navigate('/bejelentkezes'); // Átirányítás a bejelentkezési oldalra hiba esetén
+      }
+    };
+
+    fetchUserData();
+  }, [navigate]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +69,7 @@ export default function Hirdetes() {
 
     try {
       console.log(formData);
-      const response = await fetch("http://192.168.10.113:5149/api/Ingatlanok", {
+      const response = await fetch("http://192.168.10.113:5081/ingatlan", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -76,6 +101,10 @@ export default function Hirdetes() {
       alert("Hiba történt! Próbáld meg újra.");
     }
   };
+
+  if (!user) {
+    return <div>Loading...</div>; // Vagy egy betöltési animáció helyett
+  }
 
   return (
     <div className="container-hirdetes">
