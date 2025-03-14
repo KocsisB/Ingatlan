@@ -720,3 +720,7 @@ D:\Suli\Vizsga\IngatlanBackend\Ingatlan\AuthApi\bin\Debug\net8.0\MimeKit.dll
 D:\Suli\Vizsga\IngatlanBackend\Ingatlan\AuthApi\bin\Debug\net8.0\SmtpServer.dll
 D:\Suli\Vizsga\IngatlanBackend\Ingatlan\AuthApi\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\Suli\Vizsga\IngatlanBackend\Ingatlan\AuthApi\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Suli\Vizsga\IngatlanBackend\Ingatlan\AuthApi\bin\Debug\net8.0\System.IO.Pipelines.dll
+D:\Suli\Vizsga\IngatlanBackend\Ingatlan\AuthApi\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+D:\Suli\Vizsga\IngatlanBackend\Ingatlan\AuthApi\bin\Debug\net8.0\System.Text.Json.dll
+D:\Suli\Vizsga\IngatlanBackend\Ingatlan\AuthApi\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll

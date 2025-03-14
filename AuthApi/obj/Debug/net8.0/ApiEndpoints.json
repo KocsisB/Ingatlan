@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "akcios",
-        "Type": "AuthApi.Models.AkciosHazak",
+        "Type": "AuthApi.Models.Akcioshazak",
         "IsRequired": true
       }
     ],
@@ -82,7 +82,7 @@
       },
       {
         "Name": "akcios",
-        "Type": "AuthApi.Models.AkciosHazak",
+        "Type": "AuthApi.Models.Akcioshazak",
         "IsRequired": true
       }
     ],

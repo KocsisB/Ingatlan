@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Text.Json.Serialization;
 
 namespace AuthApi.Models
 {
@@ -6,6 +7,5 @@ namespace AuthApi.Models
     {
         public string? Fullname { get; set; }
         public DateTime BirthDate { get; set; }
-        public virtual ICollection<Ingatlanok> Ingatlanok { get; set; } = new List<Ingatlanok>();
     }
 }

@@ -10,6 +10,7 @@ namespace AuthApi.Services
 {
     public class AuthService : IAuth
     {
+
         private readonly AppDbContext _dbContext;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
@@ -46,7 +47,7 @@ namespace AuthApi.Services
 
         public async Task<object> GetAllUSer()
         {
-           var users = await _dbContext.applicationUsers.Include(x=> x.Ingatlanok).ToListAsync();
+           var users = await _dbContext.applicationUsers.ToListAsync();
             return users;
         }
 
@@ -78,6 +79,7 @@ namespace AuthApi.Services
         {
             var user = new ApplicationUser
             {
+                Fullname = createUserDto.Fullname,
                 UserName = createUserDto.UserName,
                 Email = createUserDto.Email,
                 BirthDate = createUserDto.BirthDate,

@@ -10,9 +10,9 @@ namespace AuthApi.Controllers
     [ApiController]
     public class AkciosHazakController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly DlblakaskulcsContext _context;
 
-        public AkciosHazakController(AppDbContext context)
+        public AkciosHazakController(DlblakaskulcsContext context)
         {
             _context = context;
         }
@@ -20,7 +20,7 @@ namespace AuthApi.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            var akciok = await _context.akciosHazaks.ToListAsync();
+            var akciok = await _context.Akcioshazaks.ToListAsync();
             return Ok(akciok);
         }
 
@@ -28,7 +28,7 @@ namespace AuthApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetId(int id)
         {
-            var akciosId = _context.akciosHazaks.Find(id);
+            var akciosId = _context.Akcioshazaks.Find(id);
             if (akciosId == null)
             {
                 return NotFound();
@@ -38,27 +38,18 @@ namespace AuthApi.Controllers
 
         //[Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<ActionResult<string>> Post([FromBody] AkciosHazak akcios)
+        public async Task<ActionResult<string>> Post([FromBody] Akcioshazak akcios)
         {
-            var adatok = new AkciosHazak
+            var adatok = new Akcioshazak
             {
-                Cim = akcios.Cim,
-                Alapterulet = akcios.Alapterulet,
-                SzobakSzama = akcios.SzobakSzama,
-                TelekMerete = akcios.TelekMerete,
-                EpitesVege = akcios.EpitesVege,
-                Allapot = akcios.Allapot,
-                KepUrl = akcios.KepUrl,
-                Tipus = akcios.Tipus,
-                Varos = akcios.Varos,
-                Megye = akcios.Megye,
-                Ar = akcios.Ar
+                AkciosAr = akcios.AkciosAr,
+                IngatlanId = akcios.IngatlanId
             };
 
 
             if (adatok != null)
             {
-                await _context.akciosHazaks.AddAsync(adatok);
+                await _context.Akcioshazaks.AddAsync(adatok);
                 await _context.SaveChangesAsync();
                 return Ok(new { Message = "A házat sikeresen feltöltötte!" });
             }
@@ -69,10 +60,10 @@ namespace AuthApi.Controllers
         [HttpDelete]
         public async Task<ActionResult> DeleteById(int id)
         {
-            var haztorles = await _context.akciosHazaks.FirstOrDefaultAsync(haztorles => haztorles.Id == id);
+            var haztorles = await _context.Akcioshazaks.FirstOrDefaultAsync(haztorles => haztorles.Id == id);
             if (haztorles != null)
             {
-                _context.akciosHazaks.Remove(haztorles);
+                _context.Akcioshazaks.Remove(haztorles);
                 await _context.SaveChangesAsync();
                 return Ok(new { Message = "Sikeres tölrés" });
             }
@@ -81,7 +72,7 @@ namespace AuthApi.Controllers
 
         //[Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateHouse(int id, AkciosHazak akcios)
+        public async Task<IActionResult> UpdateHouse(int id, Akcioshazak akcios)
         {
             if (id != akcios.Id)
             {

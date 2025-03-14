@@ -4,6 +4,7 @@ using AuthApi.Services.IAuthService;
 using AuthApi.Services.IEmail;
 using EmailApiKedd.Services;
 using Microsoft.AspNetCore.Identity;
+using System.Text.Json.Serialization;
 
 namespace AuthApi
 {
@@ -14,14 +15,18 @@ namespace AuthApi
             var builder = WebApplication.CreateBuilder(args);
 
 
+            builder.Services.AddDbContext<DlblakaskulcsContext>();
             builder.Services.AddDbContext<AppDbContext>();
             builder.Services.AddScoped<IAuth, AuthService>();
             builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
             builder.Services.AddScoped<IEmailInterface, Email>();
 
             builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("AuthSettings:JwtOptions"));
+            builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>()
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+               .AddEntityFrameworkStores<AppDbContext>()
+               .AddEntityFrameworkStores<DlblakaskulcsContext>()
                .AddDefaultTokenProviders();
 
             var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";

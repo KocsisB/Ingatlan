@@ -1,5 +1,6 @@
 ﻿using AuthApi.Models.Dtos;
 using AuthApi.Services.IAuthService;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MySqlX.XDevAPI.Common;
 
@@ -25,8 +26,7 @@ namespace AuthApi.Controllers
             {
                 return StatusCode(201, res);
             }
-
-            return BadRequest(res);
+            return BadRequest();
 
         }
 

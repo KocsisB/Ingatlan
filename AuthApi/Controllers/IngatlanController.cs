@@ -11,9 +11,9 @@ namespace AuthApi.Controllers
     [ApiController]
     public class IngatlanController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly DlblakaskulcsContext _context;
 
-        public IngatlanController(AppDbContext context)
+        public IngatlanController(DlblakaskulcsContext context)
         {
             _context = context;
         }
@@ -21,7 +21,7 @@ namespace AuthApi.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            var varosok = await _context.ingatlanoks.ToListAsync();
+            var varosok = await _context.Ingatlanoks.ToListAsync();
             if (varosok != null)
             {
                 return Ok(varosok);
@@ -34,7 +34,7 @@ namespace AuthApi.Controllers
         public IActionResult GetId(int id)
         {
            
-            var ingatlanId = _context.ingatlanoks.Find(id);
+            var ingatlanId = _context.Ingatlanoks.Find(id);
             if (ingatlanId == null)
             {
                 return NotFound();
@@ -68,7 +68,7 @@ namespace AuthApi.Controllers
 
             if (adatok != null)
             {
-                await _context.ingatlanoks.AddAsync(adatok);
+                await _context.Ingatlanoks.AddAsync(adatok);
                 await _context.SaveChangesAsync();
                 return Ok(new { Message = "A házat sikeresen feltöltötte!" });
             }
@@ -80,10 +80,10 @@ namespace AuthApi.Controllers
         [HttpDelete]
         public async Task<ActionResult> DeleteById(int id)
         {
-            var haztorles = await _context.ingatlanoks.FirstOrDefaultAsync(haztorles => haztorles.Id == id);
+            var haztorles = await _context.Ingatlanoks.FirstOrDefaultAsync(haztorles => haztorles.Id == id);
             if (haztorles != null)
             {
-                _context.ingatlanoks.Remove(haztorles);
+                _context.Ingatlanoks.Remove(haztorles);
                 await _context.SaveChangesAsync();
                 return Ok(new { Message = "Sikeres tölrés" });
             }
