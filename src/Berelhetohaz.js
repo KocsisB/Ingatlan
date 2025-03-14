@@ -25,44 +25,26 @@ const PropertySearch = () => {
       setError(false);
 
       try {
-        const response = await fetch("http://192.168.10.113:5081/ingatlan");
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/ingatlan`);
 
-        if (!response.ok) {
+        if (response.statusText !== "OK") {
           setError("Hiba az adatok lekérésekor");
           return;
         }
 
-        const data = await response.json();
-        console.log("Properties fetched");
+        console.log("Properties fetched", response);
 
-        setProperties(data);
-        setFilteredProperties(data);
+        setProperties(response.data);
+        setFilteredProperties(response.data);
       } catch (error) {
         setError("Hálózati vagy fetch hiba: " + error.message);
       }
     };
 
-    const fetchOwners = async () => {
-      setOwnerError(false);
-
-      try {
-        const response = await fetch("http://192.168.10.113:5149/api/Tulajdonos");
-
-        if (!response.ok) {
-          setOwnerError("Hiba az adatok lekérésekor");
-          return;
-        }
-
-        const data = await response.json();
-        setOwners(data);
-      } catch (error) {
-        setOwnerError("Hálózati vagy fetch hiba a tulajdonosok lekérésekor: " + error.message);
-      }
-    };
-
+    
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://192.168.10.113:5081/auth"); // Cseréld le az URL-t a valós API végpontra
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth`);
         if (response.ok) {
           const userData = await response.json();
           setUser(userData);
@@ -75,7 +57,6 @@ const PropertySearch = () => {
     };
 
     fetchProperties();
-    fetchOwners();
     fetchUserData();
   }, [location, price, rooms, condition, minSize]);
 
@@ -132,7 +113,7 @@ const PropertySearch = () => {
   const handleDelete = (id) => {
     if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`http://192.168.10.113:5081/ingatlanok?id=${id}`)
+        .delete(`${process.env.REACT_APP_API_URL}/ingatlanok?id=${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");

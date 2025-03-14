@@ -25,7 +25,7 @@ import { useNavigate } from "react-router-dom";
             setError(false);
       
             try {
-              const response = await fetch("http://192.168.10.113:5149/api/Akciók");
+              const response = await fetch(`${process.env.REACT_APP_API_URL}/akcioshazak`);
       
               if (!response.ok) {
                 setError("Hiba az adatok lekérésekor");
@@ -46,7 +46,7 @@ import { useNavigate } from "react-router-dom";
             setOwnerError(false);
       
             try {
-              const response = await fetch("http://192.168.10.113:5149/api/Tulajdonos");
+              const response = await fetch(`${process.env.REACT_APP_API_URL}/Tulajdonos`);
       
               if (!response.ok) {
                 setOwnerError("Hiba az adatok lekérésekor");
@@ -117,7 +117,7 @@ import { useNavigate } from "react-router-dom";
         const handleDelete = (id) => {
           if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
             axios
-              .delete(`http://192.168.10.113:5149/api/Akciók?id=${id}`)
+              .delete(`${process.env.REACT_APP_API_URL}/akcioshazak?id=${id}`)
               .then((res) => {
                 console.log(res);
                 alert("Sikeres törlés!");

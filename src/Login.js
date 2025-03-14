@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
   const [isActive, setIsActive] = useState(false);
@@ -48,7 +49,7 @@ const Login = () => {
     };
 
     try {
-      const response = await fetch(`http://192.168.10.113:5081/auth/Register`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/Register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -66,8 +67,7 @@ const Login = () => {
     }
   };
 
-  const handleLoginSubmit = async (e) => {
-    e.preventDefault();
+  const handleLoginSubmit = async () => {
 
     const user = {
       userName: loginUsername,
@@ -75,19 +75,19 @@ const Login = () => {
     };
 
     try {
-      const response = await fetch(`http://192.168.10.113:5081/auth/Login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(user)
-      });
-
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/Login`,user);
+      console.log(response);
+      
+      if(response.data.token){
+        console.log(response.data.result)
+        localStorage.setItem('user', JSON.stringify(response.data.result)); // Felhasználói adatok mentése a localStorage-ba
+        window.location.href="/";
+      }
       if (!response.ok) {
         throw new Error("Login failed");
       }
 
-      navigate("/");
+      //navigate("/");
     } catch (error) {
       setErrorMessage("Hiba történt a bejelentkezés során");
     }
@@ -100,16 +100,16 @@ const Login = () => {
         <form onSubmit={handleRegisterSubmit}>
           <h1>Fiók létrehozása</h1>
           <div className={styles['social-icons']}>
-            <a href="#" className={styles.icon}>
+            <a href="https://gmail.com/" className={styles.icon}>
               <i className="fa-brands fa-google-plus-g" />
             </a>
-            <a href="#" className={styles.icon}>
+            <a href="https://www.facebook.com/" className={styles.icon}>
               <i className="fa-brands fa-facebook-f" />
             </a>
-            <a href="#" className={styles.icon}>
+            <a href="https://github.com/" className={styles.icon}>
               <i className="fa-brands fa-github" />
             </a>
-            <a href="#" className={styles.icon}>
+            <a href="https://hu.linkedin.com/" className={styles.icon}>
               <i className="fa-brands fa-linkedin-in" />
             </a>
           </div>
@@ -161,7 +161,7 @@ const Login = () => {
             </div>
             <div>
               <button type="button" className="toggle-password" onClick={togglePasswordVisibility}>
-                !
+              <i class="bi bi-eye-fill"></i>
               </button>
             </div>
           </div>
@@ -179,19 +179,22 @@ const Login = () => {
 
       {/* Bejelentkezési form */}
       <div className={`${styles['form-container']} ${styles['sign-in']}`}>
-        <form onSubmit={handleLoginSubmit}>
+        <form onSubmit={(e)=> {
+          e.preventDefault();
+          handleLoginSubmit();
+        }}>
           <h1>Bejelentkezés</h1>
           <div className={styles['social-icons']}>
-            <a href="#" className={styles.icon}>
+            <a href="https://mail.google.com/" className={styles.icon}>
               <i className="fa-brands fa-google-plus-g" />
             </a>
-            <a href="#" className={styles.icon}>
+            <a href="https://www.facebook.com/" className={styles.icon}>
               <i className="fa-brands fa-facebook-f" />
             </a>
-            <a href="#" className={styles.icon}>
+            <a href="https://github.com/" className={styles.icon}>
               <i className="fa-brands fa-github" />
             </a>
-            <a href="#" className={styles.icon}>
+            <a href="https://hu.linkedin.com/" className={styles.icon}>
               <i className="fa-brands fa-linkedin-in" />
             </a>
           </div>

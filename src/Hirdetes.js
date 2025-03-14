@@ -25,7 +25,7 @@ export default function Hirdetes() {
     // API hívás a felhasználói adatok lekéréséhez
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://192.168.10.113:5081/auth'); 
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth`); 
         if (response.ok) {
           const userData = await response.json();
           setUser(userData);
@@ -69,7 +69,7 @@ export default function Hirdetes() {
 
     try {
       console.log(formData);
-      const response = await fetch("http://192.168.10.113:5081/ingatlan", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}ingatlan`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {

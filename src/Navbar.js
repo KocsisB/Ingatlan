@@ -21,26 +21,9 @@ export default function Navbar() {
 
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
+    console.log(savedUser)
     if (savedUser) {
       setUser(JSON.parse(savedUser)); // Felhasználói adatok betöltése a localStorage-ból
-    } else {
-      const fetchUserData = async () => {
-        try {
-          const response = await fetch('http://192.168.10.113:5081/auth'); 
-          if (response.ok) {
-            const userData = await response.json();
-            setUser(userData);
-            localStorage.setItem('user', JSON.stringify(userData)); // Felhasználói adatok mentése a localStorage-ba
-            console.log('Sikeres bejelentkezés:', userData);
-            window.location.reload(); // Oldal frissítése bejelentkezés után
-          } else {
-            console.error('Error fetching user data:', response.statusText);
-          }
-        } catch (error) {
-          console.error('Error fetching user data:', error);
-        }
-      };
-      fetchUserData();
     }
   }, []);
 

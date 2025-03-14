@@ -204,6 +204,7 @@
     transform: translateX(200%);
 }
 
+
 /* 🟢 RESZPONZÍV DESIGN 🟢 */
 @media (max-width: 768px) {
     .container {
