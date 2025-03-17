@@ -80,7 +80,7 @@ export default function Hirdetes() {
       if (response.ok) {
         alert("A ház sikeresen hozzáadva!");
       
-        
+        //proba
         setHirdetes({
           cim: '',
           leiras: '',
