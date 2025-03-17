@@ -199,7 +199,7 @@ const PropertySearch = () => {
           filteredProperties.map((property) => (
             <div className="card" key={property.id}>
               <img
-                src={property.kepUrl}
+                src={process.env.REACT_APP_API_URL+property.kepUrl}
                 alt="Ingatlan"
                 className="card-image"
               />

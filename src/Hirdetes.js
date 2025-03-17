@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Hirdetes.css';
+import axios from 'axios';
 
 export default function Hirdetes() {
   const [user, setUser] = useState(null);  // Felhasználói adatok állapota
   const [hirdetes, setHirdetes] = useState({
     cim: '',
     leiras: '',
-    kepUrl: '',
+    kep: '',
     alapterulet: '',
     szobakSzama: '',
     telekMerete: '',
@@ -16,7 +17,8 @@ export default function Hirdetes() {
     tipus: '',
     varos: '',
     megye: '',
-    ar: ''
+    ar: '',
+    UserId:''
   });
 
   const navigate = useNavigate();
@@ -53,6 +55,7 @@ export default function Hirdetes() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    
     const formData = {
       cim: hirdetes.cim,
       alapterulet: Number(hirdetes.alapterulet),
@@ -64,25 +67,24 @@ export default function Hirdetes() {
       varos: hirdetes.varos,
       megye: hirdetes.megye,
       ar: Number(hirdetes.ar),
-      kepUrl: hirdetes.kepUrl
+      berelheto : true,
+      eladható : true,
+      kep : hirdetes.kep,
+      UserId: JSON.parse(localStorage.getItem("user")).id
     };
 
     try {
       console.log(formData);
-      const response = await fetch(`${process.env.REACT_APP_API_URL}ingatlan`, {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/ingatlan`, formData)      
 
       if (response.ok) {
         alert("A ház sikeresen hozzáadva!");
+      
+        
         setHirdetes({
           cim: '',
           leiras: '',
-          kepUrl: '',
+          kep: '',
           alapterulet: '',
           szobakSzama: '',
           telekMerete: '',
@@ -91,7 +93,8 @@ export default function Hirdetes() {
           tipus: '',
           varos: '',
           megye: '',
-          ar: ''
+          ar: '',
+          UserId:''
         });
       } else {
         throw new Error("Hiba történt a kérés során: ", response.status);
@@ -280,15 +283,17 @@ export default function Hirdetes() {
             Képek
           </label>
           <input
-            type="text"
+            type= "file"
             className="formControl"
             id="haz-kepek"
-            name="kepUrl"
-            value={hirdetes.kepUrl}
+            name="kep"
+            value={hirdetes.kep}
             onChange={handleInputChange}
             required
           />
         </div>
+
+        <input type="checkbox" />
 
         <button type="submit" className="submit-button" value="save">
           Ház hozzáadása
