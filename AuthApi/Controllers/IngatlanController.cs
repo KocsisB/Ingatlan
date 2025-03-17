@@ -44,8 +44,27 @@ namespace AuthApi.Controllers
 
         //[Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<ActionResult<string>> Post([FromBody] CreateIngatlanDto ingatlanok)
+        public async Task<ActionResult<string>> Post([FromForm] CreateIngatlanDto ingatlanok)
         {
+            string kepUrl = null;
+
+            if (ingatlanok.Kep != null && ingatlanok.Kep.Length > 0)
+            {
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                if (!Directory.Exists(uploads))
+                {
+                    Directory.CreateDirectory(uploads);
+                }
+
+                var fileName = Path.GetFileName(ingatlanok.Kep.FileName);
+                var filePath = Path.Combine(uploads, fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ingatlanok.Kep.CopyToAsync(stream);
+                }
+                kepUrl = $"/images/{fileName}";
+            }
+
             var adatok = new Ingatlanok
             {
                 Id = 0,
@@ -55,16 +74,15 @@ namespace AuthApi.Controllers
                 TelekMerete = ingatlanok.TelekMerete,
                 EpitesVege = ingatlanok.EpitesVege,
                 Allapot = ingatlanok.Allapot,
-                KepUrl = ingatlanok.KepUrl,
+                KepUrl = kepUrl,
                 Tipus = ingatlanok.Tipus,
                 Varos = ingatlanok.Varos,
                 Megye = ingatlanok.Megye,
                 Ar = ingatlanok.Ar,
-                Berelheto =ingatlanok.Berelheto,
+                Berelheto = ingatlanok.Berelheto,
                 Eladható = ingatlanok.Eladható,
                 UserId = ingatlanok.UserId
             };
-
 
             if (adatok != null)
             {
@@ -72,9 +90,9 @@ namespace AuthApi.Controllers
                 await _context.SaveChangesAsync();
                 return Ok(new { Message = "A házat sikeresen feltöltötte!" });
             }
-            return NotFound(new { Message = "Az adtok nem felelnek meg!" });
-
+            return NotFound(new { Message = "Az adatok nem felelnek meg!" });
         }
+
 
         //[Authorize(Roles = "Admin")]
         [HttpDelete]

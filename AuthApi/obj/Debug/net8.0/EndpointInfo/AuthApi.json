@@ -325,19 +325,103 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateIngatlanDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateIngatlanDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateIngatlanDto"
+                "type": "object",
+                "properties": {
+                  "Cim": {
+                    "type": "string"
+                  },
+                  "Alapterulet": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "SzobakSzama": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "TelekMerete": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "EpitesVege": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Allapot": {
+                    "type": "string"
+                  },
+                  "Tipus": {
+                    "type": "string"
+                  },
+                  "Varos": {
+                    "type": "string"
+                  },
+                  "Megye": {
+                    "type": "string"
+                  },
+                  "Ar": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Berelheto": {
+                    "type": "boolean"
+                  },
+                  "Eladható": {
+                    "type": "boolean"
+                  },
+                  "UserId": {
+                    "type": "string"
+                  },
+                  "Kep": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Cim": {
+                  "style": "form"
+                },
+                "Alapterulet": {
+                  "style": "form"
+                },
+                "SzobakSzama": {
+                  "style": "form"
+                },
+                "TelekMerete": {
+                  "style": "form"
+                },
+                "EpitesVege": {
+                  "style": "form"
+                },
+                "Allapot": {
+                  "style": "form"
+                },
+                "Tipus": {
+                  "style": "form"
+                },
+                "Varos": {
+                  "style": "form"
+                },
+                "Megye": {
+                  "style": "form"
+                },
+                "Ar": {
+                  "style": "form"
+                },
+                "Berelheto": {
+                  "style": "form"
+                },
+                "Eladható": {
+                  "style": "form"
+                },
+                "UserId": {
+                  "style": "form"
+                },
+                "Kep": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -723,68 +807,6 @@
             "nullable": true
           },
           "roleName": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateIngatlanDto": {
-        "type": "object",
-        "properties": {
-          "cim": {
-            "type": "string",
-            "nullable": true
-          },
-          "alapterulet": {
-            "type": "number",
-            "format": "double"
-          },
-          "szobakSzama": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "telekMerete": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "epitesVege": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "allapot": {
-            "type": "string",
-            "nullable": true
-          },
-          "kepUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "tipus": {
-            "type": "string",
-            "nullable": true
-          },
-          "varos": {
-            "type": "string",
-            "nullable": true
-          },
-          "megye": {
-            "type": "string",
-            "nullable": true
-          },
-          "ar": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "berelheto": {
-            "type": "boolean"
-          },
-          "eladható": {
-            "type": "boolean"
-          },
-          "userId": {
             "type": "string",
             "nullable": true
           }

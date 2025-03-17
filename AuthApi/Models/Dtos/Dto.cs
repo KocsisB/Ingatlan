@@ -6,7 +6,7 @@
 
     public record AssignUserDto(string Email, string RoleName);
 
-    public record CreateIngatlanDto(string Cim, decimal Alapterulet, int SzobakSzama, decimal? TelekMerete, int? EpitesVege, string? Allapot, string? KepUrl, string? Tipus, string Varos, string Megye, int Ar, bool Berelheto, bool Eladható, string UserId);
+    public record CreateIngatlanDto(string Cim, decimal Alapterulet, int SzobakSzama, decimal? TelekMerete, int? EpitesVege, string? Allapot, string? Tipus, string Varos, string Megye, int Ar, bool Berelheto, bool Eladható, string UserId, IFormFile Kep);
 
 
 }

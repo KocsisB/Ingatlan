@@ -207,9 +207,74 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ingatlanok",
-        "Type": "AuthApi.Models.Dtos.CreateIngatlanDto",
-        "IsRequired": true
+        "Name": "Cim",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Alapterulet",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "SzobakSzama",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TelekMerete",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "EpitesVege",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Allapot",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tipus",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Varos",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Megye",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Ar",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Berelheto",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Eladhat\u00F3",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Kep",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [

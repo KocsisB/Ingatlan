@@ -1,5 +1,88 @@
 {
   "Version": 1,
   "ManifestType": "Build",
-  "Endpoints": []
+  "Endpoints": [
+    {
+      "Route": "images/audi.e83s56tuqj.jpg",
+      "AssetFile": "images/audi.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 10:54:22 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e83s56tuqj"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U="
+        },
+        {
+          "Name": "label",
+          "Value": "images/audi.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/audi.jpg",
+      "AssetFile": "images/audi.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 17 Mar 2025 10:54:22 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U="
+        }
+      ]
+    }
+  ]
 }

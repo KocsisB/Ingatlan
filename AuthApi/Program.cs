@@ -63,7 +63,7 @@ namespace AuthApi
             app.Urls.Add("http://0.0.0.0:5081");
 
             app.UseAuthentication();
-
+            app.UseStaticFiles();
             app.UseAuthorization();
 
 
