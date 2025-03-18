@@ -224,7 +224,7 @@ const PropertySearch = () => {
                   className="card-button"
                   onClick={() => openModal(property)}
                 >
-                  <i class="bi bi-search"></i>
+                  <i className="bi bi-search"></i>
                 </button>
 
                 {(user && user.isAdmin) || (user && user.id === property.tulajdonosId) ? (
@@ -233,14 +233,14 @@ const PropertySearch = () => {
                       className="card-button"
                       onClick={() => handleDelete(property.id)}
                     >
-                     <i class="bi bi-trash3"></i>
+                     <i className="bi bi-trash3"></i>
                     </button>
 
                     <button 
                       className="card-button"
                       onClick={() => navigate(`/hazmodositas/${property.id}`)}
                     >
-                     <i class="bi bi-brush"></i>
+                     <i className="bi bi-brush"></i>
                     </button>
                   </>
                 ) : null}

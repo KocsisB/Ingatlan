@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import dlblogo from './dlblogo.svg.png';
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [user, setUser] = useState(null);  // Felhasználói adatok állapota
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -20,10 +22,10 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('user');
+    const savedUser = JSON.parse(localStorage.getItem('user'));
     console.log(savedUser)
     if (savedUser) {
-      setUser(JSON.parse(savedUser)); // Felhasználói adatok betöltése a localStorage-ból
+      setUser(savedUser); // Felhasználói adatok betöltése a localStorage-ból
     }
   }, []);
 
@@ -37,7 +39,7 @@ export default function Navbar() {
     localStorage.removeItem('user'); // Felhasználói adatok törlése a localStorage-ból
     setDropdownOpen(false); // Dropdown bezárása
     console.log('Sikeres kijelentkezés');
-    window.location.reload(); // Oldal frissítése kijelentkezés után
+    navigate("/") // Oldal frissítése kijelentkezés után
   };
 
   return (
@@ -81,7 +83,7 @@ export default function Navbar() {
                   <div className="dropdown-menu show position-absolute end-0 mt-2 p-2 bg-dark border border-secondary">
                     {user ? (
                       <>
-                        <NavLink className="dropdown-item text-white" to="/profile">Profilom</NavLink>
+                        <NavLink className="dropdown-item text-white" to="/profilom">Profilom</NavLink>
                         <button className="dropdown-item text-white" onClick={handleLogout}>Kijelentkezés</button>
                       </>
                     ) : (

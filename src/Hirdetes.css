@@ -41,6 +41,13 @@
   margin-bottom: 8px;
 }
 
+.checkboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 8px;
+}
+
 /* Form Controls */
 .formControl {
   width: 100%;
@@ -91,6 +98,21 @@ input[type="file"]:hover {
 .submit-button:hover {
   background-color: #1c6b1f;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hirdetesfeladas{
+  color: red;
+  font-size: large;
+  font-weight: bold;
+  position: relative;
+  width: 90%;
+  max-width: 768px;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
 }
 
 /* Responsive Design */

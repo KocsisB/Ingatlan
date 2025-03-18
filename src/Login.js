@@ -75,19 +75,17 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/Login`,user);
-      console.log(response);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/Login`, user)
       
       if(response.data.token){
         console.log(response.data.result)
         localStorage.setItem('user', JSON.stringify(response.data.result)); // Felhasználói adatok mentése a localStorage-ba
-        window.location.href="/";
+        window.location.href = "/"
       }
-      if (!response.ok) {
+      if (!response.statusText) {
         throw new Error("Login failed");
       }
 
-      //navigate("/");
     } catch (error) {
       setErrorMessage("Hiba történt a bejelentkezés során");
     }
@@ -151,17 +149,19 @@ const Login = () => {
           />
           <div className={styles.psw}>
             <div>
+              
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Jelszó"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                
               />
             </div>
             <div>
               <button type="button" className="toggle-password" onClick={togglePasswordVisibility}>
-              <i class="bi bi-eye-fill"></i>
+              <i className="bi bi-eye-fill"></i>
               </button>
             </div>
           </div>

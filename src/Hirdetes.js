@@ -2,60 +2,54 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Hirdetes.css';
 import axios from 'axios';
+import { ClipLoader } from 'react-spinners';
 
 export default function Hirdetes() {
-  const [user, setUser] = useState(null);  // Felhasználói adatok állapota
   const [hirdetes, setHirdetes] = useState({
     cim: '',
-    leiras: '',
-    kep: '',
-    alapterulet: '',
-    szobakSzama: '',
-    telekMerete: '',
-    epitesVege: '',
+    kep: null,
+    alapterulet: null,
+    szobakSzama: null,
+    telekMerete: null,
+    epitesVege: null,
     allapot: '',
     tipus: '',
     varos: '',
     megye: '',
-    ar: '',
-    UserId:''
+    ar: null,
+    berelheto: false,
+    eladhato: false,
+    UserId: ''
   });
 
   const navigate = useNavigate();
+  const userData = JSON.parse(localStorage.getItem("user"));
 
-  useEffect(() => {
-    // API hívás a felhasználói adatok lekéréséhez
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/auth`); 
-        if (response.ok) {
-          const userData = await response.json();
-          setUser(userData);
-        } else {
-          console.error('Error fetching user data:', response.statusText);
-          navigate('/bejelentkezes'); // Átirányítás a bejelentkezési oldalra, ha nem sikeres az API hívás
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-        navigate('/bejelentkezes'); // Átirányítás a bejelentkezési oldalra hiba esetén
-      }
-    };
+  if (!userData) {
+    setTimeout(() => {
+      navigate("/bejelentkezes")
+    }, 3000);
 
-    fetchUserData();
-  }, [navigate]);
+    return <div className='hirdetesfeladas'>
+      <p>Jelentkezzen be a funkció használathához.<br></br>
+        Az oldal hamarosan átirányítja a bejelentkezési oldalra</p>
+      <ClipLoader color='red' />
+
+    </div>;
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files, type } = e.target;
     setHirdetes((prev) => ({
       ...prev,
-      [name]: value
+      [name]: type === "file" ? files[0] : value
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
+
     const formData = {
       cim: hirdetes.cim,
       alapterulet: Number(hirdetes.alapterulet),
@@ -67,47 +61,48 @@ export default function Hirdetes() {
       varos: hirdetes.varos,
       megye: hirdetes.megye,
       ar: Number(hirdetes.ar),
-      berelheto : true,
-      eladható : true,
-      kep : hirdetes.kep,
-      UserId: JSON.parse(localStorage.getItem("user")).id
+      berelheto: Boolean(hirdetes.berelheto),
+      eladható: Boolean(hirdetes.eladhato),
+      kep: hirdetes.kep,
+      UserId: userData.id
     };
-
+    
+    console.log(formData);
     try {
-      console.log(formData);
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/ingatlan`, formData)      
-
-      if (response.ok) {
-        alert("A ház sikeresen hozzáadva!");
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/ingatlan`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
       
-        //proba2
+      if (response.statusText) {
+        alert("A ház sikeresen hozzáadva!");
+
+
         setHirdetes({
           cim: '',
-          leiras: '',
-          kep: '',
-          alapterulet: '',
-          szobakSzama: '',
-          telekMerete: '',
-          epitesVege: '',
+          kep: null,
+          alapterulet: null,
+          szobakSzama: null,
+          telekMerete: null,
+          epitesVege: null,
           allapot: '',
           tipus: '',
           varos: '',
           megye: '',
-          ar: '',
-          UserId:''
+          ar: null,
+          berelheto: false,
+          eladhato: false,
+          UserId: ''
         });
       } else {
-        throw new Error("Hiba történt a kérés során: ", response.status);
+        throw new Error("Hiba történt a kérés során: ", response.error);
       }
     } catch (error) {
       console.error("Hiba történt a kérés során: ", error);
       alert("Hiba történt! Próbáld meg újra.");
     }
   };
-
-  if (!user) {
-    return <div>Loading...</div>; // Vagy egy betöltési animáció helyett
-  }
 
   return (
     <div className="container-hirdetes">
@@ -126,21 +121,6 @@ export default function Hirdetes() {
             onChange={handleInputChange}
             required
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="haz-leiras" className="form-label">
-            Leírás
-          </label>
-          <textarea
-            className="formControl"
-            id="haz-leiras"
-            rows="3"
-            name="leiras"
-            value={hirdetes.leiras}
-            onChange={handleInputChange}
-            required
-          ></textarea>
         </div>
 
         <div className="form-group">
@@ -283,18 +263,40 @@ export default function Hirdetes() {
             Képek
           </label>
           <input
-            type= "file"
+            type="file"
             className="formControl"
             id="haz-kepek"
             name="kep"
-            value={hirdetes.kep}
             onChange={handleInputChange}
             required
           />
+          <div className='checkboxes'>
+            <label htmlFor="berelheto" className="form-label">
+              Bérelhető:
+            </label>
+            <input
+              type="checkbox"
+              className="formControl"
+              id="berelheto"
+              name="berelheto"
+              value={hirdetes.berelheto}
+              onChange={handleInputChange}
+              />
+            <label htmlFor="eladhato" className="form-label">
+              Eladható:
+            </label>
+            <input
+              type="checkbox"
+              className="formControl"
+              id="eladhato"
+              name="eladhato"
+              value={hirdetes.eladhato}
+              onChange={handleInputChange}
+              
+            />
+          </div>
         </div>
-
-        <input type="checkbox" />
-
+        <br />
         <button type="submit" className="submit-button" value="save">
           Ház hozzáadása
         </button>
