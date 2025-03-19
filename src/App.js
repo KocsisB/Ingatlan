@@ -13,7 +13,7 @@ import HazModositas from './HazModositas';
 import SignUp from './SignUp';
 import Akcioshazak from './Akcioshazak';
 import AkciosModositas from './AkciosModositas';
-import Profil from './Profil';
+import SajatProfil from './SajatProfil';
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         <Route path='/ugynokok' element={<Munkatarsaink/>}/>
         <Route path='/hazmodositas/:id' element={<HazModositas/>}/>
         <Route path='/akciosmodositas/:id' element={<AkciosModositas/>}/>
-        <Route path='/profilom' element={<Profil/>}/>
+        <Route path='/profilom' element={<SajatProfil/>}/>
       </Routes>   
       <Footer/>     
 

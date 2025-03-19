@@ -6,20 +6,25 @@ import './Hazmodositas.css';
 export default function Hazmodositas() {
   const [property, setProperty ] = useState({
     cim: '',
-    varos: '',
+    kep: null,
+    alapterulet: null,
+    szobakSzama: null,
+    telekMerete: null,
+    epitesVege: null,
     allapot: '',
-    telekMerete: '',
-    epitesVege: '',
-    ar: '',
-    alapterulet: '',
-    szobakSzama: '',
-    kepUrl: ''
+    tipus: '',
+    varos: '',
+    megye: '',
+    ar: null,
+    berelheto: false,
+    eladhato: false,
+    UserId: ''
   });
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    // Fetch property data when component mounts
+    
     const fetchProperty = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/ingatlan/${id}`);

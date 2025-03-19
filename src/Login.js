@@ -148,30 +148,27 @@ const Login = () => {
             required
           />
           <div className={styles.psw}>
-            <div>
-              
+            <div className={styles['input-container']}>
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Jelszó"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                
               />
+              <i className={`bi ${showPassword ? "bi-eye-slash-fill" : "bi-eye-fill"} ${styles['eye-icon']}`} onClick={togglePasswordVisibility}></i>
             </div>
-            <div>
-              <button type="button" className="toggle-password" onClick={togglePasswordVisibility}>
-              <i className="bi bi-eye-fill"></i>
-              </button>
+            <div className={styles['input-container']}>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Jelszó újra"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+              <i className={`bi ${showPassword ? "bi-eye-slash-fill" : "bi-eye-fill"} ${styles['eye-icon']}`} onClick={togglePasswordVisibility}></i>
             </div>
           </div>
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Jelszó újra"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
           <button type='submit'>Regisztrálok</button>
         </form>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
@@ -179,7 +176,7 @@ const Login = () => {
 
       {/* Bejelentkezési form */}
       <div className={`${styles['form-container']} ${styles['sign-in']}`}>
-        <form onSubmit={(e)=> {
+        <form onSubmit={(e) => {
           e.preventDefault();
           handleLoginSubmit();
         }}>
@@ -199,20 +196,28 @@ const Login = () => {
             </a>
           </div>
           <span>vagy használd az email-ed, és jelszavadat</span>
-          <input
-            type="text"
-            placeholder="Felhasználónév"
-            value={loginUsername}
-            onChange={(e) => setLoginUsername(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Jelszó"
-            value={loginPassword}
-            onChange={(e) => setLoginPassword(e.target.value)}
-            required
-          />
+          <div className={styles.psw}>
+          <div className={styles['input-container']}>
+            <input
+              type="text"
+              placeholder="Felhasználónév"
+              value={loginUsername}
+              onChange={(e) => setLoginUsername(e.target.value)}
+              required
+            />
+          </div>
+          
+          <div className={styles['input-container']}>
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Jelszó"
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
+              required
+            />
+            <i className={`bi ${showPassword ? "bi-eye-slash-fill" : "bi-eye-fill"} ${styles['eye-icon']}`} onClick={togglePasswordVisibility}></i>
+          </div>
+          </div>
           <a href="#">Elfelejtetted a jelszavadat?</a>
           <button type="submit" className={styles.toggleBtn}>Bejelentkezés</button>
         </form>

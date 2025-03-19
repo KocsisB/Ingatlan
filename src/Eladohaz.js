@@ -113,7 +113,7 @@ const PropertySearch = () => {
   const handleDelete = (id) => {
     if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`${process.env.REACT_APP_API_URL}/ingatlanok?id=${id}`)
+        .delete(`${process.env.REACT_APP_API_URL}/ingatlan?id=${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");
