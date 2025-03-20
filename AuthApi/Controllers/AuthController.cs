@@ -22,7 +22,7 @@ namespace AuthApi.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<ActionResult> AddNewUser(CreateUserDto createUserDto)
+        public async Task<ActionResult> AddNewUser([FromForm] CreateUserDto createUserDto)
         {
             var res = await auth.Register(createUserDto);
 
@@ -35,7 +35,7 @@ namespace AuthApi.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> LoginUser(LoginIUserDto loginIUserDto)
+        public async Task<ActionResult> LoginUser([FromForm]LoginIUserDto loginIUserDto)
         {
             var res = await auth.Login(loginIUserDto);
 
@@ -47,7 +47,7 @@ namespace AuthApi.Controllers
         }
 
         [HttpPost("AssignRole")]
-        public async Task<ActionResult> AssignRole(AssignUserDto assignUserDto)
+        public async Task<ActionResult> AssignRole([FromForm]AssignUserDto assignUserDto)
         {
             var res = await auth.AssignRole(assignUserDto.Email, assignUserDto.RoleName);
 
@@ -86,9 +86,46 @@ namespace AuthApi.Controllers
 
             return BadRequest(new { result = res, message = "Sikertelen  lekérdezés" });
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> EditUser(string id, EditUserDto editUserDto)
+
+        [HttpPut("UploadPFP/{id}")]
+        public async Task<IActionResult> UploadImg(string id,[FromForm] UploadProfImg uploadProfImg)
         {
+            string kepUrl = null;
+
+            var existingUser = await _context.Aspnetusers.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingUser!= null)
+            {
+                
+                if (uploadProfImg.Kep != null && uploadProfImg.Kep.Length > 0)
+                    {
+                        var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ProfileImages");
+                        if (!Directory.Exists(uploads))
+                        {
+                            Directory.CreateDirectory(uploads);
+                        }
+
+                        var fileName = Path.GetFileName(uploadProfImg.Kep.FileName);
+                        var filePath = Path.Combine(uploads, fileName);
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await uploadProfImg.Kep.CopyToAsync(stream);
+                        }
+                        kepUrl = $"/ProfileImages/{fileName}";
+                    existingUser.kepUrl = kepUrl;
+                    _context.Aspnetusers.Update(existingUser);
+                    await _context.SaveChangesAsync();
+                    }
+                 return Ok(new { Message = "Sikeres képfeltöltés!" });
+
+            }
+            return BadRequest();
+            
+        }
+
+            [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(string id, EditUserDto user)
+        {
+
             var existingUser = await _context.Aspnetusers.FirstOrDefaultAsync(x => x.Id == id);
             if (existingUser == null)
             {
@@ -112,8 +149,9 @@ namespace AuthApi.Controllers
             {
                 _context.Aspnetusers.Remove(existingUserDelete);
                 await _context.SaveChangesAsync();
+                return Ok(new { Message = "Sikeres törlés!" });
             }
-            return Ok(new { Message = "Sikeres törlés!" });
+            return BadRequest(new { Message = "Nem található ilyen id" });
         }
     }
 }

@@ -4,7 +4,9 @@
 
     public record LoginIUserDto(string UserName, string Password);
 
-    public record EditUserDto(string Fullname, string UserName, string Email, string Password, DateTime BirthDate, string PhoneNumber);
+    public record EditUserDto(string Fullname, string UserName, string Email, string Password, DateTime BirthDate, string PhoneNumber, IFormFile Kep);
+
+    public record UploadProfImg(IFormFile Kep);
 
     public record AssignUserDto(string Email, string RoleName);
 

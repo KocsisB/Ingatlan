@@ -31,6 +31,8 @@ public partial class Aspnetuser
 
     public bool PhoneNumberConfirmed { get; set; }
 
+    public string? kepUrl { get; set; }
+
     public bool TwoFactorEnabled { get; set; }
 
     public DateTime? LockoutEnd { get; set; }
