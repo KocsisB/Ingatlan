@@ -124,17 +124,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Akcioshazak"
+                "$ref": "#/components/schemas/EditAkciosDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Akcioshazak"
+                "$ref": "#/components/schemas/EditAkciosDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Akcioshazak"
+                "$ref": "#/components/schemas/EditAkciosDto"
               }
             }
           }
@@ -253,6 +253,65 @@
     },
     "/auth/{id}": {
       "get": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
         "tags": [
           "Auth"
         ],
@@ -511,17 +570,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Ingatlanok"
+                "$ref": "#/components/schemas/EditIngatlanDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Ingatlanok"
+                "$ref": "#/components/schemas/EditIngatlanDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Ingatlanok"
+                "$ref": "#/components/schemas/EditIngatlanDto"
               }
             }
           }
@@ -814,6 +873,100 @@
         "additionalProperties": false
       },
       "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditAkciosDto": {
+        "type": "object",
+        "properties": {
+          "akciosAr": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditIngatlanDto": {
+        "type": "object",
+        "properties": {
+          "cim": {
+            "type": "string",
+            "nullable": true
+          },
+          "alapterulet": {
+            "type": "number",
+            "format": "double"
+          },
+          "szobakSzama": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "telekMerete": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "epitesVege": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "allapot": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipus": {
+            "type": "string",
+            "nullable": true
+          },
+          "varos": {
+            "type": "string",
+            "nullable": true
+          },
+          "megye": {
+            "type": "string",
+            "nullable": true
+          },
+          "ar": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "berelheto": {
+            "type": "boolean"
+          },
+          "eladható": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EditUserDto": {
         "type": "object",
         "properties": {
           "fullname": {

@@ -1,4 +1,5 @@
 ﻿using AuthApi.Models;
+using AuthApi.Models.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -72,13 +73,15 @@ namespace AuthApi.Controllers
 
         //[Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateHouse(int id, Akcioshazak akcios)
+        public async Task<IActionResult> UpdateHouse(int id, EditAkciosDto editAkciosDto)
         {
-            if (id != akcios.Id)
+            var existingSalesHouse = await _context.Akcioshazaks.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingSalesHouse == null)
             {
                 return BadRequest();
             }
-            _context.Entry(akcios).State = EntityState.Modified;
+            existingSalesHouse.AkciosAr = editAkciosDto.AkciosAr;
+            _context.Akcioshazaks.Update(existingSalesHouse);
             await _context.SaveChangesAsync();
             return Ok(new { Message = "Sikeres változtatás" });
         }

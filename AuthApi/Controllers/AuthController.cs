@@ -1,7 +1,9 @@
-﻿using AuthApi.Models.Dtos;
+﻿using AuthApi.Models;
+using AuthApi.Models.Dtos;
 using AuthApi.Services.IAuthService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MySqlX.XDevAPI.Common;
 
 namespace AuthApi.Controllers
@@ -11,10 +13,12 @@ namespace AuthApi.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuth auth;
+        private readonly DlblakaskulcsContext _context;
 
-        public AuthController(IAuth auth)
+        public AuthController(IAuth auth, DlblakaskulcsContext context)
         {
             this.auth = auth;
+            _context = context;
         }
 
         [HttpPost("Register")]
@@ -81,6 +85,35 @@ namespace AuthApi.Controllers
             }
 
             return BadRequest(new { result = res, message = "Sikertelen  lekérdezés" });
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditUser(string id, EditUserDto editUserDto)
+        {
+            var existingUser = await _context.Aspnetusers.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingUser == null)
+            {
+                return BadRequest(new {Message = "Nem található ilyen id" });
+            }
+            existingUser.Fullname = existingUser.Fullname;
+            existingUser.UserName = existingUser.UserName;
+            existingUser.Email = existingUser.Email;
+            existingUser.PhoneNumber = existingUser.PhoneNumber;
+            existingUser.BirthDate = existingUser.BirthDate;
+            _context.Aspnetusers.Update(existingUser);
+            await _context.SaveChangesAsync();
+            return Ok(new { Message = "Sikeres módosítás!" });
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var existingUserDelete = await _context.Aspnetusers.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingUserDelete!= null)
+            {
+                _context.Aspnetusers.Remove(existingUserDelete);
+                await _context.SaveChangesAsync();
+            }
+            return Ok(new { Message = "Sikeres törlés!" });
         }
     }
 }

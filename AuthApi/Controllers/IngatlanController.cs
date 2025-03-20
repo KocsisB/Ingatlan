@@ -110,13 +110,27 @@ namespace AuthApi.Controllers
 
         //[Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateHouse(int id, Ingatlanok ingatlanok)
+        public async Task<IActionResult> UpdateHouse(int id, EditIngatlanDto editIngatlanDto)
         {
-            if (id != ingatlanok.Id)
+            var existingHouse = await _context.Ingatlanoks.FirstOrDefaultAsync(x => x.Id == id);
+            if (existingHouse == null)
             {
                 return BadRequest();
             }
-            _context.Entry(ingatlanok).State = EntityState.Modified;
+            existingHouse.Cim = editIngatlanDto.Cim;
+            existingHouse.Alapterulet = editIngatlanDto.Alapterulet;
+            existingHouse.SzobakSzama = editIngatlanDto.SzobakSzama;
+            existingHouse.TelekMerete = editIngatlanDto.TelekMerete;
+            existingHouse.EpitesVege = editIngatlanDto.EpitesVege;
+            existingHouse.Allapot = editIngatlanDto.Allapot;
+            existingHouse.Tipus = editIngatlanDto.Tipus;
+            existingHouse.Varos = editIngatlanDto.Varos;
+            existingHouse.Megye = editIngatlanDto.Megye;
+            existingHouse.Ar = editIngatlanDto.Ar;
+            existingHouse.Berelheto = editIngatlanDto.Berelheto;
+            existingHouse.Eladható = editIngatlanDto.Eladható;
+
+            _context.Ingatlanoks.Update(existingHouse);
             await _context.SaveChangesAsync();
             return Ok(new { Message = "Sikeres változtatás" });
         }

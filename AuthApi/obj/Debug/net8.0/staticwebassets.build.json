@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TR5guqasZe/pUgaQY6CsUIVoWaVl4pbSddi0RVgN6MA=",
+  "Hash": "cwJNaXF0kiwUxAWKv8/NaNSH6wqrF1Z9BPl7+vef+Iw=",
   "Source": "AuthApi",
   "BasePath": "_content/AuthApi",
   "Mode": "Default",
@@ -36,6 +36,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\audi.jpg"
+    },
+    {
+      "Identity": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\kep.png",
+      "SourceId": "AuthApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\",
+      "BasePath": "_content/AuthApi",
+      "RelativePath": "images/kep#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "q7wln2uwrq",
+      "Integrity": "VjVxCeh6wD8LZzSTF98qgR3h3JjDjJh0Edu25iIV6NI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\kep.png"
     }
   ],
   "Endpoints": [
@@ -62,7 +83,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:54:22 GMT"
+          "Value": "Tue, 18 Mar 2025 10:28:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -107,7 +128,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 17 Mar 2025 10:54:22 GMT"
+          "Value": "Tue, 18 Mar 2025 10:28:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -118,6 +139,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U="
+        }
+      ]
+    },
+    {
+      "Route": "images/kep.png",
+      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\kep.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70455"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VjVxCeh6wD8LZzSTF98qgR3h3JjDjJh0Edu25iIV6NI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 18 Mar 2025 11:32:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-VjVxCeh6wD8LZzSTF98qgR3h3JjDjJh0Edu25iIV6NI="
+        }
+      ]
+    },
+    {
+      "Route": "images/kep.q7wln2uwrq.png",
+      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\kep.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "70455"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"VjVxCeh6wD8LZzSTF98qgR3h3JjDjJh0Edu25iIV6NI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 18 Mar 2025 11:32:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "q7wln2uwrq"
+        },
+        {
+          "Name": "label",
+          "Value": "images/kep.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-VjVxCeh6wD8LZzSTF98qgR3h3JjDjJh0Edu25iIV6NI="
         }
       ]
     }

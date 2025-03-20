@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\images\\audi.jpg"
     },
     {
+      "Id": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\kep.png",
+      "PackagePath": "staticwebassets\\images\\kep.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.AuthApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
