@@ -22,7 +22,7 @@ namespace AuthApi.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<ActionResult> AddNewUser([FromForm] CreateUserDto createUserDto)
+        public async Task<ActionResult> AddNewUser( CreateUserDto createUserDto)
         {
             var res = await auth.Register(createUserDto);
 
@@ -35,7 +35,7 @@ namespace AuthApi.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> LoginUser([FromForm]LoginIUserDto loginIUserDto)
+        public async Task<ActionResult> LoginUser(LoginIUserDto loginIUserDto)
         {
             var res = await auth.Login(loginIUserDto);
 
@@ -47,7 +47,7 @@ namespace AuthApi.Controllers
         }
 
         [HttpPost("AssignRole")]
-        public async Task<ActionResult> AssignRole([FromForm]AssignUserDto assignUserDto)
+        public async Task<ActionResult> AssignRole(AssignUserDto assignUserDto)
         {
             var res = await auth.AssignRole(assignUserDto.Email, assignUserDto.RoleName);
 

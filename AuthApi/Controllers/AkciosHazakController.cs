@@ -39,7 +39,7 @@ namespace AuthApi.Controllers
 
         //[Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<ActionResult<string>> Post([FromBody] Akcioshazak akcios)
+        public async Task<ActionResult<string>> Post( Akcioshazak akcios)
         {
             var adatok = new Akcioshazak
             {
