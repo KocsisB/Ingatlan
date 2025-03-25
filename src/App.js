@@ -14,6 +14,7 @@ import SignUp from './SignUp';
 import Akcioshazak from './Akcioshazak';
 import AkciosModositas from './AkciosModositas';
 import SajatProfil from './SajatProfil';
+import ProfilModositas from './ProfilModositas';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/hazmodositas/:id' element={<HazModositas/>}/>
         <Route path='/akciosmodositas/:id' element={<AkciosModositas/>}/>
         <Route path='/profilom' element={<SajatProfil/>}/>
+        <Route path='/profilmodositas/:id' element={<ProfilModositas/>}/>
       </Routes>   
       <Footer/>     
 

@@ -15,7 +15,7 @@ export default function ProfilModositas() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/profile/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/${id}`);
         setUserProfile(response.data);
       } catch (error) {
         setError('Hiba történt az adatok lekérése során: ' + error.message);
@@ -37,7 +37,7 @@ export default function ProfilModositas() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`${process.env.REACT_APP_API_URL}/profile/${id}`, userProfile);
+      const response = await axios.put(`${process.env.REACT_APP_API_URL}/auth/${id}`, userProfile);
       console.log(response.data);
       alert('Profile updated successfully!');
     } catch (error) {

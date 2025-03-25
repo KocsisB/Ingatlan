@@ -54,3 +54,10 @@
 .dropdown-item:hover {
   background-color: #495057;
 }
+
+.profile-picture{
+  height: 32px;
+  width: 35px;
+  border-radius: 60%; 
+  object-fit: cover; 
+}

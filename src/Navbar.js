@@ -74,7 +74,7 @@ export default function Navbar() {
               <div className="user-menu ms-3 position-relative">
                 <div className="user-icon" onClick={handleDropdownClick}>
                   {user ? (
-                    <img src={user.profilePicture} alt="Profile" className="profile-picture" />
+                    <img src={process.env.REACT_APP_API_URL+user.kepUrl} alt="Profile" className="profile-picture" />
                   ) : (
                     <i className="fa-solid fa-circle-user fa-lg text-white"></i>
                   )}
