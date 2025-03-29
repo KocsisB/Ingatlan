@@ -1,56 +1,89 @@
+/* Agent Cards Container */
 .agent-cards-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 14rem;
+  gap: 3rem;
   padding: 40px;
-  background-color: white;
+  background: linear-gradient(135deg, #ffffff, #f3f4f6);
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Agent Card */
 .agent-card {
   width: 280px;
-  padding: 50px;
+  padding: 30px;
   border-radius: 12px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   border: 2px solid #228B22;
   background-color: #f9f9f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.agent-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Agent Image */
 .agent-image {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   margin-bottom: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.agent-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Agent Name */
 .agent-name {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   color: #228B22;
+  margin-bottom: 5px;
+  transition: color 0.3s ease;
 }
 
+.agent-name:hover {
+  color: #1c6b1f;
+}
+
+/* Agent Title */
 .agent-title {
   color: gray;
   margin-top: 5px;
+  font-size: 16px;
 }
 
+/* Agent Experience */
 .agent-experience {
   color: black;
   margin-top: 5px;
+  font-size: 16px;
 }
 
+/* Agent Agency */
 .agent-agency {
   color: green;
   margin-top: 5px;
+  font-size: 16px;
   font-weight: bold;
 }
 
+/* Agent Location */
 .agent-location {
   color: black;
   margin-top: 5px;
+  font-size: 16px;
 }
 
+/* Agent Contact */
 .agent-contact {
   margin-top: 10px;
 }
@@ -60,10 +93,12 @@
   color: green;
   text-decoration: none;
   margin-bottom: 5px;
+  font-size: 16px;
+  transition: color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .agent-contact a:hover {
+  color: #1c6b1f;
   text-decoration: underline;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
 }
-
