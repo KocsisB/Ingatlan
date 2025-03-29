@@ -5,14 +5,17 @@ import dlblogo from './dlblogo.svg.png';
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [user, setUser] = useState(null);  // Felhasználói adatok állapota
+  const [theme, setTheme] = useState('dark'); // Téma állapota
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (!event.target.closest('.user-menu')) {
+      if (!event.target.closest('.user-menu') && !event.target.closest('.notifications')) {
         setDropdownOpen(false);
+        setNotificationsOpen(false);
       }
     };
     document.addEventListener('click', handleClickOutside);
@@ -34,6 +37,11 @@ export default function Navbar() {
     setDropdownOpen(!dropdownOpen);
   };
 
+  const handleNotificationsClick = (e) => {
+    e.stopPropagation();
+    setNotificationsOpen(!notificationsOpen);
+  };
+
   const handleLogout = () => {
     setUser(null); // Felhasználói adatok törlése a state-ből
     localStorage.removeItem('user'); // Felhasználói adatok törlése a localStorage-ból
@@ -42,9 +50,15 @@ export default function Navbar() {
     navigate("/") // Oldal frissítése kijelentkezés után
   };
 
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    document.body.setAttribute('data-theme', newTheme);
+  };
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+      <nav className={`navbar navbar-expand-lg bg-dark border-bottom border-body ${theme}`} data-bs-theme="dark">
         <div className="container-fluid">
           <NavLink className="navbar-brand" to="/">
             <img className="logo" src={dlblogo} alt="logo" />
@@ -71,6 +85,19 @@ export default function Navbar() {
                 <input className="form-control search-input me-2" type="search" placeholder="Keresés" aria-label="Keresés" />
                 <button className="btn btn-outline-success" type="submit">Keresés</button>
               </form>
+              <div className="notifications ms-3 position-relative">
+                <div className="icon" onClick={handleNotificationsClick}>
+                  <i className="fa-solid fa-bell"></i>
+                  <span className="badge">3</span>
+                </div>
+                {notificationsOpen && (
+                  <div className="notifications-menu show position-absolute end-0 mt-2 p-2 bg-dark border border-secondary">
+                    <div className="notification-item">Értesítés 1</div>
+                    <div className="notification-item">Értesítés 2</div>
+                    <div className="notification-item">Értesítés 3</div>
+                  </div>
+                )}
+              </div>
               <div className="user-menu ms-3 position-relative">
                 <div className="user-icon" onClick={handleDropdownClick}>
                   {user ? (
@@ -100,6 +127,13 @@ export default function Navbar() {
               {user && (
                 <button className="btn btn-outline-light ms-3" onClick={handleLogout}>Kijelentkezés</button>
               )}
+              <div className="theme-toggle ms-3" onClick={toggleTheme}>
+                {theme === 'dark' ? (
+                  <i className="fa-solid fa-sun"></i>
+                ) : (
+                  <i className="fa-solid fa-moon"></i>
+                )}
+              </div>
             </div>
           </div>
         </div>
