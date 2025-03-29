@@ -134,6 +134,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+           <label htmlFor="birthDate" className="profilmodositas-label">Születési Dátum:</label>
           <input
             type="date"
             placeholder="Születési dátum"

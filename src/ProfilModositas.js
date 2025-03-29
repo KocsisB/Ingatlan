@@ -6,9 +6,13 @@ import './ProfilModositas.css';
 export default function ProfilModositas() {
   const { id } = useParams();
   const [userProfile, setUserProfile] = useState({
-    name: '',
+    fullname: '',
+    userName: '',
     email: '',
-    password: ''
+    password: '',
+    birthDate: '',
+    phoneNumber: '',
+    kep: ''
   });
   const [error, setError] = useState(null);
 
@@ -55,12 +59,24 @@ export default function ProfilModositas() {
       <h1 className="profilmodositas-title">Profil Módosítása</h1>
       <form onSubmit={handleSubmit} className="profilmodositas-form">
         <div className="profilmodositas-form-group">
-          <label htmlFor="name" className="profilmodositas-label">Név:</label>
+          <label htmlFor="fullname" className="profilmodositas-label">Teljes Név:</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={userProfile.name}
+            id="fullname"
+            name="fullname"
+            value={userProfile.fullname}
+            onChange={handleChange}
+            className="profilmodositas-input"
+            required
+          />
+        </div>
+        <div className="profilmodositas-form-group">
+          <label htmlFor="userName" className="profilmodositas-label">Felhasználónév:</label>
+          <input
+            type="text"
+            id="userName"
+            name="userName"
+            value={userProfile.userName}
             onChange={handleChange}
             className="profilmodositas-input"
             required
@@ -73,6 +89,42 @@ export default function ProfilModositas() {
             id="email"
             name="email"
             value={userProfile.email}
+            onChange={handleChange}
+            className="profilmodositas-input"
+            required
+          />
+        </div>
+        <div className="profilmodositas-form-group">
+          <label htmlFor="birthDate" className="profilmodositas-label">Születési Dátum:</label>
+          <input
+            type="date"
+            id="birthDate"
+            name="birthDate"
+            value={userProfile.birthDate}
+            onChange={handleChange}
+            className="profilmodositas-input"
+            required
+          />
+        </div>
+        <div className="profilmodositas-form-group">
+          <label htmlFor="phoneNumber" className="profilmodositas-label">Telefonszám:</label>
+          <input
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            value={userProfile.phoneNumber}
+            onChange={handleChange}
+            className="profilmodositas-input"
+            required
+          />
+        </div>
+        <div className="profilmodositas-form-group">
+          <label htmlFor="kep" className="profilmodositas-label">Kép URL:</label>
+          <input
+            type="file"
+            id="kep"
+            name="kep"
+            value={userProfile.kep}
             onChange={handleChange}
             className="profilmodositas-input"
             required
@@ -92,6 +144,7 @@ export default function ProfilModositas() {
         </div>
         <button type="submit" className="profilmodositas-button">Módosítás</button>
       </form>
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 }

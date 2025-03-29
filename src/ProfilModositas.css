@@ -1,48 +1,84 @@
 .profilmodositas-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 300px;
-  }
-  
-  .profilmodositas-title {
-    text-align: center;
-    color: #333;
-  }
-  
-  .profilmodositas-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .profilmodositas-form-group {
-    margin-bottom: 15px;
-  }
-  
-  .profilmodositas-label {
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .profilmodositas-input {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .profilmodositas-button {
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .profilmodositas-button:hover {
-    background-color: #0056b3;
-  }
+  background: linear-gradient(135deg, #ffffff, #f3f4f6);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profilmodositas-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profilmodositas-title {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.profilmodositas-title:hover {
+  color: #228B22;
+}
+
+.profilmodositas-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.profilmodositas-form-group {
+  margin-bottom: 15px;
+}
+
+.profilmodositas-label {
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.profilmodositas-label:hover {
+  color: #228B22;
+}
+
+.profilmodositas-input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profilmodositas-input:focus {
+  border-color: #9bd162;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+  outline: none;
+}
+
+.profilmodositas-button {
+  grid-column: span 3;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #228B22;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profilmodositas-button:hover {
+  background-color: #1c6b1f;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
