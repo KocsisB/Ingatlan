@@ -8,26 +8,17 @@ export default function SajatProfil() {
   const [imageFile, setImageFile] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const savedUser = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    const savedUser = JSON.parse(localStorage.getItem('user'));
+   
     if (savedUser) {
       setUserData(savedUser); // Felhasználói adatok betöltése a localStorage-ból
     } else {
-      // Ha nincs mentett felhasználó a localStorage-ban, akkor lekérjük az adatokat az API-ból
-      const fetchUserData = async () => {
-        try {
-          const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth`);
-          setUserData(response.data);
-          localStorage.setItem('user', JSON.stringify(response.data)); // Felhasználói adatok mentése a localStorage-ba
-        } catch (error) {
-          setError('Hiba történt az adatok lekérése során: ' + error.message);
-          console.error('Error fetching user data:', error);
-        }
-      };
+          setError('Hiba történt az adatok lekérése során:');
+          console.error('Error fetching user data:');
+      }
 
-      fetchUserData();
-    }
   }, []);
 
   const handleProfilePictureChange = async () => {

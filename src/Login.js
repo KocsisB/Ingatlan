@@ -79,8 +79,9 @@ const Login = () => {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/Login`, user)
       
       if(response.data.token){
-        console.log(response.data.result)
+        console.log(response.data)
         localStorage.setItem('user', JSON.stringify(response.data.result)); // Felhasználói adatok mentése a localStorage-ba
+        console.log(localStorage.getItem("user"), localStorage.getItem("userId"));
         window.location.href = "/"
       }
       if (!response.statusText) {

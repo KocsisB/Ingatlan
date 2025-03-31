@@ -9,32 +9,41 @@ export default function ProfilModositas() {
     fullname: '',
     userName: '',
     email: '',
-    password: '',
     birthDate: '',
     phoneNumber: '',
-    kep: ''
   });
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchUserData = async () => {
+   
+
+    fetchUserData();
+  }, [id]);
+
+ const fetchUserData = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/${id}`);
-        setUserProfile(response.data);
+        setUserProfile({
+          fullname: response.data.result.fullname,
+          userName: response.data.result.userName,
+          email: response.data.result.email,
+          birthDate: response.data.result.birthDate.split("T")[0],
+          phoneNumber: response.data.result.phoneNumber,
+        });
+        console.log(response.data.result);
+        localStorage.setItem('user', JSON.stringify(response.data.result));
+        
       } catch (error) {
         setError('Hiba történt az adatok lekérése során: ' + error.message);
         console.error('Error fetching user data:', error);
       }
     };
 
-    fetchUserData();
-  }, [id]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserProfile((prevProfile) => ({
       ...prevProfile,
-      [name]: value
+      [name]:  value
     }));
   };
 
@@ -42,8 +51,10 @@ export default function ProfilModositas() {
     e.preventDefault();
     try {
       const response = await axios.put(`${process.env.REACT_APP_API_URL}/auth/${id}`, userProfile);
-      console.log(response.data);
+      console.log(response);
       alert('Profile updated successfully!');
+      fetchUserData()
+
     } catch (error) {
       console.error('Error updating profile:', error);
       alert('Failed to update profile.');
@@ -118,30 +129,7 @@ export default function ProfilModositas() {
             required
           />
         </div>
-        <div className="profilmodositas-form-group">
-          <label htmlFor="kep" className="profilmodositas-label">Kép URL:</label>
-          <input
-            type="file"
-            id="kep"
-            name="kep"
-            value={userProfile.kep}
-            onChange={handleChange}
-            className="profilmodositas-input"
-            required
-          />
-        </div>
-        <div className="profilmodositas-form-group">
-          <label htmlFor="password" className="profilmodositas-label">Jelszó:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={userProfile.password}
-            onChange={handleChange}
-            className="profilmodositas-input"
-            required
-          />
-        </div>
+       
         <button type="submit" className="profilmodositas-button">Módosítás</button>
       </form>
       {error && <div className="error-message">{error}</div>}

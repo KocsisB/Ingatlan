@@ -113,7 +113,7 @@ const PropertySearch = () => {
   const handleDelete = (id) => {
     if (window.confirm("Biztosan törölni szeretné ezt az ingatlant?")) {
       axios
-        .delete(`${process.env.REACT_APP_API_URL}/ingatlanok?id=${id}`)
+        .delete(`${process.env.REACT_APP_API_URL}/ingatlan?id=${id}`)
         .then((res) => {
           console.log(res);
           alert("Sikeres törlés!");
@@ -199,7 +199,7 @@ const PropertySearch = () => {
           filteredProperties.map((property) => (
             <div className="card" key={property.id}>
               <img
-                src={property.kepUrl}
+                  src={process.env.REACT_APP_API_URL+property.kepUrl}
                 alt="Ingatlan"
                 className="card-image"
               />
@@ -224,7 +224,7 @@ const PropertySearch = () => {
                   className="card-button"
                   onClick={() => openModal(property)}
                 >
-                  Több
+                  <i className="bi bi-search"></i>
                 </button>
 
                 {(user && user.isAdmin) || (user && user.id === property.tulajdonosId) ? (
@@ -233,14 +233,14 @@ const PropertySearch = () => {
                       className="card-button"
                       onClick={() => handleDelete(property.id)}
                     >
-                      Törlés
+                     <i className="bi bi-trash3"></i>
                     </button>
 
                     <button 
                       className="card-button"
                       onClick={() => navigate(`/hazmodositas/${property.id}`)}
                     >
-                      Ház módosítása
+                     <i className="bi bi-brush"></i>
                     </button>
                   </>
                 ) : null}
