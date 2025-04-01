@@ -83,7 +83,8 @@ namespace AuthApi.Services
                 UserName = createUserDto.UserName,
                 Email = createUserDto.Email,
                 BirthDate = createUserDto.BirthDate,
-                PhoneNumber = createUserDto.PhoneNumber
+                PhoneNumber = createUserDto.PhoneNumber,
+                kepUrl = ""
             };
 
             var res = await userManager.CreateAsync(user, createUserDto.Password);

@@ -7,5 +7,6 @@ namespace AuthApi.Models
     {
         public string? Fullname { get; set; }
         public DateTime BirthDate { get; set; }
+        public string? kepUrl { get; set; }
     }
 }
