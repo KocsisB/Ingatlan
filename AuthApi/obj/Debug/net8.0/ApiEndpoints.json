@@ -186,14 +186,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "RoleName",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "assignUserDto",
+        "Type": "AuthApi.Models.Dtos.AssignUserDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -207,14 +202,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "UserName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "loginIUserDto",
+        "Type": "AuthApi.Models.Dtos.LoginIUserDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -228,34 +218,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Fullname",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "UserName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Password",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "BirthDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "PhoneNumber",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "createUserDto",
+        "Type": "AuthApi.Models.Dtos.CreateUserDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

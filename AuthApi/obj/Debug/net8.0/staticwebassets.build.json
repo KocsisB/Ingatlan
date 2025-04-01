@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cwJNaXF0kiwUxAWKv8/NaNSH6wqrF1Z9BPl7+vef+Iw=",
+  "Hash": "vlHtMA/1HRcz4yGeh2IoZVwFd48FcvvT/xB7fqJquTM=",
   "Source": "AuthApi",
   "BasePath": "_content/AuthApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "AuthApi\\wwwroot",
       "Source": "AuthApi",
-      "ContentRoot": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\",
+      "ContentRoot": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\",
       "BasePath": "_content/AuthApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\audi.jpg",
+      "Identity": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\images\\audi.jpg",
       "SourceId": "AuthApi",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\",
+      "ContentRoot": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\",
       "BasePath": "_content/AuthApi",
       "RelativePath": "images/audi#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
@@ -38,10 +38,10 @@
       "OriginalItemSpec": "wwwroot\\images\\audi.jpg"
     },
     {
-      "Identity": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\kep.png",
+      "Identity": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\images\\kep.png",
       "SourceId": "AuthApi",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\",
+      "ContentRoot": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\",
       "BasePath": "_content/AuthApi",
       "RelativePath": "images/kep#[.{fingerprint}]?.png",
       "AssetKind": "All",
@@ -57,12 +57,33 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\kep.png"
+    },
+    {
+      "Identity": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\ProfileImages\\audi.jpg",
+      "SourceId": "AuthApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\",
+      "BasePath": "_content/AuthApi",
+      "RelativePath": "ProfileImages/audi#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e83s56tuqj",
+      "Integrity": "Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProfileImages\\audi.jpg"
     }
   ],
   "Endpoints": [
     {
       "Route": "images/audi.e83s56tuqj.jpg",
-      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\audi.jpg",
+      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\images\\audi.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -83,7 +104,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 18 Mar 2025 10:28:53 GMT"
+          "Value": "Tue, 01 Apr 2025 08:01:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -107,7 +128,7 @@
     },
     {
       "Route": "images/audi.jpg",
-      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\audi.jpg",
+      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\images\\audi.jpg",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -128,7 +149,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 18 Mar 2025 10:28:53 GMT"
+          "Value": "Tue, 01 Apr 2025 08:01:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -144,7 +165,7 @@
     },
     {
       "Route": "images/kep.png",
-      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\kep.png",
+      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\images\\kep.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -165,7 +186,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 18 Mar 2025 11:32:25 GMT"
+          "Value": "Tue, 01 Apr 2025 08:01:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -181,7 +202,7 @@
     },
     {
       "Route": "images/kep.q7wln2uwrq.png",
-      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\kep.png",
+      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\images\\kep.png",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -202,7 +223,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 18 Mar 2025 11:32:25 GMT"
+          "Value": "Tue, 01 Apr 2025 08:01:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -221,6 +242,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-VjVxCeh6wD8LZzSTF98qgR3h3JjDjJh0Edu25iIV6NI="
+        }
+      ]
+    },
+    {
+      "Route": "ProfileImages/audi.e83s56tuqj.jpg",
+      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\ProfileImages\\audi.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:10:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e83s56tuqj"
+        },
+        {
+          "Name": "label",
+          "Value": "ProfileImages/audi.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U="
+        }
+      ]
+    },
+    {
+      "Route": "ProfileImages/audi.jpg",
+      "AssetFile": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\ProfileImages\\audi.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:10:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U="
         }
       ]
     }

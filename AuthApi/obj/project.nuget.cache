@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VUAC5jCxL+0=",
+  "dgSpecHash": "n+RYCdVaBso=",
   "success": true,
-  "projectFilePath": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\AuthApi.csproj",
+  "projectFilePath": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\AuthApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Btnd\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\Btnd\\.nuget\\packages\\fluentemail.core\\3.0.2\\fluentemail.core.3.0.2.nupkg.sha512",

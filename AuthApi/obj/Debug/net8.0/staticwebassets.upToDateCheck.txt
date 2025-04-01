@@ -1,2 +1,3 @@
 wwwroot\images\audi.jpg
 wwwroot\images\kep.png
+wwwroot\ProfileImages\audi.jpg

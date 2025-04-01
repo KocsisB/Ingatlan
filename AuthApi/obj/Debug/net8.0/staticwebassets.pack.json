@@ -1,11 +1,15 @@
 {
   "Files": [
     {
-      "Id": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\audi.jpg",
+      "Id": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\ProfileImages\\audi.jpg",
+      "PackagePath": "staticwebassets\\ProfileImages\\audi.jpg"
+    },
+    {
+      "Id": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\images\\audi.jpg",
       "PackagePath": "staticwebassets\\images\\audi.jpg"
     },
     {
-      "Id": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\wwwroot\\images\\kep.png",
+      "Id": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\wwwroot\\images\\kep.png",
       "PackagePath": "staticwebassets\\images\\kep.png"
     },
     {

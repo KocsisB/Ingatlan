@@ -114,8 +114,8 @@ namespace AuthApi.Controllers
                     existingUser.kepUrl = kepUrl;
                     _context.Aspnetusers.Update(existingUser);
                     await _context.SaveChangesAsync();
-                    }
-                 return Ok(new { Message = "Sikeres képfeltöltés!" });
+                    return Ok(new { Message = "Sikeres képfeltöltés!" });
+                }
 
             }
             return BadRequest();
@@ -125,17 +125,19 @@ namespace AuthApi.Controllers
             [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(string id, EditUserDto user)
         {
-
             var existingUser = await _context.Aspnetusers.FirstOrDefaultAsync(x => x.Id == id);
             if (existingUser == null)
             {
                 return BadRequest(new {Message = "Nem található ilyen id" });
             }
-            existingUser.Fullname = existingUser.Fullname;
-            existingUser.UserName = existingUser.UserName;
-            existingUser.Email = existingUser.Email;
-            existingUser.PhoneNumber = existingUser.PhoneNumber;
-            existingUser.BirthDate = existingUser.BirthDate;
+
+            existingUser.Fullname = user.Fullname;
+            existingUser.UserName = user.UserName;
+            existingUser.Email = user.Email;
+            existingUser.BirthDate = user.BirthDate;
+            existingUser.PhoneNumber = user.PhoneNumber;
+            
+
             _context.Aspnetusers.Update(existingUser);
             await _context.SaveChangesAsync();
             return Ok(new { Message = "Sikeres módosítás!" });

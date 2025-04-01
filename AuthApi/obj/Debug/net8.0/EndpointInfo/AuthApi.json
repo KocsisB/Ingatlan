@@ -153,50 +153,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "Fullname": {
-                    "type": "string"
-                  },
-                  "UserName": {
-                    "type": "string"
-                  },
-                  "Email": {
-                    "type": "string"
-                  },
-                  "Password": {
-                    "type": "string"
-                  },
-                  "BirthDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "PhoneNumber": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "Fullname": {
-                  "style": "form"
-                },
-                "UserName": {
-                  "style": "form"
-                },
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                },
-                "BirthDate": {
-                  "style": "form"
-                },
-                "PhoneNumber": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
               }
             }
           }
@@ -215,25 +184,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "UserName": {
-                    "type": "string"
-                  },
-                  "Password": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "UserName": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/LoginIUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginIUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginIUserDto"
               }
             }
           }
@@ -252,25 +215,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "Email": {
-                    "type": "string"
-                  },
-                  "RoleName": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "Email": {
-                  "style": "form"
-                },
-                "RoleName": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/AssignUserDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignUserDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignUserDto"
               }
             }
           }
@@ -947,6 +904,50 @@
         },
         "additionalProperties": false
       },
+      "AssignUserDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "roleName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "EditAkciosDto": {
         "type": "object",
         "properties": {
@@ -1037,11 +1038,6 @@
           "phoneNumber": {
             "type": "string",
             "nullable": true
-          },
-          "kep": {
-            "type": "string",
-            "format": "binary",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1118,6 +1114,20 @@
           },
           "user": {
             "$ref": "#/components/schemas/Aspnetuser"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginIUserDto": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

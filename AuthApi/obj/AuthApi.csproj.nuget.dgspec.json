@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\AuthApi.csproj": {}
+    "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\AuthApi.csproj": {}
   },
   "projects": {
-    "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\AuthApi.csproj": {
+    "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\AuthApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\AuthApi.csproj",
+        "projectUniqueName": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\AuthApi.csproj",
         "projectName": "AuthApi",
-        "projectPath": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\AuthApi.csproj",
+        "projectPath": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\AuthApi.csproj",
         "packagesPath": "C:\\Users\\Btnd\\.nuget\\packages\\",
-        "outputPath": "D:\\Suli\\Vizsga\\IngatlanBackend\\Ingatlan\\AuthApi\\obj\\",
+        "outputPath": "D:\\Suli\\Vizsga\\IngatlanBackend\\Backend\\AuthApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

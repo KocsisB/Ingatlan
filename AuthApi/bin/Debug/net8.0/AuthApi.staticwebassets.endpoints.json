@@ -3,6 +3,88 @@
   "ManifestType": "Build",
   "Endpoints": [
     {
+      "Route": "ProfileImages/audi.e83s56tuqj.jpg",
+      "AssetFile": "ProfileImages/audi.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:10:22 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e83s56tuqj"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U="
+        },
+        {
+          "Name": "label",
+          "Value": "ProfileImages/audi.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "ProfileImages/audi.jpg",
+      "AssetFile": "ProfileImages/audi.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "130604"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Apr 2025 08:10:22 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xky6rdy2o8BXcbbxHtuNwDogp0RztmXaErPWqutFl1U="
+        }
+      ]
+    },
+    {
       "Route": "images/audi.e83s56tuqj.jpg",
       "AssetFile": "images/audi.jpg",
       "Selectors": [],
@@ -29,7 +111,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 18 Mar 2025 10:28:53 GMT"
+          "Value": "Tue, 01 Apr 2025 08:01:31 GMT"
         }
       ],
       "EndpointProperties": [
@@ -74,7 +156,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 18 Mar 2025 10:28:53 GMT"
+          "Value": "Tue, 01 Apr 2025 08:01:31 GMT"
         }
       ],
       "EndpointProperties": [
@@ -111,7 +193,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 18 Mar 2025 11:32:25 GMT"
+          "Value": "Tue, 01 Apr 2025 08:01:31 GMT"
         }
       ],
       "EndpointProperties": [
@@ -148,7 +230,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 18 Mar 2025 11:32:25 GMT"
+          "Value": "Tue, 01 Apr 2025 08:01:31 GMT"
         }
       ],
       "EndpointProperties": [
