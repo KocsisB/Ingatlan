@@ -13,7 +13,7 @@ export default function Hazmodositas() {
     ar: '',
     alapterulet: '',
     szobakSzama: '',
-    kep: ''
+    kep: null
   });
   const navigate = useNavigate();
   const { id } = useParams();
@@ -33,18 +33,40 @@ export default function Hazmodositas() {
   }, [id]);
 
   const handleUpdate = async () => {
+    const formData = {
+      cim: property.cim,
+      alapterulet: Number(property.alapterulet),
+      szobakSzama: Number(property.szobakSzama),
+      telekMerete: Number(property.telekMerete),
+      epitesVege: Number(property.epitesVege),
+      allapot: property.allapot,
+      tipus: property.tipus,
+      varos: property.varos,
+      megye: property.megye,
+      ar: Number(property.ar),
+      berelheto: Boolean(property.berelheto),
+      eladható: Boolean(property.eladhato),
+      kep: property.kep
+    };
+    
+    console.log(formData);
     try {
-      const updatedProperty = {
-        ...property,
-      };
+      const response = await axios.put(`${process.env.REACT_APP_API_URL}/ingatlan/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      
+      if (response.statusText) {
+        alert("A ház sikeresen frissítve!");
+        navigate("/eladohazak")
 
-      const response = await axios.put(`${process.env.REACT_APP_API_URL}/ingatlan/${id}`, updatedProperty);
-      console.log(response);
-      alert("Sikeres frissítés!");
-      navigate('/eladohazak');
+      } else {
+        throw new Error("Hiba történt a kérés során: ", response.error);
+      }
     } catch (error) {
-      console.error("Error updating property:", error);
-      alert("Sikertelen frissítés!");
+      console.error("Hiba történt a kérés során: ", error);
+      alert("Hiba történt! Próbáld meg újra.");
     }
   };
 
@@ -159,7 +181,6 @@ export default function Hazmodositas() {
             type="file"
             className="formControl"
             id="kep"
-            value={property.kep}
             onChange={handleChange}
             required
           />
