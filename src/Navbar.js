@@ -6,8 +6,9 @@ import dlblogo from './dlblogo.svg.png';
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const [user, setUser] = useState(null);  // Felhasználói adatok állapota
-  const [theme, setTheme] = useState('dark'); // Téma állapota
+  const [user, setUser] = useState(null);  
+  const [theme, setTheme] = useState('dark'); 
+  const savedUser = JSON.parse(localStorage.getItem('user'));
 
   const navigate = useNavigate();
 
@@ -25,12 +26,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const savedUser = JSON.parse(localStorage.getItem('user'));
+    
     console.log(savedUser)
     if (savedUser) {
       setUser(savedUser); // Felhasználói adatok betöltése a localStorage-ból
     }
   }, []);
+ 
 
   const handleDropdownClick = (e) => {
     e.stopPropagation();
@@ -43,11 +45,11 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    setUser(null); // Felhasználói adatok törlése a state-ből
-    localStorage.removeItem('user'); // Felhasználói adatok törlése a localStorage-ból
-    setDropdownOpen(false); // Dropdown bezárása
+    setUser(null); 
+    localStorage.removeItem('user');
+    setDropdownOpen(false);
     console.log('Sikeres kijelentkezés');
-    navigate("/") // Oldal frissítése kijelentkezés után
+    navigate("/") 
   };
 
   const toggleTheme = () => {

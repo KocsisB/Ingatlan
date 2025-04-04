@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './ProfilModositas.css';
 
 export default function ProfilModositas() {
@@ -11,7 +11,9 @@ export default function ProfilModositas() {
     email: '',
     birthDate: '',
     phoneNumber: '',
+    kepUrl: ''
   });
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export default function ProfilModositas() {
           userName: response.data.result.userName,
           email: response.data.result.email,
           birthDate: response.data.result.birthDate.split("T")[0],
-          phoneNumber: response.data.result.phoneNumber,
+          phoneNumber: response.data.result.phoneNumber
         });
         console.log(response.data.result);
         localStorage.setItem('user', JSON.stringify(response.data.result));
@@ -54,6 +56,9 @@ export default function ProfilModositas() {
       console.log(response);
       alert('Profile updated successfully!');
       fetchUserData()
+      navigate('/profilom')
+      window.location.reload()
+      
 
     } catch (error) {
       console.error('Error updating profile:', error);

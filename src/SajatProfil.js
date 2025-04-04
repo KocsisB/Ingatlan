@@ -36,26 +36,19 @@ export default function SajatProfil() {
           "Content-Type": "multipart/form-data"
         }
       });
-      setUserData({ ...userData, kepUrl: response.data.kepUrl });
+      console.log(response);
+      
       localStorage.setItem('user', JSON.stringify({ ...userData, kepUrl: response.data.kepUrl }));
+      setUserData({ ...userData, kepUrl: response.data.kepUrl });
       alert('Profilkép sikeresen frissítve.');
+      window.location.reload()
     } catch (error) {
       setError('Hiba történt a profilkép megváltoztatása során: ' + error.message);
       console.error('Error changing profile picture:', error);
     }
   };
 
-  const handleProfileUpdate = async () => {
-    try {
-      const response = await axios.put(`${process.env.REACT_APP_API_URL}/auth/`, userData);
-      setUserData(response.data);
-      localStorage.setItem('user', JSON.stringify(response.data)); // Felhasználói adatok mentése a localStorage-ba
-      alert('Profil sikeresen frissítve.');
-    } catch (error) {
-      setError('Hiba történt a profil frissítése során: ' + error.message);
-      console.error('Error updating user profile:', error);
-    }
-  };
+  
 
   const handleAccountDelete = async () => {
     try {
@@ -82,10 +75,7 @@ export default function SajatProfil() {
             <p><strong>Teljes Név:</strong> {userData.fullname || 'N/A'}</p>
             <p><strong>Születési dátum:</strong> {new Date(userData.birthDate).toLocaleDateString()}</p>
             <p><strong>Felhasználónév:</strong> {userData.userName}</p>
-            <p><strong>Normál Felhasználónév:</strong> {userData.normalizedUserName}</p>
             <p><strong>Email:</strong> {userData.email}</p>
-            <p><strong>Normál Email:</strong> {userData.normalizedEmail}</p>
-            <p><strong>Email Megerősítve:</strong> {userData.emailConfirmed ? 'Igen' : 'Nem'}</p>
             <p><strong>Telefonszám:</strong> {userData.phoneNumber}</p>
           </div>
           <div className="profile-image-section">

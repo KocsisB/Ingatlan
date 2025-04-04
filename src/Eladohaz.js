@@ -206,19 +206,11 @@ const PropertySearch = () => {
               <div className="card-content">
                 <h2 className="card-title">{property.cim}</h2>
                 <p className="card-description">Város: {property.varos}</p>
-                <p className="card-description">Állapot: {property.allapot}</p>
-                <p className="card-description">
-                  Telek mérete: {property.telekMerete}
-                </p>
-                <p className="card-description">
-                  Építés vége: {property.epitesVege}
-                </p>
                 <p className="card-description">
                   Ár: {property.ar.toLocaleString()} Ft
                 </p>
                 <div className="card-footer">
                   <span>Alapterület: {property.alapterulet} m²</span>
-                  <span>Szobák: {property.szobakSzama}</span>
                 </div>
                 <button
                   className="card-button"
@@ -267,17 +259,7 @@ const PropertySearch = () => {
             <p>Ár: {selectedProperty.ar.toLocaleString()} Ft</p>
             <p>Alapterület: {selectedProperty.alapterulet} m²</p>
             <p>Szobák: {selectedProperty.szobakSzama}</p>
-            <h3>Tulajdonos</h3>
-            {selectedProperty.owner ? (
-              <>
-                <p>Neve: {selectedProperty.owner.nev}</p>
-                <p>Email: {selectedProperty.owner.email}</p>
-                <p>Telefonszám: {selectedProperty.owner.telefon}</p>
-              </>
-            ) : (
-              <p>{ownerError}</p>
-            )}
-          </div>
+            </div>
         </div>
       )}
       
