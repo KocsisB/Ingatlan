@@ -19,6 +19,9 @@ const PropertySearch = () => {
   const [modalClosing, setModalClosing] = useState(false);
 
   const [user, setUser] = useState(null); // Felhasználói adatok
+  const role = localStorage.getItem("role");
+  console.log(role);
+  
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -218,8 +221,8 @@ const PropertySearch = () => {
                 >
                   <i className="bi bi-search"></i>
                 </button>
-
-                {(user && user.isAdmin) || (user && user.id === property.tulajdonosId) ? (
+            
+                {(user && role === "admin") || (user && user.id === property.userId) ? (
                   <>
                     <button
                       className="card-button"

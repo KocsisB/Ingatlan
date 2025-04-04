@@ -19,7 +19,7 @@ export default function Hirdetes() {
     ar: null,
     berelheto: false,
     eladhato: false,
-    UserId: ''
+    userId: ''
   });
 
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ export default function Hirdetes() {
       berelheto: Boolean(hirdetes.berelheto),
       eladható: Boolean(hirdetes.eladhato),
       kep: hirdetes.kep,
-      UserId: userData.id
+      userId: userData.id
     };
     
     console.log(formData);
@@ -93,7 +93,7 @@ export default function Hirdetes() {
           ar: null,
           berelheto: false,
           eladhato: false,
-          UserId: ''
+          userId: ''
         });
       } else {
         throw new Error("Hiba történt a kérés során: ", response.error);

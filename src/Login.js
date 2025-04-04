@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
   const [isActive, setIsActive] = useState(false);
@@ -82,6 +83,10 @@ const Login = () => {
         console.log(response.data)
         localStorage.setItem('user', JSON.stringify(response.data.result)); // Felhasználói adatok mentése a localStorage-ba
         console.log(localStorage.getItem("user"), localStorage.getItem("userId"));
+        const decodedToken = jwtDecode(response.data.token);
+        localStorage.setItem("role", decodedToken.role);
+        console.log(decodedToken.role);
+        
         window.location.href = "/"
       }
       if (!response.statusText) {
