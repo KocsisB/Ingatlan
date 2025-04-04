@@ -12,7 +12,7 @@
 
     public record CreateIngatlanDto(string Cim, decimal Alapterulet, int SzobakSzama, decimal? TelekMerete, int? EpitesVege, string? Allapot, string? Tipus, string Varos, string Megye, int Ar, bool Berelheto, bool Eladható, string UserId, IFormFile Kep);
 
-    public record EditIngatlanDto(string Cim, decimal Alapterulet, int SzobakSzama, decimal? TelekMerete, int? EpitesVege, string? Allapot, string? Tipus, string Varos, string Megye, int Ar, bool Berelheto, bool Eladható);
+    public record EditIngatlanDto(string Cim, decimal Alapterulet, int SzobakSzama, decimal? TelekMerete, int? EpitesVege, string? Allapot, string? Tipus, string Varos, string Megye, int Ar, bool Berelheto, bool Eladható, IFormFile Kep);
 
     public record EditAkciosDto(int AkciosAr);
 

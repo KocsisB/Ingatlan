@@ -1027,10 +1027,6 @@
             "type": "string",
             "nullable": true
           },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
           "birthDate": {
             "type": "string",
             "format": "date-time"

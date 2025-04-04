@@ -110,13 +110,33 @@ namespace AuthApi.Controllers
 
         //[Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateHouse(int id, EditIngatlanDto editIngatlanDto)
+        public async Task<IActionResult> UpdateHouse(int id, [FromForm] EditIngatlanDto editIngatlanDto)
         {
             var existingHouse = await _context.Ingatlanoks.FirstOrDefaultAsync(x => x.Id == id);
             if (existingHouse == null)
             {
                 return BadRequest();
             }
+            string kepUrl = null;
+
+            if (editIngatlanDto.Kep != null && editIngatlanDto.Kep.Length > 0)
+            {
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                if (!Directory.Exists(uploads))
+                {
+                    Directory.CreateDirectory(uploads);
+                }
+
+                var fileName = Path.GetFileName(editIngatlanDto.Kep.FileName);
+                var filePath = Path.Combine(uploads, fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await editIngatlanDto.Kep.CopyToAsync(stream);
+                }
+                kepUrl = $"/images/{fileName}";
+            }
+
+
             existingHouse.Cim = editIngatlanDto.Cim;
             existingHouse.Alapterulet = editIngatlanDto.Alapterulet;
             existingHouse.SzobakSzama = editIngatlanDto.SzobakSzama;
@@ -129,6 +149,7 @@ namespace AuthApi.Controllers
             existingHouse.Ar = editIngatlanDto.Ar;
             existingHouse.Berelheto = editIngatlanDto.Berelheto;
             existingHouse.Eladható = editIngatlanDto.Eladható;
+            existingHouse.KepUrl = kepUrl;
 
             _context.Ingatlanoks.Update(existingHouse);
             await _context.SaveChangesAsync();
